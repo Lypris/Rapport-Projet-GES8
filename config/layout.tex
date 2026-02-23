@@ -1,0 +1,108 @@
+% =====================================
+% CONFIGURATION DE LA MISE EN PAGE
+% =====================================
+
+% --- Format de date DD/MM/YYYY ---
+\newdateformat{ddmmyyyy}{\THEDAY/\THEMONTH/\THEYEAR}
+\ddmmyyyy
+
+% --- Profondeur de la table des matières ---
+% 0 = chapters seulement
+% 1 = chapters + sections
+% 2 = chapters + sections + subsections
+% 3 = chapters + sections + subsections + subsubsections
+\setcounter{tocdepth}{2}  % Affiche seulement chapters et sections (pas les subsections)
+
+% --- Personnalisation du format des chapitres ---
+\titleformat{\chapter}
+    {\normalfont\bfseries}
+    {\raisebox{-15pt}{\textcolor{gray}{\fontsize{60}{70}\selectfont\itshape\thechapter}}}
+    {5pt}
+    % on met tout en majuscule
+    {\Large\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt} % Ajustement des espaces
+
+% --- Configuration des en-têtes et pieds de page ---
+\pagestyle{fancy}
+\fancyhf{} % Nettoie les champs
+
+% Configuration de l'en-tête
+\fancyhead[L]{\includegraphics[height=0.8cm]{images/logo_insa.jpg}}
+\fancyhead[C]{\documentTitle}
+\fancyhead[R]{\ddmmyyyy\today}
+
+% Configuration du pied de page
+\fancyfootoffset{0pt}
+\fancyfoot[L,C]{}
+\fancyfoot[R]{%
+  \begin{picture}(0,0)
+  % Réduction de l'image (scale passé de 1 à 0.8)
+  \put(-13,-10){%
+    \includegraphics[scale=0.8]{images/foot-logo.png}% 
+  }%
+  % Ajout de \footnotesize pour réduire le texte
+  \put(9.7,0){%
+    \begin{minipage}{12mm}
+      \centering
+      \color{BLANC}{\scriptsize\thepage/\pageref*{LastPage}}% 
+    \end{minipage}%
+  }%
+\end{picture}%
+}
+
+% Configuration des lignes de séparation
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\topmargin}{-5pt}
+
+
+% --- Configuration du style plain pour table des matières et chapitres ---
+\fancypagestyle{plain}{%
+  \fancyhf{} % Nettoie les champs
+  % En-tête identique au style fancy
+  \fancyhead[L]{\includegraphics[height=0.8cm]{images/logo_insa.jpg}}
+  \fancyhead[C]{\documentTitle}
+  \fancyhead[R]{\ddmmyyyy\today}
+  % Pied de page identique au style fancy
+  \fancyfootoffset{0pt}
+  \fancyfoot[L,C]{}
+  \fancyfoot[R]{%
+    \begin{picture}(0,0)
+  % Réduction de l'image (scale passé de 1 à 0.8)
+  \put(-13,-10){%
+    \includegraphics[scale=0.8]{images/foot-logo.png}% 
+  }%
+  % Ajout de \footnotesize pour réduire le texte
+  \put(9.7,0){%
+    \begin{minipage}{12mm}
+      \centering
+      \color{BLANC}{\scriptsize\thepage/\pageref*{LastPage}}% 
+    \end{minipage}%
+  }%
+\end{picture}%
+  }
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% --- Paramètres généraux de mise en page ---
+\setlength{\parindent}{0pt}  % Suppression de l'indentation automatique des paragraphes
+
+% --- Configuration de la numérotation des pages ---
+% Commande pour démarrer la numérotation à 2 (page de garde = page 1 non numérotée)
+\newcommand{\startpagenumbering}{%
+    \setcounter{page}{2}%
+    \pagestyle{fancy}%
+}
+
+% --- Commande personnalisée pour les captions ---
+% Usage: \customcaption{figure}{largeur}{texte}{label}
+% Exemple: \customcaption{figure}{0.7\textwidth}{Description de l'image}{fig:mon_label}
+\newcommand{\customcaption}[4]{%
+    \begin{minipage}{#2}
+        \captionsetup{justification=justified,singlelinecheck=false,font=scriptsize}
+        \captionof{#1}{#3}
+        \label{#4}
+    \end{minipage}%
+}

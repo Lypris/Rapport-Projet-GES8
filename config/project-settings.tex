@@ -1,0 +1,78 @@
+% =====================================
+% VARIABLES SPÉCIFIQUES AU PROJET
+% =====================================
+
+% --- Commandes modulaires pour le rapport (À MODIFIER POUR CHAQUE PROJET) ---
+\newcommand{\authorA}{VIRQUIN Rudy}
+\newcommand{\authorB}{}
+% Inline authors used for headers (comma-separated)
+\newcommand{\authorsInline}{\authorA}
+
+\newcommand{\documentTitle}{PROJET GE S8}
+\newcommand{\documentSubtitle}{La petite maison dans la prairie}
+\newcommand{\documentSubject}{RAPPORT 1}
+
+% Backwards-compatible names used elsewhere in the project
+\newcommand{\tpnumero}{}
+\newcommand{\tptitre}{\documentTitle}
+\newcommand{\tpsoustitre}{\documentSubtitle}
+\newcommand{\tpmatiere}{\documentSubject}
+\newcommand{\tpauteurs}{%
+	\begin{tabular}{c}
+		\authorA
+	\end{tabular}
+}
+\newcommand{\tpgroupe}{}
+\newcommand{\tpprofesseur}{Jean-Michel Hube et Bertrand Boyer}
+\newcommand{\tpdate}{\today}
+
+
+% --- Page de garde personnalisée ---
+\newcommand{\maketitlepage}{
+    \begin{titlepage}
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/logo_insa.jpg}\par\vspace{1cm}
+        {\Huge\bfseries \tptitre\par}
+        \vspace{1.5cm}
+        {\huge\bfseries \tpsoustitre\par}
+        \vspace{2cm}
+        {\Large\itshape \tpauteurs\par}
+        {\Large\itshape Groupe 2 \tpgroupe\par}
+        \vspace{2cm}
+        {\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5, transform shape]
+	% Paths, nodes and wires:
+	\node[nigfete] at (8.98, 7.27){};
+	\draw (9.48, 6.5) to[empty diode, l_={$T$}] (9.48, 8.04);
+	\draw (9.48, 8.04) -| (8.98, 8.04);
+	\draw (9.48, 6.5) -- (8.98, 6.5);
+	\node[ieeestd buffer port](N1) at (7.152, 7){} node[anchor=south] at ([yshift=0.05cm]N1.north){$Driver$};
+	\draw (2, 10) to[european voltage source, l={$24\mathrm{V}$}] (2, 6);
+	\draw (4, 10) to[capacitor, l^={$C_{Découplage}$}] (4, 8);
+	\draw (6.275, 7) to[square voltage source, l_={$GBF$}] (4, 7);
+	\draw (4, 8) -- (4, 7);
+	\node[ground] at (4, 6){};
+	\draw (4, 7) -| (4, 6) -| (8.98, 6.5);
+	\draw (8, 8.667) to[empty diode] (8, 10);
+	% Remplacer le composant unique "RL" par une résistance et une inductance en série
+	% on découpe le segment vertical en deux parties et on place R puis L
+	\draw (9, 8.667)  to[L, l_={$RL$}] (9, 10);
+	\draw (8.98, 8.04) -| (9, 8.667);
+	\draw (8, 8.667) -- (9, 8.667);
+	\draw (4, 6) -- (2, 6);
+	\draw (2, 10) -- (8, 10);
+	\draw (8, 10) -- (9, 10);
+	\node[circ] at (4, 10){};
+	\node[circ] at (4, 7){};
+	\node[circ] at (4, 6){};
+	\node[circ] at (9, 8.667){};
+	\node[circ] at (8, 10){};
+\end{tikzpicture}
+\end{figure}}
+        \vfill
+        {\large Professeur : \tpprofesseur\par}
+        \vspace{0.8cm}
+        {\large \tpdate\par}
+    \end{titlepage}
+}

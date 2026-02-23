@@ -1,0 +1,278 @@
+% =====================================
+% CONFIGURATION DES PACKAGES ET COULEURS
+% =====================================
+
+% --- Encodage et langue ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\renewcommand{\familydefault}{\sfdefault}  % Utilise Computer Modern Sans Serif
+\renewcommand{\sfdefault}{qag}  % Spécifie cmss comme police sans empattement
+
+% --- Package pour une meilleure justification ---
+\usepackage{ragged2e}
+\justifying  % Active la justification par défaut
+
+% --- Packages pour la mise en page et le contenu ---
+\usepackage{graphicx}   %% Pour inclure des images
+\usepackage{pdfpages}   %% Pour inclure des pages PDF entières
+
+% Configuration pour trouver les images (compatible LaTeX Workshop + Overleaf)
+% Le chemin doit finir par / et être entre accolades
+\graphicspath{{./images/}{images/}{../Rapport/images/}}
+
+\usepackage[a4paper]{geometry} % Gestion des marges
+% Configuration des marges ET des espaces pour l'en-tête/pied de page
+\geometry{
+  left=2cm,        % Marge gauche (augmentez pour "agrandir")
+  right=2cm,       % Marge droite (augmentez pour "agrandir")
+  top=2.5cm,         % Marge haute (augmentez pour "agrandir")
+  bottom=1.5cm,      % Marge basse (augmentez pour "agrandir")
+  headheight=34pt, % Indique à geometry la taille de votre en-tête fancyhdr
+  footskip=24pt,    % Indique à geometry l'espace pour votre pied de page
+  headsep=0.5cm
+}
+
+\usepackage{amsmath, amssymb}       % Outils mathématiques avancés
+% Numérotation continue des équations : 1,2,3... (sans préfixe chapitre)
+\usepackage{chngcntr}
+\counterwithout{equation}{chapter}
+\renewcommand{\theequation}{\arabic{equation}}
+\usepackage[
+    hidelinks,
+    pdftitle={\documentTitle},
+    pdfauthor={\authorA, \authorB},
+    pdfsubject={\documentSubject},
+    pdfkeywords={électronique de puissance, cellule de commutation, INSA Strasbourg, ENPU2},
+    pdfcreator={LaTeX},
+    pdfproducer={LaTeX}
+]{hyperref}    % Pour les liens cliquables et métadonnées PDF
+\usepackage{fancyhdr}               % Pour personnaliser les en-têtes et pieds de page
+\usepackage{xcolor}                 % Pour utiliser des couleurs
+\usepackage{tcolorbox}              % Pour créer des boîtes colorées
+\usepackage{float}                  % Pour mieux placer les figures
+\usepackage{newfloat}              % Pour créer des environnements flottants personnalisés
+\usepackage{caption}                % Pour personnaliser les légendes
+\usepackage{subcaption}             % Pour des sous-figures
+\usepackage{etoolbox}              % Pour hook AtBeginEnvironment
+% --- Style personnalisé pour les légendes des tableaux ---
+% On veut : petite taille, largeur limitée à la largeur de la table,
+% possibilité de plusieurs lignes et fond gris clair.
+\DeclareCaptionFont{smallit}{\tiny}
+% Define a caption format that places the caption text inside a colored box
+% whose width is the caption width (which will be set to the table width).
+% Draw a gray background with a black frame that matches the caption width.
+% We account for the frame thickness (\fboxrule) and padding (\fboxsep) so the outer
+% \fcolorbox total width equals the requested caption width (which is \linewidth inside
+% the caption context). The inner parbox width is therefore \linewidth - 2\fboxrule - 2\fboxsep.
+\DeclareCaptionFormat{graybox}{%
+        {%
+                % Use local settings for border thickness and padding. We'll use \arrayrulewidth
+                % as the default border width for consistency with table rules.
+                \setlength{\fboxrule}{\arrayrulewidth}%
+                \setlength{\fboxsep}{0.5pt}% small inner padding so the gray fills to the border
+                % Compute inner width; if \dimexpr is available this will evaluate safely here.
+                \begingroup
+                    \colorlet{captionframe}{black}% frame color
+                    \colorlet{captionbg}{boxgray}% background color
+                    \edef\innerwidth{\the\dimexpr\linewidth-2\fboxrule-2\fboxsep\relax}%
+                    \fcolorbox{captionframe}{captionbg}{% outer framed box (total width = \linewidth)
+                        \parbox{\innerwidth}{% inner box sized so outer frame equals \linewidth
+                            \hspace{0.15em}#1#2#3\hspace{0.15em}% small horizontal padding
+                        }% end parbox
+                    }% end fcolorbox
+                \endgroup
+        }%
+}
+% Apply the format to table captions: smaller font, the graybox format,
+% allow multi-line captions and left-aligned wrapping. We do NOT hardcode a
+% global width here because \linewidth at package load time is the text width,
+% not the float width. Instead, ensure that at the start of every table float
+% we set the caption width to the current \linewidth (i.e. the table width).
+\captionsetup[table]{format=graybox,font=smallit,labelfont=bf}
+% When entering a table environment, set caption width to the current \linewidth
+% so the caption box will match the table's width.
+\AtBeginEnvironment{table}{\captionsetup{width=\linewidth}}
+% Reduce the vertical gap between table and caption and force label on its own line
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+\captionsetup[table]{format=graybox,font=smallit,labelfont=bf,justification=raggedright,singlelinecheck=false,margin=0pt,labelsep=newline,skip=0pt}
+
+% --- Configuration des légendes pour les figures ---
+% Réduction de la taille de police pour les captions de figures
+\captionsetup[figure]{font=small,labelfont=bf,justification=centering}
+
+% --- Nouvel environnement 'tableau' pour tableaux sans style spécial ---
+% Création d'un nouvel environnement flottant nommé 'tableau'
+\DeclareFloatingEnvironment[
+    fileext=lot,        % Utilise la même liste que les tables
+    listname={Liste des tableaux},
+    name=Tableau,
+    placement=tbp,      % Placement par défaut : top, bottom, page
+    within=none         % Numérotation continue dans tout le document
+]{tableau}
+
+% Configuration du caption pour l'environnement 'tableau' : style simple, sans boîte grise
+\captionsetup[tableau]{
+    format=plain,           % Format simple sans boîte
+    font=small,             % Taille de police normale (pas tiny)
+    labelfont=bf,           % Label en gras
+    justification=centering, % Centré
+    singlelinecheck=true,   % Permet le centrage automatique pour les légendes courtes
+    margin=0pt,
+    labelsep=colon,         % Séparateur standard "Tableau X:"
+    skip=10pt               % Espacement normal entre tableau et caption
+}
+
+% Optional helper environment: tablebox
+% Usage: \begin{table}\begin{tablebox}{<width>} ... \end{tablebox}\end{table}
+% This wraps content in a minipage so that \linewidth inside equals <width>
+\newenvironment{tablebox}[1][\linewidth]{%
+    \begin{minipage}{#1}
+}{%
+    \end{minipage}
+}
+\usepackage{booktabs}               % Pour de jolis tableaux
+% Allow tables that stretch to a target width
+\usepackage{tabularx}
+\usepackage{array}
+% Right-aligned X column for tabularx
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\usepackage{titlesec}               % Pour personnaliser les titres de chapitres
+\usepackage{lastpage}               % Pour obtenir le nombre total de pages
+\usepackage{datetime}               % Pour le formatage des dates
+\usepackage{pgfplots}
+% Ensure pgfplots uses modern compatibility level to avoid backward-compatibility warnings
+\pgfplotsset{compat=1.18}
+
+% Package for placing content absolutely on the page background/foreground
+\usepackage{eso-pic}
+
+% --- Package CircuiTikz avec configuration spéciale ---
+\usepackage{tikz}                   % TikZ doit être chargé avant circuitikz
+\usepackage[siunitx]{circuitikz} % Configuration pour les diagrammes électriques
+\usetikzlibrary{babel, positioning, shapes, arrows, patterns} % Bibliothèques TikZ supplémentaires
+
+% --- Définition des couleurs personnalisées ---
+\definecolor{INSAbleu}{RGB}{0, 70, 127}
+\definecolor{INSArouge}{RGB}{229, 39, 19}
+\definecolor{boxgray}{gray}{0.95}
+\definecolor{remindercolor}{RGB}{96, 98, 103}     % gris INSA pour les rappels
+% Couleurs pour les conclusions/comparaisons
+\definecolor{conclusioncolor}{RGB}{138, 43, 226}    % Violet pour les conclusions
+\definecolor{conclusionbg}{RGB}{245, 240, 255}      % Fond violet très clair
+% Couleurs pour les résultats expérimentaux
+\definecolor{experimentalcolor}{RGB}{229, 39, 19}   % Rouge pour les résultats expérimentaux
+\definecolor{experimentalbg}{RGB}{255, 240, 240}    % Fond rouge très clair
+% Couleurs pour les valeurs théoriques
+\definecolor{theoreticalcolor}{RGB}{40, 167, 69}    % Vert pour les valeurs théoriques
+\definecolor{theoreticalbg}{RGB}{240, 255, 240}     % Fond vert très clair
+% Couleurs pour les calculs
+\definecolor{calculbg}{RGB}{248, 249, 250}          % Fond gris très clair
+\definecolor{BLANC}{RGB}{255, 255, 255}             % Couleur blanche pour le pied de page
+
+% --- Définition des modèles de boîtes colorées ---
+
+% Boîte pour les rappels théoriques (gris INSA)
+\newtcolorbox{reminderbox}[1][Rappel]{
+    colback=remindercolor!20,
+    colframe=remindercolor!80,
+    coltitle=white,
+    colbacktitle=remindercolor!80,
+    title=#1,
+    fonttitle=\bfseries,
+    rounded corners,
+    boxrule=1pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+% Boîte pour les informations générales (bleu INSA)
+\newtcolorbox{infobox}[1][Information]{
+    colback=INSAbleu!10,
+    colframe=INSAbleu,
+    coltitle=white,
+    colbacktitle=INSAbleu,
+    title=#1,
+    fonttitle=\bfseries,
+    rounded corners,
+    boxrule=1pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+% Boîte pour les calculs (gris)
+\newtcolorbox{calculbox}[1][Calcul]{
+    colback=calculbg,
+    colframe=gray,
+    coltitle=white,
+    colbacktitle=gray,
+    title=#1,
+    fonttitle=\bfseries,
+    rounded corners,
+    boxrule=1pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+% Boîte pour les résumés de valeurs théoriques (vert)
+\newtcolorbox{theoreticalbox}[1][Résumé des valeurs théoriques]{
+    colback=theoreticalbg,
+    colframe=theoreticalcolor,
+    coltitle=white,
+    colbacktitle=theoreticalcolor,
+    title=#1,
+    fonttitle=\bfseries,
+    rounded corners,
+    boxrule=1pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+% Boîte pour les résultats expérimentaux (rouge)
+\newtcolorbox{experimentalbox}[1][Résultats expérimentaux]{
+    colback=experimentalbg,
+    colframe=experimentalcolor,
+    coltitle=white,
+    colbacktitle=experimentalcolor,
+    title=#1,
+    fonttitle=\bfseries,
+    rounded corners,
+    boxrule=1pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+% Boîte pour les conclusions et comparaisons (violet)
+\newtcolorbox{conclusionbox}[1][Conclusion]{
+    colback=conclusionbg,
+    colframe=conclusioncolor,
+    coltitle=white,
+    colbacktitle=conclusioncolor,
+    title=#1,
+    fonttitle=\bfseries,
+    rounded corners,
+    boxrule=1pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+\usepackage{enumitem}               % Pour personnaliser les listes
+
+% --- Configuration des listes ---
+\setlist[itemize,1]{label=\textbullet}    % Premier niveau : bullet standard
+\setlist[itemize,2]{label=\textendash}    % Deuxième niveau : tiret
+\setlist[itemize,3]{label=$\ast$}         % Troisième niveau : astérisque
+\setlist[itemize,4]{label=$\cdot$}        % Quatrième niveau : point centré

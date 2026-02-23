@@ -1,0 +1,32 @@
+\documentclass[12pt, a4paper]{report}
+
+% --- Inclusion des configurations ---
+% Load project-specific settings first so packages/layout can reuse them
+\input{config/project-settings} % Variables du projet
+\input{config/packages}        % Packages et couleurs
+\input{config/layout}          % Mise en page et styles
+
+% =====================================
+% DOCUMENT PRINCIPAL
+% =====================================
+
+\begin{document}
+
+% --- Page de garde ---
+%\maketitlepage
+\includepdf[pages=-]{contenu/cover.pdf}
+
+% --- Démarrage de la numérotation à 2 (page de garde = page 1) ---
+\startpagenumbering
+% --- Contenu du rapport ---
+\input{contenu/introduction.tex}
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\input{contenu/analyse-fonctionnelle.tex}
+\newpage
+\input{contenu/annexe.tex}
+
+\end{document}
