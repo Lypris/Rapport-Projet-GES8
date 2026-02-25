@@ -48,6 +48,8 @@
     pdfproducer={LaTeX}
 ]{hyperref}    % Pour les liens cliquables et métadonnées PDF
 \usepackage{fancyhdr}               % Pour personnaliser les en-têtes et pieds de page
+\usepackage{pgfgantt}               % Pour les diagrammes de Gantt
+\usepackage{pdflscape}              % Pour le mode paysage
 \usepackage{xcolor}                 % Pour utiliser des couleurs
 \usepackage{tcolorbox}              % Pour créer des boîtes colorées
 \usepackage{float}                  % Pour mieux placer les figures
@@ -94,7 +96,7 @@
 % so the caption box will match the table's width.
 \AtBeginEnvironment{table}{\captionsetup{width=\linewidth}}
 % Reduce the vertical gap between table and caption and force label on its own line
-\setlength{\abovecaptionskip}{0pt}
+\setlength{\abovecaptionskip}{10pt}
 \setlength{\belowcaptionskip}{0pt}
 \captionsetup[table]{format=graybox,font=smallit,labelfont=bf,justification=raggedright,singlelinecheck=false,margin=0pt,labelsep=newline,skip=0pt}
 

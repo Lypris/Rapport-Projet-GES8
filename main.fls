@@ -148,8 +148,8 @@ INPUT c:/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 INPUT c:/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-INPUT c:/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-INPUT c:/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/pgfgantt/pgfgantt.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/pgfgantt/pgfgantt.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
@@ -246,6 +246,37 @@ INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandler
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
+INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/verbatim.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/verbatim.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/environ/environ.sty
@@ -356,8 +387,6 @@ INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.c
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/latex/circuitikz/circuitikz.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/circuitikz/circuitikz.sty
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
@@ -391,14 +420,8 @@ INPUT c:/texlive/2025/texmf-dist/tex/latex/translations/translations.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/translations/translations.sty
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybabel.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybabel.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.misc.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.misc.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.tex
@@ -419,14 +442,6 @@ INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/ti
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
-INPUT c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
 INPUT c:/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT ./config/layout.tex
@@ -450,12 +465,6 @@ INPUT c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape.sty
-INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
-INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
-INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/lscape.sty
-INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT ./main.out
 INPUT ./main.out
 INPUT main.out
@@ -483,21 +492,6 @@ INPUT ./contenu/introduction.tex
 INPUT contenu/introduction.tex
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr.tfm
-INPUT ./images/diagrammes/Synoptique projet S8.png
-INPUT ./images/diagrammes/Synoptique projet S8.png
-INPUT ./images/diagrammes/Synoptique projet S8.png
-INPUT ./images/diagrammes/Synoptique projet S8.png
-INPUT ./images/diagrammes/Synoptique projet S8.png
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr-sc.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb-sc.tfm
-INPUT ./images/diagrammes/Organigramme Projet S8.png
-INPUT ./images/diagrammes/Organigramme Projet S8.png
-INPUT ./images/diagrammes/Organigramme Projet S8.png
-INPUT ./images/diagrammes/Organigramme Projet S8.png
-INPUT ./images/diagrammes/Organigramme Projet S8.png
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
@@ -534,15 +528,6 @@ INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc
-INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
 INPUT ./main.toc
 INPUT ./main.toc
 INPUT main.toc
@@ -567,18 +552,51 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
-INPUT ./contenu/analyse-fonctionnelle.tex
-INPUT ./contenu/analyse-fonctionnelle.tex
-INPUT contenu/analyse-fonctionnelle.tex
+INPUT ./contenu/planning.tex
+INPUT ./contenu/planning.tex
+INPUT contenu/planning.tex
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagbi.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagri.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr-sc.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb-sc.tfm
+INPUT ./images/diagrammes/Organigramme Projet S8.png
+INPUT ./images/diagrammes/Organigramme Projet S8.png
+INPUT ./images/diagrammes/Organigramme Projet S8.png
+INPUT ./images/diagrammes/Organigramme Projet S8.png
+INPUT ./images/diagrammes/Organigramme Projet S8.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./contenu/analyse-fonctionnelle.tex
+INPUT ./contenu/analyse-fonctionnelle.tex
+INPUT contenu/analyse-fonctionnelle.tex
 INPUT ./images/diagrammes/Bête à cornes.png
 INPUT ./images/diagrammes/Bête à cornes.png
 INPUT ./images/diagrammes/Bête à cornes.png
 INPUT ./images/diagrammes/Bête à cornes.png
 INPUT ./images/diagrammes/Bête à cornes.png
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb.tfm
 INPUT ./images/diagrammes/Diagramme pieuvre.png
 INPUT ./images/diagrammes/Diagramme pieuvre.png
 INPUT ./images/diagrammes/Diagramme pieuvre.png
@@ -592,11 +610,34 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
+INPUT ./images/diagrammes/Synoptique projet S8.png
+INPUT ./images/diagrammes/Synoptique projet S8.png
+INPUT ./images/diagrammes/Synoptique projet S8.png
+INPUT ./images/diagrammes/Synoptique projet S8.png
+INPUT ./images/diagrammes/Synoptique projet S8.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./contenu/cahier-des-charges-detaille.tex
+INPUT ./contenu/cahier-des-charges-detaille.tex
+INPUT contenu/cahier-des-charges-detaille.tex
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ts1-qagr.tfm
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr.tfm
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
@@ -606,6 +647,57 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc
+INPUT ./images/figures/montage_alternateur_sous_charge.tex
+INPUT ./images/figures/montage_alternateur_sous_charge.tex
+INPUT images/figures/montage_alternateur_sous_charge.tex
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagri.tfm
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
@@ -638,9 +730,61 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
-INPUT ./contenu/annexe.tex
-INPUT ./contenu/annexe.tex
-INPUT contenu/annexe.tex
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/scopes/scope refrigerateur.jpeg
+INPUT ./images/scopes/scope refrigerateur.jpeg
+INPUT ./images/scopes/scope refrigerateur.jpeg
+INPUT ./images/scopes/scope refrigerateur.jpeg
+INPUT ./images/scopes/scope refrigerateur.jpeg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/figures/USB-C.png
+INPUT ./images/figures/USB-C.png
+INPUT ./images/figures/USB-C.png
+INPUT ./images/figures/USB-C.png
+INPUT ./images/figures/USB-C.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
@@ -660,3 +804,4 @@ INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qagb.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qagbi.pfb
 INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qagr.pfb
+INPUT c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qagri.pfb

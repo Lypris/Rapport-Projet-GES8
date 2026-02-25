@@ -1,0 +1,84 @@
+\begin{tikzpicture}[scale=1.0, thick]
+
+% Left vertical line connecting the phases
+\draw (0,2) -- (0,-2);
+
+% --- Top phase ---
+\draw (0,2) -- (0.5,2);
+% Source E
+\draw (1,2) circle (0.5);
+\draw (0.5,2) -- (1.5,2);
+\node at (1, 2.8) {$E$};
+\draw (1.5,2) -- (2,2);
+% Inductor lambda
+\draw (2,2) arc (180:0:0.2) arc (180:0:0.2) arc (180:0:0.2) arc (180:0:0.2);
+\node at (2.8, 2.6) {$\lambda$};
+\draw (3.6,2) -- (4,2);
+% Resistor r
+\draw (4, 1.6) rectangle (5.2, 2.4);
+\node at (4.6, 2.8) {$r$};
+\draw (5.2,2) -- (6,2);
+
+% --- Middle phase ---
+\draw (0,0) -- (0.5,0);
+% Source
+\draw (1,0) circle (0.5);
+\draw (0.5,0) -- (1.5,0);
+\draw (1.5,0) -- (2,0);
+% Inductor
+\draw (2,0) arc (180:0:0.2) arc (180:0:0.2) arc (180:0:0.2) arc (180:0:0.2);
+\draw (3.6,0) -- (4,0);
+% Resistor
+\draw (4, -0.4) rectangle (5.2, 0.4);
+\draw (5.2,0) -- (6,0);
+
+% --- Bottom phase ---
+\draw (0,-2) -- (0.5,-2);
+% Source
+\draw (1,-2) circle (0.5);
+\draw (0.5,-2) -- (1.5,-2);
+\draw (1.5,-2) -- (2,-2);
+% Inductor
+\draw (2,-2) arc (180:0:0.2) arc (180:0:0.2) arc (180:0:0.2) arc (180:0:0.2);
+\draw (3.6,-2) -- (4,-2);
+% Resistor
+\draw (4, -2.4) rectangle (5.2, -1.6);
+\draw (5.2,-2) -- (6,-2);
+
+% --- Rectifier block ---
+\draw (6,-3) rectangle (10,3);
+\node at (8, 3.4) {\large Redresseur};
+\node at (6.5, 2.2) {\Large $\sim$};
+\node at (9.2, 2.2) {\large PD3};
+
+% Diode inside
+\draw (7.2, 0) -- (7.6, 0);
+\draw (7.6, 0.4) -- (7.6, -0.4) -- (8.4, 0) -- cycle;
+\draw (8.4, 0.4) -- (8.4, -0.4);
+\draw (8.4, 0) -- (8.8, 0);
+
+% --- Output side ---
+\draw (10, 1.8) -- (12.5, 1.8);
+\draw (10, -1.8) -- (12.5, -1.8);
+
+% Voltage arrow
+\draw[-{Stealth[length=3mm]}] (10.5, -1.5) -- (10.5, 1.5);
+\node[right] at (10.5, 0) {$V_{CH}$};
+
+% --- Load block ---
+\draw[blue, thick] (11.5, -1.6) rectangle (13.5, 1.2);
+\node[right, blue] at (13.8, 0) {\large Charge RL};
+
+% Load components
+\draw (12.5, 1.8) -- (12.5, 0.8);
+% Variable resistor R
+\draw (12.1, 0.2) rectangle (12.9, 0.8);
+\draw[-{Stealth[length=2mm]}] (11.8, 0) -- (13.2, 1.0);
+\node[right] at (12.9, 0.5) {$R$};
+\draw (12.5, 0.2) -- (12.5, -0.2);
+% Inductor L
+\draw (12.5, -0.2) arc (90:-90:0.2) arc (90:-90:0.2) arc (90:-90:0.2);
+\node[right] at (12.7, -0.8) {$L$};
+\draw (12.5, -1.4) -- (12.5, -1.8);
+
+\end{tikzpicture}
