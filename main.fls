@@ -275,6 +275,8 @@ INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/rotating.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics/rotating.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/verbatim.sty
@@ -582,8 +584,8 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
-INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc
 INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc
+INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg

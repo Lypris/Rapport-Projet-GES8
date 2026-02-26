@@ -2,16 +2,16 @@
 
 \section{Planning prévisionnel}
 
-Pour mener à bien le projet ce semestre, nous avons établi un planning prévisionnel détaillé basé sur les contraintes académiques et les jalons de rendus. Ce diagramme présente la répartition temporelle des tâches pour l'ensemble du groupe.
+Pour mener à bien le projet ce semestre, nous avons établi un planning prévisionnel détaillé basé sur les contraintes du projet et les jalons de rendus. Ce diagramme présente la répartition temporelle des tâches pour l'ensemble du groupe.
 
-\begin{figure}[H]
+\begin{sidewaysfigure}
     \centering
     \begin{ganttchart}[
         vgrid,
         hgrid,
-        x unit=1.2cm,
-        y unit title=0.8cm,
-        y unit chart=0.6cm,
+        x unit=0.9cm,
+        y unit title=0.7cm,
+        y unit chart=0.5cm,
         title label font=\scriptsize\bfseries,
         bar label font=\tiny,
         group label font=\scriptsize\bfseries,
@@ -19,38 +19,48 @@ Pour mener à bien le projet ce semestre, nous avons établi un planning prévis
     ]{6}{23}
     
     % --- Titres des colonnes (Semaines) ---
-    \gantttitle{Semaines du Semestre (S6 à S23)}{18} \\
+    \gantttitle{Planning Détaillé du Projet Picogrid (S6 à S23)}{18} \\
     \gantttitlelist{6,...,23}{1} \\
 
-    % --- SECTION 1 : GESTION & RENDUS ---
-    \ganttgroup{Jalons \& Rendus}{6}{23} \\
-    \ganttbar{Répartition des tâches}{6}{9} \\
-    \ganttmilestone[milestone/.append style={fill=red}]{Rapport 1 (02/03)}{10} \\
-    \ganttmilestone[milestone/.append style={fill=red}]{Rapport 2 (27/04)}{18} \\
-    \ganttmilestone[milestone/.append style={fill=red}]{Rapport Final (05/06)}{23} \\
+    % --- PHASE 1 : CADRAGE ---
+    \ganttgroup{Phase 1 : Cadrage}{6}{10} \\
+    \ganttbar{Début du projet}{6}{6} \\
+    \ganttbar{Analyse fct. \& Rédaction CdC}{7}{9} \\
+    \ganttmilestone[milestone/.append style={fill=red}]{Remise Rapport 1}{10} \\
 
-    % --- SECTION 2 : TACHES TECHNIQUES ---
-    \ganttgroup{Node Red Solution (Rudy, Amandine)}{10}{22} \\
-    \ganttbar{Développement solution}{10}{17} \\
-    \ganttbar{Tests de communication}{19}{22} \\
-    
-    \ganttgroup{Alimentations \& Tests (?)}{6}{22} \\
-    \ganttbar{Analyse \& CdC détaillé (?) }{6}{9} \\
-    \ganttbar{Simulations, Schémas, PCB (?) }{10}{17} \\
-    \ganttbar{Commande composants (?) }{12}{14} \\
-    \ganttbar{Réalisation montage \& Validation (?) }{19}{22} \\
+    % --- DÉV : ALIMENTATION ---
+    \ganttgroup{Dév : Alimentation}{11}{17} \\
+    \ganttbar{Dimens. redresseur, filtre \& MPPT éolienne}{11}{14} \\
+    \ganttbar{Schémas \& simus (Batterie 48V / Charge)}{14}{17} \\
 
-    % --- SECTION 3 : PERIODES SPECIALES ---
-    \ganttbar[bar/.append style={fill=gray!30}]{Vacances / Examens}{16}{17}
+    % --- DÉV : DISTRIBUTION ---
+    \ganttgroup{Dév : Distribution}{11}{17} \\
+    \ganttbar{Dimens. Convertisseurs (24V, 188V, USB)}{11}{14} \\
+    \ganttbar{Schémas \& choix Relais de puissance}{14}{17} \\
 
-    % Liens (dépendances simplifiées)
-    \ganttlink{elem1}{elem2} 
-    \ganttlink{elem2}{elem5} 
+    % --- DÉV : MONITORING ---
+    \ganttgroup{Dév : Monitoring}{11}{17} \\
+    \ganttbar{Arch. Bus CAN \& choix PICs et Capteurs}{11}{14} \\
+    \ganttbar{Dév initial IHM \& Backend Node-RED}{14}{17} \\
+
+    % --- MISE EN COMMUN ---
+    \ganttgroup{Mise en commun}{17}{18} \\
+    \ganttbar{Routage PCB \& Intégration globale schémas}{17}{18} \\
+    \ganttbar{Validation nomenclatures \& Commandes}{18}{18} \\
+    \ganttmilestone[milestone/.append style={fill=red}]{Remise Rapport 2}{18} \\
+
+    % --- RÉAL. \& VALIDATION ---
+    \ganttgroup{Réal. \& Validation}{19}{23} \\
+    \ganttbar{Réception composants \& Soudure PCB}{19}{21} \\
+    \ganttbar{Mesures unitaires par module}{21}{22} \\
+    \ganttbar{Tests d'intégration globale Picogrid}{22}{23} \\
+    \ganttbar{Rédaction Rapport final}{21}{23} \\
+    \ganttmilestone[milestone/.append style={fill=red}]{Démonstration \& Remise finale}{23} \\
     
     \end{ganttchart}
-    \caption{Diagramme de Gantt prévisionnel du projet S8}
+    \caption{Diagramme de Gantt prévisionnel du projet Picogrid}
     \label{fig:gantt_projet}
-\end{figure}
+\end{sidewaysfigure}
 
 \section{Organisation de l'équipe}
 
