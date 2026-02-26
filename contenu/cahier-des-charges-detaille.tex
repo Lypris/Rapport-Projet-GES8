@@ -161,8 +161,7 @@ Les premières mesures réalisées au voltmètre aux bornes de chaque batterie a
 Le parc est donc constitué de 4 batteries 12\,V Plomb/Acide (200\,Ah) en série. Pour la suite du projet, il est crucial de garder à l'esprit que l'appellation « 48\,V » n'est qu'une valeur nominale. En pratique, la tension réelle varie significativement selon l'état de charge (SoC en anglais) et le régime de fonctionnement, ce qui implique que tout le matériel connecté devra s'y adapter. Voici les principaux comportements à anticiper :
 
 \begin{itemize}
-    \item \textbf{La tension maximale lors de la recharge} : Pour “forcer” l'énergie à entrer dans une batterie, le chargeur doit appliquer une tension supérieure à la tension naturelle de celle-ci. Une batterie de 12\,V est composée de 6 cellules internes. Si une cellule pleine au repos délivre environ 2,1\,V ($6 \times 2,1 = 12,6\,\text{V}$), la chimie du plomb exige d'appliquer une tension d'environ 2,4\,V par cellule pour la rechargera efficacement. Mathématiquement, la tension de charge atteint donc $6 \times 2,4 = 14,4\,\text{V}$ par batterie. Pour le parc de 4 éléments en série, la tension globale s'élève à $4 \times 14,4 = 57,6\,\text{V}$. Les convertisseurs devront impérativement être capables de supporter cette hausse (jusqu'à près de 58\,V) sans dommage.
-    \item \textbf{Tension nominale} : $\approx 48-52$\,V.
+    \item \textbf{La tension maximale lors de la recharge} : Pour “forcer” l'énergie à entrer dans une batterie, le chargeur doit appliquer une tension supérieure à la tension naturelle de celle-ci. Une batterie de 12\,V est composée de 6 cellules internes. Si une cellule pleine au repos délivre environ 2,1\,V ($6 \times 2,1 = 12,6\,\text{V}$), la chimie du plomb exige d'appliquer une tension d'environ 2,4\,V par cellule pour la recharger efficacement. Mathématiquement, la tension de charge atteint donc $6 \times 2,4 = 14,4\,\text{V}$ par batterie. Pour le parc de 4 éléments en série, la tension globale s'élève à $4 \times 14,4 = 57,6\,\text{V}$. Les convertisseurs devront impérativement être capables de supporter cette hausse (jusqu'à près de 58\,V) sans dommage.
     \item \textbf{La tension minimale de sécurité} : À l'inverse, pour éviter une dégradation irréversible des batteries (décharge profonde), le système de contrôle global devra couper l'alimentation vers les convertisseurs si la tension chute de manière critique (en dessous des seuils de sécurité indiqués dans le tableau ci-dessous).
     \item \textbf{La chute de tension en utilisation (sous charge)} : Il est important de ne pas confondre une batterie « en charge » et une batterie « sous charge » (qui alimente le système). Dès l'allumage de l'ensemble des équipements électriques, l'effort demandé fait artificiellement chuter la tension mesurée aux bornes des batteries en raison de leur résistance interne. Lors de la programmation, il faudra bien distinguer cette baisse de tension normale liée à l'utilisation d'une véritable batterie déchargée. Le système devra toutefois être capable d'estimer le niveau d'énergie restant en temps réel à partir des valeurs de référence suivantes.
 \end{itemize}
@@ -186,20 +185,14 @@ Le parc est donc constitué de 4 batteries 12\,V Plomb/Acide (200\,Ah) en série
 \end{tableau}
 
 \subsubsection{Convertisseur DC/DC et Stratégie MPPT}
-La tension redressée en sortie de l'alternateur dépend directement de la vitesse du vent. Elle n'est pas adaptée pour charger directement la batterie. Un convertisseur DC/DC (hacheur) interfacé entre le redresseur et la batterie est nécessaire pour :
-\begin{enumerate}
-    \item Adapter la tension redressée variable  de l'alternateur à celle de la batterie.
-    \item Adapter dynamiquement l’impédance vue par l’alternateur afin d’extraire la puissance maximale disponible.
-    \item Piloter le courant débité pour extraire la puissance maximale de l'éolienne à chaque instant (algorithme MPPT, Maximum Power Point Tracking).
-\end{enumerate}
 
-Tous les convertisseurs connectés au bus DC doivent être dimensionnés pour supporter cette plage étendue $[42\,\text{V} ; 60\,\text{V}]$.
-Le choix de la topologie de ce convertisseur (Buck, Boost ou Buck-Boost) dépendra de la plage de tension de l'alternateur par rapport à celle de la batterie sur la plage de vent utile.
+Étant donné que la tension continue issue du pont redresseur varie fortement en fonction de la vitesse de rotation de l’alternateur (elle-même dépendante des fluctuations du vent simulé), il est indispensable d’intégrer un convertisseur DC/DC commandé par un algorithme MPPT. Le MPPT, de l'anglais Maximum Power Point Tracking, a pour objectif de maximiser en permanence la puissance extraite de la source, en s’assurant que le système fonctionne toujours au point de puissance maximal. \\
+Ce convertisseur a un double rôle : Adapter dynamiquement l’impédance vue par l’alternateur afin d’extraire la puissance maximale disponible et convertir la tension redressée variable en une tension compatible avec la charge d’une batterie 48 V.
 
 \section{Partie 2 : Distribution et Charges}
 \label{sec:distribution}
 
-Cette partie détaille l'ensemble des consommateurs connectés au bus 48\,V. Chaque charge nécessite une interface de puissance spécifique pour adapter la tension du bus aux besoins de l'application.
+Cette partie détaille l'ensemble des équipements connectés au bus 48\,V. Chaque charge nécessite une interface de puissance spécifique pour adapter la tension du bus aux besoins de l'application.
 
 \subsection{Électroménager de puissance : Le Rice Cooker}
 \label{subsec:rice_cooker}
@@ -207,12 +200,12 @@ Cette partie détaille l'ensemble des consommateurs connectés au bus 48\,V. Cha
 L'intégration du rice-cooker au système nécessite une adaptation profonde de son alimentation d'origine afin de respecter les contraintes de puissance et de nature du réseau.
 
 \subsubsection{Objectif d'adaptation et ergonomie}
-L'objectif est de garantir une utilisation « transparente » pour l'utilisateur final. L'appareil, initialement conçu pour fonctionner en courant alternatif (230\,V$_{ac}$), doit être modifié pour s'intégrer à l'installation en courant continu. Il convient donc de s'assurer que l'ensemble des composants internes (résistances, thermostats, indicateurs) peuvent fonctionner sous la tension continue prévue sans dégradation de leurs fonctions.
+L'objectif est de garantir une utilisation « transparente » pour l'utilisateur final. L'appareil, initialement conçu pour fonctionner en courant alternatif (230\,V$_{ac}$), doit être modifié pour s'intégrer à l'installation en courant continu. Il convient donc de s'assurer que l'ensemble des composants internes peuvent fonctionner sous la tension continue prévue sans dégradation de leurs fonctions.
 
 \subsubsection{Caractéristiques techniques de la charge}
 Les spécifications retenues pour le rice-cooker au sein du projet sont les suivantes :
 \begin{itemize}
-    \item \textbf{Puissance de fonctionnement} : Limitée à 450\,W (contre 700\,W d'origine) pour ne pas surcharger la source d'énergie éolienne.
+    \item \textbf{Puissance de fonctionnement} : Limitée à 450\,W (contre 700\,W d'origine).
     \item \textbf{Nature de la charge} : Charge majoritairement résistive avec une composante inductive mineure.
     \item \textbf{Mesures d'impédance} : Une caractérisation au RLCmètre à 10\,kHz a permis de mesurer une résistance $R = 78\,\Omega$ et une inductance $L \approx 10-11\,\mu$H.
     \item \textbf{Modulation de puissance} : L'alimentation doit être modulable afin de faire varier la puissance de chauffe selon le mode désiré (cuisson et maintien en température).
@@ -306,7 +299,7 @@ D'après la plaque signalétique du réfrigérateur, les spécifications électr
 Afin de valider le comportement électrique réel du compresseur sous 24\,V, nous avons effectué des mesures de courant :
 \begin{itemize}
     \item \textbf{Régime transitoire (Démarrage)} : Lors de la mise en route, on relève un appel de courant générant un pic à 8\,A maximum.
-    \item \textbf{Régime permanent} : Une fois la vitesse stabilisée, la consommation mesurée en continu s'établit à 1,4\,A.
+    \item \textbf{Régime permanent} : Une fois la vitesse du compresseur stabilisée, la consommation mesurée en continu s'établit à 1,4\,A.
 \end{itemize}
 
 \begin{figure}[H]
@@ -434,18 +427,19 @@ Le système doit pouvoir traiter les données mesurées à chaque instant. Il do
 \subsection{Stratégie de délestage}
 Afin de protéger la batterie contre les décharges profondes, le système supervise la tension du bus 48\,V. En cas de baisse critique, un délestage automatique est opéré selon un ordre de priorité défini :
 \begin{enumerate}
-    \item \textbf{Priorité 3 (Faible)} : Rice-cooker (arrêt immédiat).
-    \item \textbf{Priorité 2 (Moyenne)} : Port USB-C (coupure).
-    \item \textbf{Priorité 1 (Haute)} : Réfrigérateur.
+    \item Rice-cooker (arrêt immédiat).
+    \item Port USB-C (coupure).
+    \item Réfrigérateur.
 \end{enumerate}
-L'éclairage et le système de monitoring restent alimentés le plus longtemps possible pour la sécurité.
+L'éclairage et le système de monitoring restent alimentés le plus longtemps possible.
 
 \subsection{Interface Homme-Machine (IHM)}
 Le système doit permettre à l’utilisateur de visualiser les données acquises via une interface web, soit depuis un écran directement sur le dispositif de contrôle, soit par l’intermédiaire de tout navigateur web connecté au réseau internet de l’environnement.
-Une application web, hébergée localement, permet à l'utilisateur de visualiser l'état du système :
+Une application web, hébergée localement, permet à l'utilisateur de visualiser l'état du système selon deux modes d’affichage :
+
+
+
 \begin{itemize}
-    \item Flux d'énergie (Production éolienne vs Consommation).
-    \item Autonomie restante estimée.
-    \item État de santé des batteries.
+    \item Un mode d’affichage \textbf{simplifié} pour l'utilisateur lambda avec des informations sur la charge globale du système, la production d’énergie et si l’énergie disponible permet d’utiliser les différents équipements.
+    \item Un mode d’affichage \textbf{expert} indiquant toutes les mesures effectuées (tensions, courants, etc…) permettant un contrôle plus fin sur le système.
 \end{itemize}
-Cette interface offre deux niveaux de lecture : un tableau de bord simplifié pour l'utilisateur lambda et un mode "maintenance" avec toutes les télémesures pour les techniciens.

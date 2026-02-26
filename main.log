@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.21)  25 FEB 2026 17:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.21)  26 FEB 2026 11:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1146,10 +1146,14 @@ Overfull \hbox (283.50418pt too wide) in paragraph at lines 50--51
  [][] 
  []
 
+LaTeX Font Info:    Trying to load font information for TS1+qag on input line 60.
+(c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
+File: ts1qag.fd 2009/09/25 v1.2 font definition file for TS1/qag
+)
 <images/diagrammes/Organigramme Projet S8.png, id=236, 1288.815pt x 514.92375pt>
 File: images/diagrammes/Organigramme Projet S8.png Graphic file (type png)
 <use images/diagrammes/Organigramme Projet S8.png>
-Package pdftex.def Info: images/diagrammes/Organigramme Projet S8.png  used on input line 59.
+Package pdftex.def Info: images/diagrammes/Organigramme Projet S8.png  used on input line 67.
 (pdftex.def)             Requested size: 483.69687pt x 193.25307pt.
 )
 
@@ -1163,7 +1167,7 @@ Package pdftex.def Info: images/foot-logo.png  used on input line 30.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [5
 
-{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}]
+{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}]
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
@@ -1180,12 +1184,12 @@ Overfull \hbox (30.21574pt too wide) in paragraph at lines 1--1
 |[]\T1/qag/b/n/17.28 ANALYSE FONC-TION-NELLE, ETUDE DU CA-HIER DES CHARGES| 
  []
 
-<images/diagrammes/BÃªte Ã  cornes.png, id=250, 770.88pt x 578.16pt>
+<images/diagrammes/BÃªte Ã  cornes.png, id=251, 770.88pt x 578.16pt>
 File: images/diagrammes/BÃªte Ã  cornes.png Graphic file (type png)
 <use images/diagrammes/BÃªte Ã  cornes.png>
 Package pdftex.def Info: images/diagrammes/BÃªte Ã  cornes.png  used on input line 10.
 (pdftex.def)             Requested size: 386.95897pt x 290.21732pt.
-<images/diagrammes/Diagramme pieuvre.png, id=251, 1263.21938pt x 684.30656pt>
+<images/diagrammes/Diagramme pieuvre.png, id=252, 1263.21938pt x 684.30656pt>
 File: images/diagrammes/Diagramme pieuvre.png Graphic file (type png)
 <use images/diagrammes/Diagramme pieuvre.png>
 Package pdftex.def Info: images/diagrammes/Diagramme pieuvre.png  used on input line 20.
@@ -1204,11 +1208,11 @@ Package pdftex.def Info: images/foot-logo.png  used on input line 24.
 
  <./images/diagrammes/BÃªte Ã  cornes.png (PNG copy)>]
 Package hyperref Info: bookmark level for unknown tableau defaults to 0 on input line 38.
-<images/diagrammes/Synoptique projet S8.png, id=257, 1445.4pt x 813.0375pt>
+<images/diagrammes/Synoptique projet S8.png, id=258, 1248.16313pt x 813.0375pt>
 File: images/diagrammes/Synoptique projet S8.png Graphic file (type png)
 <use images/diagrammes/Synoptique projet S8.png>
 Package pdftex.def Info: images/diagrammes/Synoptique projet S8.png  used on input line 47.
-(pdftex.def)             Requested size: 483.69687pt x 272.07462pt.
+(pdftex.def)             Requested size: 483.69687pt x 315.0736pt.
 )
 
 File: images/logo_insa.jpg Graphic file (type jpg)
@@ -1229,17 +1233,14 @@ File: images/foot-logo.png Graphic file (type png)
 <use images/foot-logo.png>
 Package pdftex.def Info: images/foot-logo.png  used on input line 32.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
-[9 <./images/diagrammes/Synoptique projet S8.png (PNG copy)>] (./contenu/cahier-des-charges-detaille.tex
+[9 <./images/diagrammes/Synoptique projet S8.png>] (./contenu/cahier-des-charges-detaille.tex
 Chapitre 3.
 
 Overfull \hbox (1.63539pt too wide) in paragraph at lines 4--5
 \T1/qag/m/n/12 systèmes prin-ci-paux : l'ali-men-ta-tion (pro-duc-tion et sto-ckage), la dis-tri-bu-tion (consom-
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+qag on input line 11.
-(c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
-File: ts1qag.fd 2009/09/25 v1.2 font definition file for TS1/qag
-)
+
 Overfull \hbox (1.7988pt too wide) in paragraph at lines 32--33
 \T1/qag/m/n/12 chrone en-traîne l'al-ter-na-teur pour re-pro-duire le com-por-te-ment mé-ca-nique des pales
  []
@@ -1256,7 +1257,7 @@ Package pdftex.def Info: images/foot-logo.png  used on input line 37.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [10
 
-{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}] (./images/figures/montage_alternateur_sous_charge.tex)
+] (./images/figures/montage_alternateur_sous_charge.tex)
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
@@ -1267,12 +1268,12 @@ File: images/foot-logo.png Graphic file (type png)
 Package pdftex.def Info: images/foot-logo.png  used on input line 80.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [11]
-<images/scopes/Essai 500 trmin.png, id=283, 318.18875pt x 205.26688pt>
+<images/scopes/Essai 500 trmin.png, id=284, 318.18875pt x 205.26688pt>
 File: images/scopes/Essai 500 trmin.png Graphic file (type png)
 <use images/scopes/Essai 500 trmin.png>
 Package pdftex.def Info: images/scopes/Essai 500 trmin.png  used on input line 85.
 (pdftex.def)             Requested size: 386.95897pt x 249.62964pt.
-<images/scopes/Essai 600 trmin.png, id=284, 318.18875pt x 203.25937pt>
+<images/scopes/Essai 600 trmin.png, id=285, 318.18875pt x 203.25937pt>
 File: images/scopes/Essai 600 trmin.png Graphic file (type png)
 <use images/scopes/Essai 600 trmin.png>
 Package pdftex.def Info: images/scopes/Essai 600 trmin.png  used on input line 92.
@@ -1288,7 +1289,7 @@ File: images/foot-logo.png Graphic file (type png)
 Package pdftex.def Info: images/foot-logo.png  used on input line 96.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [12 <./images/scopes/Essai 500 trmin.png>]
-<images/scopes/Essai 700 trmin.png, id=290, 318.18875pt x 203.76125pt>
+<images/scopes/Essai 700 trmin.png, id=291, 318.18875pt x 203.76125pt>
 File: images/scopes/Essai 700 trmin.png Graphic file (type png)
 <use images/scopes/Essai 700 trmin.png>
 Package pdftex.def Info: images/scopes/Essai 700 trmin.png  used on input line 99.
@@ -1319,12 +1320,12 @@ File: images/foot-logo.png Graphic file (type png)
 Package pdftex.def Info: images/foot-logo.png  used on input line 152.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 183--183
+Underfull \hbox (badness 10000) in paragraph at lines 182--182
 []|\T1/qag/m/n/12 Décharge pro-fonde
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--183
+Underfull \hbox (badness 10000) in paragraph at lines 182--182
 []|\T1/qag/m/n/12 Batterie po-ten-tiel-le-
  []
 
@@ -1332,49 +1333,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 183--183
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
-Package pdftex.def Info: images/logo_insa.jpg  used on input line 187.
+Package pdftex.def Info: images/logo_insa.jpg  used on input line 186.
 (pdftex.def)             Requested size: 81.16063pt x 22.76228pt.
 File: images/foot-logo.png Graphic file (type png)
 <use images/foot-logo.png>
-Package pdftex.def Info: images/foot-logo.png  used on input line 187.
+Package pdftex.def Info: images/foot-logo.png  used on input line 186.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [15]
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
-Package pdftex.def Info: images/logo_insa.jpg  used on input line 215.
+Package pdftex.def Info: images/logo_insa.jpg  used on input line 210.
 (pdftex.def)             Requested size: 81.16063pt x 22.76228pt.
 File: images/foot-logo.png Graphic file (type png)
 <use images/foot-logo.png>
-Package pdftex.def Info: images/foot-logo.png  used on input line 215.
+Package pdftex.def Info: images/foot-logo.png  used on input line 210.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [16]
-Overfull \hbox (0.22697pt too wide) in paragraph at lines 242--243
+Overfull \hbox (0.22697pt too wide) in paragraph at lines 235--236
 []\T1/qag/m/n/12 Sous l'hy-po-thèse d'une conser-va-tion de la puis-sance ac-tive (en né-gli-geant les pertes
  []
 
 
-Overfull \hbox (15.696pt too wide) in paragraph at lines 251--253
+Overfull \hbox (15.696pt too wide) in paragraph at lines 244--246
 \T1/qag/m/n/12 cé-dents, les spé-ci-fi-ca-tions tech-niques du conver-tis-seur élé-va-teur sont ré-su-mées comme
+ []
+
+
+Overfull \hbox (5.53699pt too wide) in paragraph at lines 257--258
+[]\T1/qag/m/n/12 Adapter la ten-sion de la bat-te-rie (48V) aux be-soins spé-ci-fiques du ré-seau d'éclai-
  []
 
 
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
-Package pdftex.def Info: images/logo_insa.jpg  used on input line 254.
+Package pdftex.def Info: images/logo_insa.jpg  used on input line 258.
 (pdftex.def)             Requested size: 81.16063pt x 22.76228pt.
 File: images/foot-logo.png Graphic file (type png)
 <use images/foot-logo.png>
-Package pdftex.def Info: images/foot-logo.png  used on input line 254.
+Package pdftex.def Info: images/foot-logo.png  used on input line 258.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [17]
-Overfull \hbox (5.53699pt too wide) in paragraph at lines 264--265
-[]\T1/qag/m/n/12 Adapter la ten-sion de la bat-te-rie (48V) aux be-soins spé-ci-fiques du ré-seau d'éclai-
- []
-
-
-Overfull \hbox (1.9019pt too wide) in paragraph at lines 294--295
+Overfull \hbox (1.9019pt too wide) in paragraph at lines 287--288
 []\T1/qag/m/n/12 Alimenter le ré-fri-gé-ra-teur à par-tir du ré-seau de dis-tri-bu-tion continu adapté (24V). 
  []
 
@@ -1389,62 +1390,62 @@ File: images/foot-logo.png Graphic file (type png)
 Package pdftex.def Info: images/foot-logo.png  used on input line 295.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [18]
-<images/scopes/scope refrigerateur.jpeg, id=332, 1606.0pt x 1204.5pt>
+<images/scopes/scope refrigerateur.jpeg, id=330, 1606.0pt x 1204.5pt>
 File: images/scopes/scope refrigerateur.jpeg Graphic file (type jpg)
 <use images/scopes/scope refrigerateur.jpeg>
-Package pdftex.def Info: images/scopes/scope refrigerateur.jpeg  used on input line 314.
+Package pdftex.def Info: images/scopes/scope refrigerateur.jpeg  used on input line 307.
 (pdftex.def)             Requested size: 386.95897pt x 290.20703pt.
 
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
-Package pdftex.def Info: images/logo_insa.jpg  used on input line 325.
+Package pdftex.def Info: images/logo_insa.jpg  used on input line 322.
 (pdftex.def)             Requested size: 81.16063pt x 22.76228pt.
 File: images/foot-logo.png Graphic file (type png)
 <use images/foot-logo.png>
-Package pdftex.def Info: images/foot-logo.png  used on input line 325.
+Package pdftex.def Info: images/foot-logo.png  used on input line 322.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [19 <./images/scopes/scope refrigerateur.jpeg>]
-<images/figures/USB-B.png, id=338, 788.9475pt x 111.41624pt>
+<images/figures/USB-B.png, id=336, 788.9475pt x 111.41624pt>
 File: images/figures/USB-B.png Graphic file (type png)
 <use images/figures/USB-B.png>
-Package pdftex.def Info: images/figures/USB-B.png  used on input line 365.
+Package pdftex.def Info: images/figures/USB-B.png  used on input line 358.
 (pdftex.def)             Requested size: 386.95897pt x 54.64713pt.
 
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
-Package pdftex.def Info: images/logo_insa.jpg  used on input line 367.
+Package pdftex.def Info: images/logo_insa.jpg  used on input line 366.
 (pdftex.def)             Requested size: 81.16063pt x 22.76228pt.
 File: images/foot-logo.png Graphic file (type png)
 <use images/foot-logo.png>
-Package pdftex.def Info: images/foot-logo.png  used on input line 367.
+Package pdftex.def Info: images/foot-logo.png  used on input line 366.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
-[20]
+[20 <./images/figures/USB-B.png>]
 <images/figures/USB-C.png, id=343, 800.23969pt x 112.16907pt>
 File: images/figures/USB-C.png Graphic file (type png)
 <use images/figures/USB-C.png>
-Package pdftex.def Info: images/figures/USB-C.png  used on input line 384.
+Package pdftex.def Info: images/figures/USB-C.png  used on input line 377.
 (pdftex.def)             Requested size: 386.95897pt x 54.24103pt.
 
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
-Package pdftex.def Info: images/logo_insa.jpg  used on input line 420.
+Package pdftex.def Info: images/logo_insa.jpg  used on input line 414.
 (pdftex.def)             Requested size: 81.16063pt x 22.76228pt.
 File: images/foot-logo.png Graphic file (type png)
 <use images/foot-logo.png>
-Package pdftex.def Info: images/foot-logo.png  used on input line 420.
+Package pdftex.def Info: images/foot-logo.png  used on input line 414.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
-[21 <./images/figures/USB-B.png> <./images/figures/USB-C.png>]
+[21 <./images/figures/USB-C.png>]
 
 File: images/logo_insa.jpg Graphic file (type jpg)
 <use images/logo_insa.jpg>
-Package pdftex.def Info: images/logo_insa.jpg  used on input line 447.
+Package pdftex.def Info: images/logo_insa.jpg  used on input line 439.
 (pdftex.def)             Requested size: 81.16063pt x 22.76228pt.
 File: images/foot-logo.png Graphic file (type png)
 <use images/foot-logo.png>
-Package pdftex.def Info: images/foot-logo.png  used on input line 447.
+Package pdftex.def Info: images/foot-logo.png  used on input line 439.
 (pdftex.def)             Requested size: 53.26085pt x 53.43607pt.
 [22])
 
@@ -1472,18 +1473,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 3A7ABB05BFEC6D3886EE0C1DB3F2EEB1;5278.
  ) 
 Here is how much of TeX's memory you used:
- 65440 strings out of 467797
- 1670547 string characters out of 5435982
- 2443690 words of memory out of 5000000
- 93197 multiletter control sequences out of 15000+600000
+ 65436 strings out of 467797
+ 1670523 string characters out of 5435982
+ 2446690 words of memory out of 5000000
+ 93196 multiletter control sequences out of 15000+600000
  681143 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,19n,109p,1149b,1228s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qagb.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qagbi.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qagr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qagri.pfb>
-Output written on main.pdf (23 pages, 4288990 bytes).
+Output written on main.pdf (23 pages, 4282041 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
- 340 compressed objects within 4 object streams
- 82 named destinations out of 1000 (max. 500000)
+ 429 PDF objects out of 1000 (max. 8388607)
+ 337 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
  288 words of extra memory for PDF output out of 10000 (max. 10000000)
 

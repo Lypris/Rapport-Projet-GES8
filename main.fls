@@ -565,6 +565,10 @@ INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr-sc.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagr.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagb-sc.tfm
+INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
+INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
+INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ts1-qagr.tfm
 INPUT ./images/diagrammes/Organigramme Projet S8.png
 INPUT ./images/diagrammes/Organigramme Projet S8.png
 INPUT ./images/diagrammes/Organigramme Projet S8.png
@@ -579,6 +583,7 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec-sc.enc
+INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
@@ -634,10 +639,6 @@ INPUT ./images/foot-logo.png
 INPUT ./contenu/cahier-des-charges-detaille.tex
 INPUT ./contenu/cahier-des-charges-detaille.tex
 INPUT contenu/cahier-des-charges-detaille.tex
-INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
-INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
-INPUT c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/ts1qag.fd
-INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ts1-qagr.tfm
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
@@ -646,7 +647,6 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
-INPUT c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc
 INPUT ./images/figures/montage_alternateur_sous_charge.tex
 INPUT ./images/figures/montage_alternateur_sous_charge.tex
 INPUT images/figures/montage_alternateur_sous_charge.tex

@@ -24,21 +24,21 @@
 \contentsline {section}{\numberline {3.3}Partie 2 : Distribution et Charges}{16}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Électroménager de puissance : Le Rice Cooker}{16}{subsection.3.3.1}%
 \contentsline {subsubsection}{Objectif d'adaptation et ergonomie}{16}{subsection.3.3.1}%
-\contentsline {subsubsection}{Caractéristiques techniques de la charge}{17}{subsection.3.3.1}%
+\contentsline {subsubsection}{Caractéristiques techniques de la charge}{16}{subsection.3.3.1}%
 \contentsline {subsubsection}{Alimentation du Rice Cooker}{17}{subsection.3.3.1}%
-\contentsline {paragraph}{Synthèse des caractéristiques techniques du hacheur}{18}{equation.3.8}%
+\contentsline {paragraph}{Synthèse des caractéristiques techniques du hacheur}{17}{equation.3.8}%
 \contentsline {subsection}{\numberline {3.3.2}Éclairage domestique}{18}{subsection.3.3.2}%
 \contentsline {subsubsection}{Fonctions globales}{18}{subsection.3.3.2}%
 \contentsline {subsubsection}{Conversion d'énergie pour l'éclairage}{18}{subsection.3.3.2}%
 \contentsline {subsubsection}{Distribution et commande de l'éclairage}{18}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Réfrigérateur}{19}{subsection.3.3.3}%
-\contentsline {subsubsection}{Fonctions globales}{19}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.3}Réfrigérateur}{18}{subsection.3.3.3}%
+\contentsline {subsubsection}{Fonctions globales}{18}{subsection.3.3.3}%
 \contentsline {subsubsection}{Caractéristiques de l'équipement}{19}{subsection.3.3.3}%
 \contentsline {subsubsection}{Tests et analyse de consommation}{19}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Distribution USB (Multimédia)}{20}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.4}Distribution USB (Multimédia)}{19}{subsection.3.3.4}%
 \contentsline {subsubsection}{USB-B (5\,V / 7\,A)}{20}{subsection.3.3.4}%
 \contentsline {paragraph}{Caractéristiques et contraintes}{20}{subsection.3.3.4}%
-\contentsline {paragraph}{Principe de conversion}{21}{subsection.3.3.4}%
+\contentsline {paragraph}{Principe de conversion}{20}{subsection.3.3.4}%
 \contentsline {subsubsection}{USB-C (20\,V / 5\,A)}{21}{figure.caption.18}%
 \contentsline {paragraph}{Caractéristiques et contraintes}{21}{figure.caption.18}%
 \contentsline {paragraph}{Principe de conversion}{21}{figure.caption.18}%
@@ -47,4 +47,4 @@
 \contentsline {subsection}{\numberline {3.4.2}Architecture de communication}{22}{subsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.4.3}Traitement et analyse des données}{22}{subsection.3.4.3}%
 \contentsline {subsection}{\numberline {3.4.4}Stratégie de délestage}{22}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {3.4.5}Interface Homme-Machine (IHM)}{23}{subsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.4.5}Interface Homme-Machine (IHM)}{22}{subsection.3.4.5}%
