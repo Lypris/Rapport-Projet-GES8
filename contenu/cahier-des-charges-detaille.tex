@@ -32,7 +32,7 @@ Cette première partie traite de la conversion de l'énergie mécanique du vent 
 La source d’alimentation repose sur une simulation en laboratoire. Un moteur asynchrone entraîne l’alternateur pour reproduire le comportement mécanique des pales d’une éolienne soumise au vent. Cette configuration permet de reproduire différentes vitesses de vent et d’analyser le comportement du système dans des conditions variées et maîtrisées.
 
 L’énergie mécanique produite par le moteur est transmise à un alternateur. Celui-ci assure la conversion de l’énergie mécanique en énergie électrique sous forme de courant alternatif (AC), conformément au principe de fonctionnement d’une éolienne réelle.
-À la sortie de l’alternateur, un redresseur AC/DC (pont de graëtz) est mis en œuvre afin de convertir le courant alternatif en courant continu (DC). Cette étape est indispensable pour obtenir une tension continue exploitable, notamment en vue du stockage de l’énergie dans une batterie.
+À la sortie de l’alternateur, un redresseur AC/DC est mis en œuvre afin de convertir le courant alternatif en courant continu (DC). Cette étape est indispensable pour obtenir une tension continue exploitable, notamment en vue du stockage de l’énergie dans une batterie.
 
 L’ensemble constitue ainsi une plateforme expérimentale permettant d’étudier et d’optimiser le fonctionnement d’un système éolien dans un environnement contrôlé.
 
@@ -158,7 +158,7 @@ Le stockage de l'énergie est assuré par un parc de batteries 48\,V, agissant c
 \subsubsection{Caractéristiques du parc batterie}
 Pour permettre de dimensionner correctement chaque convertisseur, il est important de bien comprendre le fonctionnement du parc de batteries, et plus particulièrement l'évolution des niveaux de tension en fonction de l'état de charge.
 Les premières mesures réalisées au voltmètre aux bornes de chaque batterie au repos ont révélé des tensions aux alentours de 12,2\,V. En mettant ces 4 batteries en série, une tension réelle d'environ 48,8\,V est obtenue.
-Le parc est donc constitué de 4 batteries 12\,V Plomb/Acide (200\,Ah) en série. Pour la suite du projet, il est crucial de garder à l'esprit que l'appellation « 48\,V » n'est qu'une valeur nominale. En pratique, la tension réelle varie significativement selon l'état de charge (SoC en anglais) et le régime de fonctionnement, ce qui implique que tout le matériel connecté devra s'y adapter. Voici les principaux comportements à anticiper :
+Le parc est donc constitué de 4 batteries 12\,V Plomb/Acide (200\,Ah) en série. Pour la suite du projet, il est crucial de garder à l'esprit que l'appellation « 48\,V » n'est qu'une valeur nominale. En pratique, la tension réelle varie significativement selon l'état de charge (SoC en anglais, pour State Of Charge) et le régime de fonctionnement, ce qui implique que tout le matériel connecté devra s'y adapter. Voici les principaux comportements à anticiper :
 
 \begin{itemize}
     \item \textbf{La tension maximale lors de la recharge} : Pour “forcer” l'énergie à entrer dans une batterie, le chargeur doit appliquer une tension supérieure à la tension naturelle de celle-ci. Une batterie de 12\,V est composée de 6 cellules internes. Si une cellule pleine au repos délivre environ 2,1\,V ($6 \times 2,1 = 12,6\,\text{V}$), la chimie du plomb exige d'appliquer une tension d'environ 2,4\,V par cellule pour la recharger efficacement. Mathématiquement, la tension de charge atteint donc $6 \times 2,4 = 14,4\,\text{V}$ par batterie. Pour le parc de 4 éléments en série, la tension globale s'élève à $4 \times 14,4 = 57,6\,\text{V}$. Les convertisseurs devront impérativement être capables de supporter cette hausse (jusqu'à près de 58\,V) sans dommage.
@@ -261,7 +261,7 @@ Sur la base des calculs précédents, les spécifications techniques du converti
 \end{itemize}
 
 \subsubsection{Conversion d'énergie pour l'éclairage}
-Le système doit être capable de transformer la tension continue issue de la batterie de stockage principale (plage de 42\,V à 56\,V) en une tension stable et sécurisée pour les luminaires de la maquette. Pour cela nous devons mettre en place :
+Le système doit être capable de transformer la tension continue issue de la batterie de stockage principale (plage de 42\,V à 58\,V) en une tension stable et sécurisée pour les luminaires de la maquette. Pour cela nous devons mettre en place :
 \begin{itemize}
     \item Un convertisseur DC/DC industriel du commerce abaissant la tension de la batterie (48\,V) vers un réseau 24\,V DC.
     \item Un dimensionnement optimisé pour une consommation totale inférieure à 20\,W. Ces puissances sont volontairement adaptées à l'échelle réduite de la maquette : elles suffisent amplement à reproduire les niveaux d'éclairement normés d'une vraie maison (en Lux) sans provoquer d'éblouissement sur une surface miniature. La puissance est répartie de la manière suivante selon le besoin lumineux des pièces :
@@ -320,7 +320,7 @@ L’objectif de cette partie est donc d’assurer une conversion d’énergie fi
 La tension issue du pack batterie est nominalement de 48\,V, mais elle varie selon l’état de charge :
 \begin{itemize}
     \item En fin de décharge $\approx 42$\,V
-    \item En charge maximale $\approx 56$\,V
+    \item En charge maximale $\approx 58$\,V
 \end{itemize}
 Les convertisseurs devront donc fonctionner correctement sur toute cette plage de tension.
 
@@ -338,7 +338,7 @@ Cette architecture permet d’alimenter à la fois les dispositifs externes (pri
 \subsubsection{USB-B (5\,V / 7\,A)}
 \paragraph{Caractéristiques et contraintes}
 \begin{itemize}
-    \item \textbf{Tension d’entrée} : 42\,V à 56\,V
+    \item \textbf{Tension d’entrée} : 42\,V à 58\,V
     \item \textbf{Tension de sortie régulée} : 5\,V$_{dc}$
     \item \textbf{Tolérance} : conforme à la norme USB ($\pm 5\,\%$)
     \item \textbf{Courant nominal minimal} : 2\,A + 5\,A (Alimentation de la partie monitoring)
@@ -362,7 +362,7 @@ Un schéma bloc de la chaîne d’énergie est présenté ci-dessous :
 \subsubsection{USB-C (20\,V / 5\,A)}
 \paragraph{Caractéristiques et contraintes}
 \begin{itemize}
-    \item \textbf{Tension d’entrée} : 42\,V à 56\,V
+    \item \textbf{Tension d’entrée} : 42\,V à 58\,V
     \item \textbf{Tension de sortie} : 20\,V$_{dc}$
     \item \textbf{Courant maximal} : 5\,A
     \item \textbf{Puissance maximale} : 100\,W

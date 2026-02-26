@@ -48,3 +48,4 @@
 \contentsline {subsection}{\numberline {3.4.3}Traitement et analyse des données}{22}{subsection.3.4.3}%
 \contentsline {subsection}{\numberline {3.4.4}Stratégie de délestage}{22}{subsection.3.4.4}%
 \contentsline {subsection}{\numberline {3.4.5}Interface Homme-Machine (IHM)}{22}{subsection.3.4.5}%
+\contentsline {chapter}{Conclusion}{24}{chapter*.21}%
