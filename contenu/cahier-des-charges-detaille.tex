@@ -38,8 +38,10 @@ L’ensemble constitue ainsi une plateforme expérimentale permettant d’étudi
 
 \subsubsection{Caractérisation de l’alternateur}
 
-\paragraph{Essai à vide}
-L'essai à vide permet de caractériser la force électromotrice de la machine sans débit de courant, c'est-à-dire sans charge connectée,  afin d’analyser son comportement intrinsèque. Il permet notamment d’étudier la relation entre la vitesse de rotation et la tension de sortie. Les relevés confirment la nature triphasée des tensions (déphasage de $2\pi/3$) et montrent une relation linéaire entre la vitesse de rotation et la tension efficace, caractéristique des machines synchrones.
+\begin{itemize}
+    \item \textbf{Essai à vide :} \\
+    L'essai à vide permet de caractériser la force électromotrice de la machine sans débit de courant, c'est-à-dire sans charge connectée,  afin d’analyser son comportement intrinsèque. Il permet notamment d’étudier la relation entre la vitesse de rotation et la tension de sortie. Les relevés confirment la nature triphasée des tensions (déphasage de $2\pi/3$) et montrent une relation linéaire entre la vitesse de rotation et la tension efficace, caractéristique des machines synchrones.
+\end{itemize}
 
 Pour l’ensemble de nos mesures, nous considérons une plage de vitesses comprise entre 500 et 750 tr/min. Pour chaque vitesse, nous relevons la tension efficace et la fréquence en sortie de l’alternateur.
 
@@ -59,12 +61,14 @@ Pour l’ensemble de nos mesures, nous considérons une plage de vitesses compri
 \end{tableau}
 
 Le nombre de paires de pôles $p$ est déduit de la fréquence $f$ et de la vitesse $N$ :
-\begin{equation}
+\begin{equation*}
     p = \frac{60 \cdot f}{N} = \frac{60 \cdot 50}{500} = 6 \quad \text{paires de pôles}
-\end{equation}
+\end{equation*}
 
-\paragraph{Essai en charge}
-L'essai en charge, permet d'évaluer le comportement du générateur en puissance. La tension alternative produite par l’alternateur est redressée au moyen d’un pont de diodes afin d’obtenir une tension continue. Une charge de type RL, composée d’une résistance et d’une inductance, est ensuite connectée en sortie du redresseur pour reproduire des conditions de fonctionnement proches d’une utilisation réelle.
+\begin{itemize}
+    \item \textbf{Essai en charge :} \\
+    L'essai en charge permet d'évaluer le comportement du générateur en puissance. La tension alternative produite par l’alternateur est redressée au moyen d’un pont de diodes afin d’obtenir une tension continue. Une charge de type RL, composée d’une résistance et d’une inductance, est ensuite connectée en sortie du redresseur pour reproduire des conditions de fonctionnement proches d’une utilisation réelle.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -73,12 +77,27 @@ L'essai en charge, permet d'évaluer le comportement du générateur en puissanc
     \label{fig:montage_test_charge}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/figures/Inductance charge RL.png}
+    \caption{Référence de la charge RL utilisée pour l'essai en charge de l'alternateur}
+    \label{fig:inductance_charge_rl}
+\end{figure}
+
+
 Comme illustré précédemment, des résistances de \SI{330}{\ohm} ont été utilisées afin de simuler une seule phase de l’alternateur et de permettre la mesure de la tension aux bornes de cette phase.
-Les valeurs efficaces des tensions et des courants sont mesurées aux bornes de l’alternateur (côté AC) et à la sortie du redresseur (côté DC), ainsi que la fréquence électrique pour différentes vitesses de rotation et différentes valeurs de la résistance de charge R.
-La puissance quant à elle à été trouvée à l’aide de la fonction MATH sur l'oscilloscope à l'aide de la tension mesurée aux bornes de la charge et le courant mesuré à l’aide d'une pince ampèremétrique.
+Les valeurs efficaces des tensions et des courants sont mesurées aux bornes de l’alternateur (côté AC) et à la sortie du redresseur (côté DC), ainsi que la fréquence électrique pour différentes vitesses de rotation et différentes valeurs de la résistance de charge R. \\
+
+La puissance quant à elle a été trouvée à l’aide de la fonction \textit{MATH} sur l'oscilloscope à l'aide de la tension mesurée aux bornes de la charge et le courant mesuré à l’aide d'une pince ampèremétrique. \\
 Les résultats obtenus sont présentés dans les figures suivantes :
 
-% insertion des 3 scopes
+Pour la suite : 
+\begin{itemize}
+    \item La courbe \textcolor{blue}{bleue} représente la tension vue de la charge
+    \item La courbe \textcolor{magenta}{rose} représente le courant vu de la charge
+    \item La courbe \textcolor{yellow}{jaune} représente la tension de sortie de l'alternateur sur une phase
+    \item La courbe \textcolor{green}{verte} représente le courant de sortie de l'alternateur sur une phase
+\end{itemize}
 
 \begin{figure}[H]
     \centering
@@ -126,20 +145,20 @@ Pour concevoir le convertisseur MPPT, il est nécessaire de connaître l'impéda
 
 \paragraph{Calcul de l'empiètement}
 L'empiètement $\mu$ est calculé à partir du temps de commutation des diodes observé à l'oscilloscope :
-\begin{equation}
+\begin{equation*}
     \mu = 2 \cdot \pi \cdot f \cdot t_{com}
-\end{equation}
+\end{equation*}
 où $f$ est la fréquence électrique et $t_{com}$ le temps de commutation.
 
 \paragraph{Calcul de l'inductance interne}
 À partir de l'empiètement $\mu$, l'inductance interne $\lambda$ est déduite à l'aide de la relation suivante :
-\begin{equation}
+\begin{equation*}
     1 - \cos(\mu) = \frac{\lambda \cdot \omega \cdot I_{ch}}{V_s \cdot \sqrt{2} \cdot \sin(\pi/n)}
-\end{equation}
+\end{equation*}
 D'où l'expression de l'inductance :
-\begin{equation}
+\begin{equation*}
     \lambda = \frac{(1 - \cos\mu) \cdot V_s \cdot \sqrt{2} \cdot \sin(\pi/n)}{\omega \cdot I_{ch}}
-\end{equation}
+\end{equation*}
 
 \textit{Note : Des mesures complémentaires sur oscilloscope sont encore nécessaires pour valider précisément le temps de commutation $t_{com}$ et finaliser la caractérisation de la source d’alimentation.}
 
@@ -160,7 +179,7 @@ Pour permettre de dimensionner correctement chaque convertisseur, il est importa
 Les premières mesures réalisées au voltmètre aux bornes de chaque batterie au repos ont révélé des tensions aux alentours de 12,2\,V. En mettant ces 4 batteries en série, une tension réelle d'environ 48,8\,V est obtenue.
 Le parc est donc constitué de 4 batteries 12\,V Plomb/Acide (200\,Ah) en série. Pour la suite du projet, il est crucial de garder à l'esprit que l'appellation « 48\,V » n'est qu'une valeur nominale. En pratique, la tension réelle varie significativement selon l'état de charge (SoC en anglais, pour State Of Charge) et le régime de fonctionnement, ce qui implique que tout le matériel connecté devra s'y adapter. Voici les principaux comportements à anticiper :
 
-\begin{itemize}
+\begin{itemize}[itemsep=0.5cm]
     \item \textbf{La tension maximale lors de la recharge} : Pour “forcer” l'énergie à entrer dans une batterie, le chargeur doit appliquer une tension supérieure à la tension naturelle de celle-ci. Une batterie de 12\,V est composée de 6 cellules internes. Si une cellule pleine au repos délivre environ 2,1\,V ($6 \times 2,1 = 12,6\,\text{V}$), la chimie du plomb exige d'appliquer une tension d'environ 2,4\,V par cellule pour la recharger efficacement. Mathématiquement, la tension de charge atteint donc $6 \times 2,4 = 14,4\,\text{V}$ par batterie. Pour le parc de 4 éléments en série, la tension globale s'élève à $4 \times 14,4 = 57,6\,\text{V}$. Les convertisseurs devront impérativement être capables de supporter cette hausse (jusqu'à près de 58\,V) sans dommage.
     \item \textbf{La tension minimale de sécurité} : À l'inverse, pour éviter une dégradation irréversible des batteries (décharge profonde), le système de contrôle global devra couper l'alimentation vers les convertisseurs si la tension chute de manière critique (en dessous des seuils de sécurité indiqués dans le tableau ci-dessous).
     \item \textbf{La chute de tension en utilisation (sous charge)} : Il est important de ne pas confondre une batterie « en charge » et une batterie « sous charge » (qui alimente le système). Dès l'allumage de l'ensemble des équipements électriques, l'effort demandé fait artificiellement chuter la tension mesurée aux bornes des batteries en raison de leur résistance interne. Lors de la programmation, il faudra bien distinguer cette baisse de tension normale liée à l'utilisation d'une véritable batterie déchargée. Le système devra toutefois être capable d'estimer le niveau d'énergie restant en temps réel à partir des valeurs de référence suivantes.
@@ -168,7 +187,7 @@ Le parc est donc constitué de 4 batteries 12\,V Plomb/Acide (200\,Ah) en série
 
 \begin{tableau}[H]
     \centering
-    \begin{tabularx}{\textwidth}{X l l X}
+    \begin{tabularx}{\textwidth}{>{\hsize=0.7\hsize}X l l >{\hsize=1.3\hsize}X}
         \toprule
         \textbf{État de charge} & \textbf{Tension (12\,V)} & \textbf{Tension (48\,V)} & \textbf{État de la batterie} \\
         \midrule
@@ -218,24 +237,24 @@ Le rice-cooker est un équipement qui permet de faire cuire du riz à l’aide d
 En considérant une tension d'entrée nominale $V_e = 50$\,V et une puissance de sortie maximale $P_s = 450$\,W, les grandeurs électriques sont déterminées comme suit :
 
 Le courant de sortie requis pour la charge est de :
-\begin{equation}
+\begin{equation*}
     I_s = \sqrt{\frac{P_s}{R}} = \sqrt{\frac{450}{78}} \approx 2,40\,\text{A}
-\end{equation}
+\end{equation*}
 
 La tension de sortie du convertisseur doit donc être de :
-\begin{equation}
+\begin{equation*}
     V_s = \frac{P_s}{I_s} = \frac{450}{2,40} = 187,5\,\text{V}
-\end{equation}
+\end{equation*}
 
 Le gain en tension statique $G$ du convertisseur est alors :
-\begin{equation}
+\begin{equation*}
     G = \frac{V_s}{V_e} = \frac{187,5}{50} = 3,75
-\end{equation}
+\end{equation*}
 
 Sous l'hypothèse d'une conservation de la puissance active (en négligeant les pertes du convertisseur), la puissance d'entrée $P_e$ est égale à $P_s = 450$\,W. Le courant d'entrée moyen $I_e$ est alors :
-\begin{equation}
+\begin{equation*}
     I_e = \frac{V_s \cdot I_s}{V_e} = \frac{187,5 \cdot 2,40}{50} = 9\,\text{A}
-\end{equation}
+\end{equation*}
 
 En pratique, il convient de prévoir une marge de puissance supplémentaire pour compenser les pertes de conduction et de commutation du hacheur. Les composants de puissance et la structure du hacheur devront être dimensionnés pour supporter ces contraintes de courant (9\,A à l'entrée) et de tension (187,5\,V à la sortie).
 
@@ -404,8 +423,8 @@ Voici l'ordre de grandeur des valeurs électriques que nous aurons à mesurer (d
         Rice-cooker aval & 2,40 & 187,5 \\
         Réfrigérateur & 8 (pic) / 1,4 (stabilisé) & 24 \\
         Éclairage & 0,85 & 24 \\
-        MPPT amont & ??? & ??? \\
-        MPPT aval & ??? & 48 \\
+        MPPT amont & 3,75 & 56 \\
+        MPPT aval & variable à cause de MPPT & 58 \\
         \bottomrule
     \end{tabularx}
     \caption{Ordres de grandeur des mesures pour le monitoring}

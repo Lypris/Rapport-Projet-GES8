@@ -1,4 +1,4 @@
-\chapter{Analyse Fonctionnelle, Etude du Cahier des Charges}
+\chapter{Analyse Fonctionnelle et Synoptique}
 \label{chap:analyse_fonctionnelle}
 
 Pour comprendre l'objectif principal du projet nous avons réalisé une "bête à cornes" et un diagramme "pieuvre".
@@ -30,6 +30,7 @@ Le diagramme pieuvre permet de visualiser les fonctions de service du produit.
         \midrule
         \textbf{\textcolor{INSArouge}{FP1}} & \textcolor{INSArouge}{Permettre de récupérer l'énergie produite par une source d'énergie renouvelable et stocker cette énergie} \\
         \textbf{\textcolor{INSArouge}{FP2}} & \textcolor{INSArouge}{Permettre d'alimenter les équipements électriques de l'habitation à partir de l'énergie stockée.} \\
+         & \\
         \textbf{\textcolor{INSAbleu}{FC1}} & \textcolor{INSAbleu}{L'utilisateur doit pouvoir connaître l'état du système} \\
         \textbf{\textcolor{INSAbleu}{FC2}} & \textcolor{INSAbleu}{Le système doit respecter les normes d'alimentation et de sécurité} \\
         \textbf{\textcolor{INSAbleu}{FC3}} & \textcolor{INSAbleu}{Le système doit s'adapter et s'intégrer dans son environnement} \\
@@ -41,7 +42,8 @@ Le diagramme pieuvre permet de visualiser les fonctions de service du produit.
 
 
 \section{Synoptique du Projet}
-Pour visualiser l'ensemble du système, voici le synoptique général du projet :
+Afin d'appréhender l'architecture globale de notre maquette et de visualiser les interactions entre les différents modules, le synoptique général présenté ci-après schématise l’intégralité de la chaîne d’énergie et de communication. Ce diagramme met en évidence le cheminement de l’énergie depuis sa production par l’alternateur éolien jusqu’à sa distribution vers les charges finales, tout en intégrant les blocs de conversion intermédiaire, le stockage par batterie 48\,V et l'unité de monitoring centralisée.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/diagrammes/Synoptique projet S8.png}
