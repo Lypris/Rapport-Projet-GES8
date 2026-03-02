@@ -3,7 +3,7 @@
 \contentsline {chapter}{\numberline {1}Plannification et Organisation}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Planning prévisionnel}{5}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Organisation de l'équipe}{5}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Analyse Fonctionnelle, Etude du Cahier des Charges}{7}{chapter.2}%
+\contentsline {chapter}{\numberline {2}Analyse Fonctionnelle et Synoptique}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Bête à cornes}{7}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Diagramme Pieuvre}{7}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Synoptique du Projet}{8}{section.2.2}%
@@ -12,40 +12,38 @@
 \contentsline {section}{\numberline {3.2}Partie 1 : Alimentation et Stockage}{10}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Source d'énergie : L'éolienne simulée}{10}{subsection.3.2.1}%
 \contentsline {subsubsection}{Caractérisation de l’alternateur}{11}{subsection.3.2.1}%
-\contentsline {paragraph}{Essai à vide}{11}{subsection.3.2.1}%
-\contentsline {paragraph}{Essai en charge}{11}{equation.3.1}%
-\contentsline {subsubsection}{Modélisation de la source}{14}{tableau.caption.15}%
-\contentsline {paragraph}{Calcul de l'empiètement}{14}{tableau.caption.15}%
-\contentsline {paragraph}{Calcul de l'inductance interne}{14}{equation.3.2}%
-\contentsline {subsection}{\numberline {3.2.2}Convertisseur AC/DC (Redresseur)}{14}{subsection.3.2.2}%
+\contentsline {subsubsection}{Modélisation de la source}{14}{tableau.caption.16}%
+\contentsline {paragraph}{Calcul de l'empiètement}{14}{tableau.caption.16}%
+\contentsline {paragraph}{Calcul de l'inductance interne}{15}{tableau.caption.16}%
+\contentsline {subsection}{\numberline {3.2.2}Convertisseur AC/DC (Redresseur)}{15}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Gestion de la batterie et MPPT}{15}{subsection.3.2.3}%
 \contentsline {subsubsection}{Caractéristiques du parc batterie}{15}{subsection.3.2.3}%
-\contentsline {subsubsection}{Convertisseur DC/DC et Stratégie MPPT}{16}{tableau.caption.16}%
-\contentsline {section}{\numberline {3.3}Partie 2 : Distribution et Charges}{16}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Électroménager de puissance : Le Rice Cooker}{16}{subsection.3.3.1}%
-\contentsline {subsubsection}{Objectif d'adaptation et ergonomie}{16}{subsection.3.3.1}%
-\contentsline {subsubsection}{Caractéristiques techniques de la charge}{16}{subsection.3.3.1}%
+\contentsline {subsubsection}{Convertisseur DC/DC et Stratégie MPPT}{16}{tableau.caption.17}%
+\contentsline {section}{\numberline {3.3}Partie 2 : Distribution et Charges}{17}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Électroménager de puissance : Le Rice Cooker}{17}{subsection.3.3.1}%
+\contentsline {subsubsection}{Objectif d'adaptation et ergonomie}{17}{subsection.3.3.1}%
+\contentsline {subsubsection}{Caractéristiques techniques de la charge}{17}{subsection.3.3.1}%
 \contentsline {subsubsection}{Alimentation du Rice Cooker}{17}{subsection.3.3.1}%
-\contentsline {paragraph}{Synthèse des caractéristiques techniques du hacheur}{17}{equation.3.8}%
+\contentsline {paragraph}{Synthèse des caractéristiques techniques du hacheur}{18}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Éclairage domestique}{18}{subsection.3.3.2}%
 \contentsline {subsubsection}{Fonctions globales}{18}{subsection.3.3.2}%
 \contentsline {subsubsection}{Conversion d'énergie pour l'éclairage}{18}{subsection.3.3.2}%
-\contentsline {subsubsection}{Distribution et commande de l'éclairage}{18}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Réfrigérateur}{18}{subsection.3.3.3}%
-\contentsline {subsubsection}{Fonctions globales}{18}{subsection.3.3.3}%
+\contentsline {subsubsection}{Distribution et commande de l'éclairage}{19}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Réfrigérateur}{19}{subsection.3.3.3}%
+\contentsline {subsubsection}{Fonctions globales}{19}{subsection.3.3.3}%
 \contentsline {subsubsection}{Caractéristiques de l'équipement}{19}{subsection.3.3.3}%
 \contentsline {subsubsection}{Tests et analyse de consommation}{19}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Distribution USB (Multimédia)}{19}{subsection.3.3.4}%
-\contentsline {subsubsection}{USB-B (5\,V / 7\,A)}{20}{subsection.3.3.4}%
-\contentsline {paragraph}{Caractéristiques et contraintes}{20}{subsection.3.3.4}%
-\contentsline {paragraph}{Principe de conversion}{20}{subsection.3.3.4}%
-\contentsline {subsubsection}{USB-C (20\,V / 5\,A)}{21}{figure.caption.18}%
-\contentsline {paragraph}{Caractéristiques et contraintes}{21}{figure.caption.18}%
-\contentsline {paragraph}{Principe de conversion}{21}{figure.caption.18}%
-\contentsline {section}{\numberline {3.4}Partie 3 : Monitoring et Contrôle}{21}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Instrumentation - Relevé des grandeurs électriques du système}{21}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.3.4}Distribution USB (Multimédia)}{20}{subsection.3.3.4}%
+\contentsline {subsubsection}{USB-B (5\,V / 7\,A)}{21}{subsection.3.3.4}%
+\contentsline {paragraph}{Caractéristiques et contraintes}{21}{subsection.3.3.4}%
+\contentsline {paragraph}{Principe de conversion}{21}{subsection.3.3.4}%
+\contentsline {subsubsection}{USB-C (20\,V / 5\,A)}{21}{figure.caption.19}%
+\contentsline {paragraph}{Caractéristiques et contraintes}{21}{figure.caption.19}%
+\contentsline {paragraph}{Principe de conversion}{21}{figure.caption.19}%
+\contentsline {section}{\numberline {3.4}Partie 3 : Monitoring et Contrôle}{22}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Instrumentation - Relevé des grandeurs électriques du système}{22}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Architecture de communication}{22}{subsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.4.3}Traitement et analyse des données}{22}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Stratégie de délestage}{22}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {3.4.5}Interface Homme-Machine (IHM)}{22}{subsection.3.4.5}%
-\contentsline {chapter}{Conclusion}{24}{chapter*.21}%
+\contentsline {subsection}{\numberline {3.4.4}Stratégie de délestage}{23}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Interface Homme-Machine (IHM)}{23}{subsection.3.4.5}%
+\contentsline {chapter}{Conclusion}{24}{chapter*.22}%

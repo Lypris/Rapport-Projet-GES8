@@ -668,38 +668,43 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
-INPUT ./images/scopes/Essai 500 trmin.png
-INPUT ./images/scopes/Essai 500 trmin.png
-INPUT ./images/scopes/Essai 500 trmin.png
-INPUT ./images/scopes/Essai 500 trmin.png
-INPUT ./images/scopes/Essai 500 trmin.png
-INPUT ./images/scopes/Essai 600 trmin.png
-INPUT ./images/scopes/Essai 600 trmin.png
-INPUT ./images/scopes/Essai 600 trmin.png
-INPUT ./images/scopes/Essai 600 trmin.png
-INPUT ./images/scopes/Essai 600 trmin.png
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
-INPUT ./images/scopes/Essai 700 trmin.png
-INPUT ./images/scopes/Essai 700 trmin.png
-INPUT ./images/scopes/Essai 700 trmin.png
-INPUT ./images/scopes/Essai 700 trmin.png
-INPUT ./images/scopes/Essai 700 trmin.png
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/logo_insa.jpg
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
-INPUT ./images/foot-logo.png
+INPUT ./images/figures/Inductance charge RL.png
+INPUT ./images/figures/Inductance charge RL.png
+INPUT ./images/figures/Inductance charge RL.png
+INPUT ./images/figures/Inductance charge RL.png
+INPUT ./images/figures/Inductance charge RL.png
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/tex-gyre/ec-qagri.tfm
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/scopes/Essai 500 trmin.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 600 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/scopes/Essai 700 trmin.png
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/logo_insa.jpg
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
+INPUT ./images/foot-logo.png
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
@@ -753,11 +758,6 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
-INPUT ./images/figures/USB-B.png
-INPUT ./images/figures/USB-B.png
-INPUT ./images/figures/USB-B.png
-INPUT ./images/figures/USB-B.png
-INPUT ./images/figures/USB-B.png
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
 INPUT ./images/logo_insa.jpg
@@ -766,6 +766,11 @@ INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
 INPUT ./images/foot-logo.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/figures/USB-B.png
+INPUT ./images/figures/USB-B.png
 INPUT ./images/figures/USB-C.png
 INPUT ./images/figures/USB-C.png
 INPUT ./images/figures/USB-C.png
