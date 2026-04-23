@@ -1,0 +1,446 @@
+%% Creator: Inkscape 1.4.2 (f4327f4, 2025-05-13), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file '01_Schéma Carte Commande Lumiere_V2.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{727.37000953bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.70303979)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.37139519,0.61584941){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VDD\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.40023385,0.58664598){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R1\end{tabular}}}}%
+    \put(0.42010914,0.58656317){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10k\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.32190181,0.52660545){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VSS\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.09256957,0.38806316){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.09256957,0.37812551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.09256957,0.36838272){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.09256957,0.35844507){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.4178761){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.42761889){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.43755654){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.44749418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.50000003,0.44749418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VDD\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.26178489,0.12091583){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.26178489,0.11097818){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.26178489,0.10104054){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.26178489,0.09110289){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB3\end{tabular}}}}%
+    \put(0.25416408,0.04156275){\color[rgb]{0.50196078,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Rmq : Port B en weak pull-up}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.60814501,0.52331784){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C1\end{tabular}}}}%
+    \put(0.60814501,0.49147314){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}100nF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.60814501,0.47382505){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C2\end{tabular}}}}%
+    \put(0.60814501,0.44197976){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}47uF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.71356201,0.44968436){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C3\end{tabular}}}}%
+    \put(0.71356201,0.43866721){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10nF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.75311774,0.44968436){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C4\end{tabular}}}}%
+    \put(0.75311774,0.43866721){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10nF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.79286832,0.44968436){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C5\end{tabular}}}}%
+    \put(0.79286832,0.43866721){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10nF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.83242406,0.44968436){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C6\end{tabular}}}}%
+    \put(0.83242406,0.43866721){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10nF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.43364383,0.06449728){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VDD\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.83221166,0.61064598){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.83221166,0.60070834){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=26]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.83221166,0.59077069){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=27]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.83221166,0.58083304){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=28]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.83221166,0.57109025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0.84567425,0.6223046){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}J1\end{tabular}}}}%
+    \put(0.84567425,0.55090455){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}TBLOCK-I5\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=29]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.79997277,0.14360874){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VDD\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=30]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.85208696,0.16520656){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=31]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.85208696,0.15526891){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=32]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.85208696,0.14533127){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0.86554954,0.17686478){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}J4\end{tabular}}}}%
+    \put(0.86554954,0.1251442){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}TBLOCK-I3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=33]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.37061577,0.28559433){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C7\end{tabular}}}}%
+    \put(0.37061577,0.2539439){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}22pF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=34]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.37061577,0.22635816){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C8\end{tabular}}}}%
+    \put(0.37061577,0.19451287){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}22pF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=35]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.09343025,0.40793845){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA7\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=36]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.09343025,0.3980008){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA6\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=37]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.46531569,0.26939596){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA7\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=38]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.46531569,0.20996494){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA6\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=39]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.49368086,0.10104054){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RX\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=40]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.49454212,0.13065862){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}TX\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=41]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.36838272){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}TX\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=42]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.35844507){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RX\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=43]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.79846653,0.21990259){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CANH\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=44]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.80018711,0.20996494){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CANL\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=45]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.85208696,0.22463758){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=46]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.85208696,0.21469994){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.86554954,0.23610095){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}J3\end{tabular}}}}%
+    \put(0.86554954,0.19451287){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}TBLOCK-I2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=47]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.66328921,0.11097818){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CANL\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=48]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.66328921,0.12091583){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CANH\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=49]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.5543648,0.13065862){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}TXD\end{tabular}}}}%
+    \put(0.5352514,0.13539362){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=50]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.5543648,0.12091583){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VSS\end{tabular}}}}%
+    \put(0.5352514,0.12565083){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=51]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.5543648,0.11097818){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VDD\end{tabular}}}}%
+    \put(0.5352514,0.11571318){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=52]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.5543648,0.10104054){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RXD\end{tabular}}}}%
+    \put(0.5352514,0.10577553){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=53]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.59313721,0.13065862){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}STBY\end{tabular}}}}%
+    \put(0.62860487,0.13539362){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=54]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.59055537,0.12091583){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CANH\end{tabular}}}}%
+    \put(0.62860487,0.12565083){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=55]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.59227595,0.11097818){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CANL\end{tabular}}}}%
+    \put(0.62860487,0.11571318){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=56]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.59141469,0.10104054){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}SPLIT\end{tabular}}}}%
+    \put(0.62860487,0.10577553){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0.54871398,0.14705184){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}U3\end{tabular}}}}%
+    \put(0.54871398,0.08558847){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MCP2561-E_P\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=57]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.40666409,0.39025334){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C9\end{tabular}}}}%
+    \put(0.40666409,0.37923619){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}100nF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=58]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.42653939,0.10323072){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C10\end{tabular}}}}%
+    \put(0.42653939,0.09221357){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}100nF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=59]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.32734024,0.12565083){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=60]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.32734024,0.11571318){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=61]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.32734024,0.10577553){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=62]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.32734024,0.09583789){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=63]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.32734024,0.08590024){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0.34080283,0.1371142){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}J5\end{tabular}}}}%
+    \put(0.34080283,0.06590803){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}TBLOCK-I5\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=64]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.79799693,0.16047156){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}24V\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=65]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.65149263,0.4219252){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}24V\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=66]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.74054174,0.64360877){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lamp1\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=67]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.76041704,0.64360877){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lamp2\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=68]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.78009747,0.64360877){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lamp3\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=69]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.79997277,0.64360877){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lamp4\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=70]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.41916604,0.25643026){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=71]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.41916604,0.22445637){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}}%
+    \put(0.44037415,0.24157835){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}U4\end{tabular}}}}%
+    \put(0.44037415,0.23036634){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}24\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=72]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.55512669,0.22463758){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=73]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.61886208,0.22463758){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.56878413,0.24584374){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}D1\end{tabular}}}}%
+    \put(0.56878413,0.20464538){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}703-0090\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=74]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.69310215,0.21990259){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC6\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=75]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.62782545,0.23025528){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R2\end{tabular}}}}%
+    \put(0.62782545,0.21029619){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}150\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=76]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.37812551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC6\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=77]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.4101715,0.42433167){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}L2\end{tabular}}}}%
+    \put(0.4101715,0.40242403){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10uH\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=78]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.47840221,0.39107563){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=79]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.47840221,0.35715318){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}}%
+    \put(0.49551835,0.37018319){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C12\end{tabular}}}}%
+    \put(0.49551835,0.35916604){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10uF\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=80]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.08568317,0.48704991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MCLR\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=81]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.46531569,0.56635604){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MCLR\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=82]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.47711227){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CLK\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=83]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.60591177){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CLK\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=84]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.59597412){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}DATA\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=85]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.31196416,0.57109025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=86]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.31196416,0.58083304){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=87]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.31196416,0.59077069){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=88]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.31196416,0.60070834){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=89]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.31196416,0.61064598){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=90]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.31196416,0.62058363){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=91]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.31196416,0.63032642){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=92]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.31196416,0.64026407){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
+    \put(0.2813718,0.65192268){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}J2\end{tabular}}}}%
+    \put(0.25175372,0.55090455){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}ARDUINO-SIL8\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=93]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.3466485,0.48704991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}DATA\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=94]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.48704991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MCLR\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=95]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.18043649,0.48704991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}/VPP/RE3\end{tabular}}}}%
+    \put(0.13930476,0.49178491){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=96]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.47711227){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA0\end{tabular}}}}%
+    \put(0.13930476,0.48184726){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=97]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.46736948){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA1\end{tabular}}}}%
+    \put(0.13930476,0.47210447){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=98]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.45743183){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA2\end{tabular}}}}%
+    \put(0.13930476,0.46216683){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=99]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.44749418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA3\end{tabular}}}}%
+    \put(0.13930476,0.45222918){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=100]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.43755654){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA4\end{tabular}}}}%
+    \put(0.13930476,0.44229153){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=101]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.42761889){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA5\end{tabular}}}}%
+    \put(0.13930476,0.43235389){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=102]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.4178761){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VSS_1\end{tabular}}}}%
+    \put(0.13930476,0.42261109){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=103]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.40793845){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA7\end{tabular}}}}%
+    \put(0.13930476,0.41267345){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=104]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.3980008){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RA6\end{tabular}}}}%
+    \put(0.13500079,0.4027358){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=105]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.38806316){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC0\end{tabular}}}}%
+    \put(0.13586166,0.39279815){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}11\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=106]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.37812551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC1\end{tabular}}}}%
+    \put(0.13500079,0.38286051){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}12\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=107]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.36838272){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC2\end{tabular}}}}%
+    \put(0.13500079,0.37311772){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}13\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=108]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.15841778,0.35844507){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC3\end{tabular}}}}%
+    \put(0.13500079,0.36318007){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}14\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=109]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.24464733,0.48704991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB7/ICSPDAT\end{tabular}}}}%
+    \put(0.31196416,0.49178491){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}28\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=110]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.24464733,0.47711227){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB6/ICSPCLK\end{tabular}}}}%
+    \put(0.31196416,0.48184726){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}27\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=111]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28166019,0.46736948){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB5\end{tabular}}}}%
+    \put(0.31196416,0.47210447){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}26\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=112]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28166019,0.45743183){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB4\end{tabular}}}}%
+    \put(0.31196416,0.46216683){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}25\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=113]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28166019,0.44749418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB3\end{tabular}}}}%
+    \put(0.31196416,0.45222918){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}24\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=114]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28166019,0.43755654){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB2\end{tabular}}}}%
+    \put(0.31196416,0.44229153){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}23\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=115]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28166019,0.42761889){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB1\end{tabular}}}}%
+    \put(0.31196416,0.43235389){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}22\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=116]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28166019,0.4178761){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RB0\end{tabular}}}}%
+    \put(0.31196416,0.42261109){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}21\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=117]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.27993961,0.40793845){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VDD\end{tabular}}}}%
+    \put(0.31196416,0.41267345){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}20\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=118]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.27305341,0.3980008){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VSS_2\end{tabular}}}}%
+    \put(0.31196416,0.4027358){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}19\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=119]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28080087,0.38806316){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC7\end{tabular}}}}%
+    \put(0.31196416,0.39279815){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}18\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=120]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28080087,0.37812551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC6\end{tabular}}}}%
+    \put(0.31196416,0.38286051){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}17\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=121]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28080087,0.36838272){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC5\end{tabular}}}}%
+    \put(0.31196416,0.37311772){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}16\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=122]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.28080087,0.35844507){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC4\end{tabular}}}}%
+    \put(0.31196416,0.36318007){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}15\end{tabular}}}}%
+    \put(0.15276696,0.50344313){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}U2\end{tabular}}}}%
+    \put(0.15276696,0.34299301){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}PIC18F27Q84-I_SP\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=123]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.41467072,0.65535877){\color[rgb]{0,0.50196078,0.50196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Programmation}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=124]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.38134842,0.44744742){\color[rgb]{0,0.50196078,0.50196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Filtre LC}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=125]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.41674204,0.28902964){\color[rgb]{0,0.50196078,0.50196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Oscillateur Externe}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=126]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.63121009,0.2693492){\color[rgb]{0,0.50196078,0.50196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{LED de contrôle}\end{tabular}}}}%
+    \put(0.27208302,0.1604248){\color[rgb]{0,0.50196078,0.50196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Interrupteurs Lampes}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=127]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.63033519,0.1604248){\color[rgb]{0,0.50196078,0.50196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Transceiver CAN}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=128]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.5823383,0.07142245){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CANL\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=129]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.65257214,0.05702845){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R3\end{tabular}}}}%
+    \put(0.63776309,0.06181606){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}120\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=130]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.63011111,0.08116524){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CANH\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=131]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.68373153,0.08590024){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=132]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.68373153,0.07615745){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.69719412,0.09755846){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}J6\end{tabular}}}}%
+    \put(0.67731882,0.05597039){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CONN-SIL2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=133]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.60385818,0.60591177){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OUTPUT_1\end{tabular}}}}%
+    \put(0.58474477,0.61064598){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=134]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.60385818,0.59597412){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OUTPUT_2\end{tabular}}}}%
+    \put(0.58474477,0.60070834){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=135]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.60385818,0.58603647){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OUTPUT_3\end{tabular}}}}%
+    \put(0.58474477,0.59077069){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=136]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.60385818,0.57609883){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}OUTPUT_4\end{tabular}}}}%
+    \put(0.58474477,0.58083304){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=137]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.60385818,0.56635604){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}GROUND\end{tabular}}}}%
+    \put(0.58474477,0.57109025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=138]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.65149263,0.54462201){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}EP\end{tabular}}}}}%
+    \put(0.64675764,0.52187104){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}11\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=139]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.67330479,0.60591177){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}I/O_1\end{tabular}}}}%
+    \put(0.70791119,0.61064598){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=140]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.67330479,0.59597412){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}I/O_2\end{tabular}}}}%
+    \put(0.70791119,0.60070834){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=141]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.67330479,0.58603647){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}I/O_3\end{tabular}}}}%
+    \put(0.70791119,0.59077069){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=142]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.67330479,0.57609883){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}I/O_4\end{tabular}}}}%
+    \put(0.70791119,0.58083304){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=143]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.67330479,0.56635604){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}DIAG\end{tabular}}}}%
+    \put(0.70791119,0.57109025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
+    \put(0.59820736,0.64259104){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}U5\end{tabular}}}}%
+    \put(0.59820736,0.63157486){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}VN340SP-33-E\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=144]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.52826776,0.60591177){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=145]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.52826776,0.59597412){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=146]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.52826776,0.58603647){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=147]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.52826776,0.57609883){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}RC0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=148]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.70098601,0.49512864){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lamp1\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=149]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.74054174,0.49512864){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lamp2\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=150]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.78009747,0.49512864){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lamp3\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=151]{01_Schéma Carte Commande Lumiere_V2.pdf}}%
+    \put(0.81984806,0.49512864){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Lamp4\end{tabular}}}}}%
+  \end{picture}%
+\endgroup%

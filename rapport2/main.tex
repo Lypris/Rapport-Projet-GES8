@@ -1,0 +1,38 @@
+\documentclass[12pt, a4paper]{report}
+
+% --- Inclusion des configurations ---
+% Load project-specific settings first so packages/layout can reuse them
+\input{config/project-settings} % Variables du projet
+\input{config/packages}        % Packages et couleurs
+\input{config/layout}          % Mise en page et styles
+
+% =====================================
+% DOCUMENT PRINCIPAL
+% =====================================
+
+\begin{document}
+
+% --- Page de garde ---
+%\maketitlepage
+\includepdf[pages=-]{contenu/cover.pdf}
+
+% --- Démarrage de la numérotation à 2 (page de garde = page 1) ---
+\startpagenumbering
+% --- Contenu du rapport ---
+\input{contenu/00_introduction.tex}
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+% --- Planning du projet ---
+\input{contenu/01_schema_complet.tex}
+\newpage
+\input{contenu/02_alimentation.tex}
+\newpage
+\input{contenu/03_distribution.tex}
+\newpage
+\input{contenu/04_supervision.tex}
+\newpage
+\input{contenu/05_conclusion.tex}
+\end{document}

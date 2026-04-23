@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "rapport",
+      "type": "pickString",
+      "description": "Choisir le rapport cible",
+      "options": [
+        "rapport1",
+        "rapport2"
+      ],
+      "default": "rapport1"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "Rapport: Compiler",
+      "type": "shell",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "main.tex"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/${input:rapport}"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Rapport: Nettoyer",
+      "type": "shell",
+      "command": "latexmk",
+      "args": [
+        "-c",
+        "main.tex"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/${input:rapport}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Rapport: Rebuild complet",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Rapport: Nettoyer",
+        "Rapport: Compiler"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

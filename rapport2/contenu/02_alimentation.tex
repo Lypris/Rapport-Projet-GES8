@@ -1,0 +1,733 @@
+% --- Chapitre 3 : Partie Alimentation ---
+\chapter{Alimentation}
+
+    \section{Redresseur PD3 (Convertisseur AC/DC)}
+        \subsection{Solution technique}
+        L'alternateur fournit en sortie une tension alternative, alors que notre système nécessite une tension continue. Les redresseurs, qui assurent la transformation de l'énergie alternative en énergie continue, constituent l'une des solutions les plus courantes parmi les convertisseurs statiques. Cette conversion est essentielle pour obtenir une source de tension continue à partir de notre alimentation alternative.
+
+        Il existe principalement deux grandes catégories de redresseurs : non commandés et commandés.
+
+        \subsubsection*{Redresseurs commandés}
+        Le redresseur commandé permet d'obtenir, à partir d'une source alternative, des courants ou des tensions unidirectionnels, aux valeurs moyenne et efficace réglables. La structure des redresseurs commandés est constituée parfois uniquement de thyristors et d'autres fois, on retrouve en même temps, des thyristors et des diodes.
+
+        Deux régimes de fonctionnement peuvent se présenter : la conduction ininterrompue ou la conduction interrompue du courant dans la charge.
+
+        Pour simplifier les calculs, on considère les thyristors et les diodes comme étant des composants parfaits.
+
+        On note $\alpha$ l'angle d'amorçage de référence d'un thyristor.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie PD3/Représentation des redresseurs commandés.png}
+            \caption{Représentation des redresseurs commandés}
+            \label{fig:redresseurs_commandés}
+        \end{figure}
+        
+
+        Pour son fonctionnement, le redresseur commandé a besoin d'une commande. Cette commande génère les impulsions qui vont attaquer les gâchettes des thyristors pour provoquer leurs amorçages.
+
+        La variation des valeurs de sortie du redresseur dépend donc de la valeur de l'angle d'amorçage $\alpha$. Cette dernière est obtenue très souvent en agissant sur une valeur qu'on appelle référence, qu'on compare, par la suite, à une phase, qui peut être un signal en dent de scie bien adapté en fréquence au redresseur à commander.
+
+        On distingue notamment :
+        \begin{itemize}
+            \item \textbf{Redresseurs commandés simples en parallèle} : capables de bloquer soit les alternances positives, soit les alternances négatives selon le mode de commande, permettant ainsi un certain contrôle sur la tension moyenne en fonction du temps de conduction.
+            \item \textbf{Redresseurs commandés doubles en parallèle} : plus sophistiqués, ces dispositifs peuvent inverser les alternances négatives en positives (et inversement) grâce à un système de commande qui ajuste en temps réel la commutation des phases, offrant un contrôle plus précis et une plus grande flexibilité sur la tension de sortie.
+        \end{itemize}
+
+        \subsubsection*{Redresseurs non commandés}
+        Le redresseur non commandé permet d'obtenir, à partir d'une source alternative, une tension ou un courant unidirectionnel. Contrairement au redresseur commandé, la valeur moyenne de la tension de sortie n'est pas réglable par une commande externe, car la conversion est réalisée uniquement à l'aide de diodes, qui conduisent automatiquement lorsque la tension à leurs bornes est positive dans le sens passant.
+
+        Ces redresseurs sont dits irréversibles, ce qui signifie que la circulation de la puissance ne peut s'effectuer que dans un seul sens : du côté alternatif vers le côté continu. Il n'est donc pas possible de renvoyer l'énergie du circuit continu vers la source alternative.
+
+        La tension continue fournie par un redresseur non commandé possède une valeur moyenne fixe, qui dépend uniquement des caractéristiques de la tension d'entrée et de la structure du redresseur. Par conséquent, une fois le redressement effectué, la valeur moyenne de la tension de sortie ne peut pas être ajustée par une commande externe.
+
+        En raison de leur simplicité de fonctionnement, de leur fiabilité et de leur faible coût, les redresseurs à diodes sont très largement utilisés dans les systèmes de conversion d'énergie où la régulation de la tension de sortie n'est pas indispensable.
+
+        \subsubsection{Choix du type de convertisseur}
+        Pour convertir la tension alternative produite par l'alternateur en tension continue, deux solutions principales peuvent être envisagées : l'utilisation d'un redresseur commandé à thyristors (SCR) ou d'un redresseur non commandé à diodes.
+
+        Le redresseur commandé permet d'ajuster la tension continue de sortie en agissant sur l'angle d'amorçage des thyristors. Cette solution offre un meilleur contrôle de la tension appliquée à la batterie et permet d'optimiser sa charge en fonction de son état. Toutefois, la mise en œuvre d'un tel dispositif nécessite un circuit de commande complexe ainsi qu'une régulation active afin d'éviter les phénomènes de surcharge ou de sous-charge de la batterie.
+
+        À l'inverse, le redresseur non commandé, généralement réalisé sous forme de pont de diodes, est une solution beaucoup plus simple à mettre en œuvre. Il permet de convertir directement la tension alternative en tension continue, mais sans possibilité de régulation de la tension de sortie.
+
+        Afin de déterminer la solution la plus adaptée à notre système, nous avons étudié l'alternateur dans notre plage de fonctionnement, comprise entre 500 tr/min et 750 tr/min. Les mesures réalisées montrent que la tension efficace à vide de l'alternateur varie entre \SI{120}{\volt} et \SI{213}{\volt}. En condition de charge, la tension dépend de la vitesse de rotation et de la charge appliquée et se situe, par exemple, entre \SI{39.2}{\volt} et \SI{56.0}{\volt} pour une vitesse d'environ 700 tr/min.
+
+        Ces valeurs étant compatibles avec la plage de tension nécessaire pour alimenter l'étage de conversion et charger la batterie via le convertisseur DC/DC, l'utilisation d'un redresseur commandé ne s'avère pas indispensable. Le contrôle et l'adaptation de la tension seront en effet assurés par le convertisseur DC/DC piloté par l'algorithme MPPT, placé en aval du redresseur.
+
+        Ainsi, afin de privilégier une architecture plus simple, plus robuste et plus économique, nous avons choisi d'utiliser un redresseur non commandé à diodes pour la conversion AC/DC de la tension fournie par l'alternateur.
+
+        \subsubsection{Les trois types de montages redresseurs}
+        Pour obtenir une tension continue, on redresse un ensemble de $q$ tensions alternatives, d'ordinaire supposées sinusoïdales et formant un système polyphasé équilibré ($q$ est le nombre de phases). Ces tensions peuvent être les tensions aux bornes d'un alternateur. Généralement, elles sont fournies par le réseau monophasé ou, plus souvent, par le réseau triphasé, d'ordinaire par l'intermédiaire d'un transformateur.
+
+        On distingue trois types de montages :
+        \begin{enumerate}
+            \item $\boldsymbol{P_q}$ : montages avec source en étoile et un seul commutateur ou redresseur "simple alternance".
+            \item $\boldsymbol{PD_q}$ : montages avec source en étoile et deux commutateurs ou redresseurs "en pont".
+            \item $\boldsymbol{S_q}$ : montages avec source en polygone et deux commutateurs ou redresseurs "en pont" avec source polygonale.
+        \end{enumerate}
+
+        %% Montage de trois figures : a et b côte à côte, c centré dessous
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b]{0.48\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{Partie PD3/Montage P3.png}
+                \caption{Montage P3}
+                \label{fig:pd3_a}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.48\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{Partie PD3/Montage PD3.png}
+                \caption{Montage PD3}
+                \label{fig:pd3_b}
+            \end{subfigure}
+
+            \vspace{4mm}
+
+            \begin{center}
+                \begin{subfigure}[b]{0.48\textwidth}
+                    \centering
+                    \includegraphics[width=\linewidth]{Partie PD3/Montage S3.png}
+                    \caption{Montage S3}
+                    \label{fig:pd3_c}
+                \end{subfigure}
+            \end{center}
+
+            \caption{Les trois types de montages redresseurs pour une source triphasée}
+            \label{fig:pd3_abc}
+        \end{figure}
+
+
+        \subsubsection{Choix du montage}
+        Compte tenu de la nécessité d'obtenir une tension continue plus stable afin d'alimenter correctement l'étage de conversion DC/DC et la batterie, le montage PD3 a été retenu. Ce type de redresseur offre en effet une tension de sortie plus régulière et nécessite moins de filtrage que le montage P3, ce qui le rend particulièrement adapté à notre application.
+
+        \subsection{Dimensionnement des composants}
+        \subsubsection{Choix des diodes du PD3}
+        Le redresseur sera réalisé à l'aide de diodes Schottky Vishay V35PW22HM3 (\SI{35}{\ampere}, \SI{200}{\volt}). Ce choix est justifié par les caractéristiques suivantes :
+        \begin{itemize}
+            \item Faible chute de tension directe, permettant de limiter les pertes de conduction.
+            \item Courant admissible élevé (\SI{35}{\ampere}), largement supérieur au courant nominal du système (\SI{3}{\ampere}), garantissant une bonne marge de sécurité.
+            \item Tension inverse maximale de \SI{200}{\volt}, adaptée aux variations de tension en sortie de l'alternateur.
+            \item Boîtier CMS (DPAK) facilitant l'intégration sur PCB.
+        \end{itemize}
+
+        Pour le dimensionnement, les diodes sont modélisées par une loi linéarisée :
+        $$V_D = V_0 + R_D \cdot I$$
+        où :
+        \begin{itemize}
+            \item $V_0$ est la tension de seuil.
+            \item $R_D$ est la résistance dynamique.
+        \end{itemize}
+        Ces paramètres sont extraits à partir de la courbe constructeur $I(V)$ à $T_j=125^\circ\text{C}$.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie PD3/Caractéristique courant-tension diode Schottky.png}
+            \caption{Caractéristique courant-tension directe instantanée typique d'une diode Schottky (extrait de la fiche technique du composant)}
+            \label{fig:caractéristique_diode}
+        \end{figure}
+        
+
+        \paragraph{Calcul de la résistance dynamique}
+        En sélectionnant deux points de la courbe :
+        \begin{itemize}
+            \item $I_1 = \SI{2}{\ampere}$, $V_1 = \SI{0.44}{\volt}$
+            \item $I_2 = \SI{15}{\ampere}$, $V_2 = \SI{0.66}{\volt}$
+        \end{itemize}
+        on obtient :
+        $$R_D = \frac{V_2 - V_1}{I_2 - I_1} = \SI{16.9}{\milli\ohm}$$
+
+        \paragraph{Calcul de la tension de seuil $V_0$}
+        $$V_0 = V_1 - R_D \cdot I_1 = \SI{0.41}{\volt}$$
+
+        \subsubsection{Exploitation des résultats de simulation}
+        Une simulation du système complet sous PSIM a permis d'extraire les courants dans les diodes.
+
+        \begin{figure}[H]
+            \centering
+            %\includegraphics[width=0.8\textwidth]{Partie PD3/Courants_diodes_PD3.png}
+            \caption{Résultats de simulation - courants dans les diodes du pont PD3}
+            \label{fig:courants_diodes}
+        \end{figure}
+        
+
+        On prend les valeurs pour la diode PD3\_1 :
+        \begin{itemize}
+            \item Courant moyen : $I_{moy} = \SI{2.023}{\ampere}$
+            \item Courant efficace : $I_{eff} = \SI{3.181}{\ampere}$
+        \end{itemize}
+
+        \subsubsection{Calcul des pertes}
+        Les pertes de conduction dans une diode sont données par :
+        $$P_{cond} = V_0 \cdot I_{moy} + R_D \cdot I_{eff}^2$$
+        Application numérique :
+        $$P_{cond} = \SI{0.41}{\volt} \cdot \SI{2.023}{\ampere} + \SI{0.0169}{\ohm} \cdot (\SI{3.181}{\ampere})^2 \approx \SI{1}{\watt}$$
+
+        \textit{N.B : Les pertes de commutation sont négligeables et ne seront pas calculées, le redresseur étant non commandé et reposant sur diodes à commutation naturelle.}
+
+        Ainsi, chaque diode du pont dissipe environ $1 \, \text{W}$ en régime établi.
+
+        Dans un pont PD3 (6 diodes), la puissance totale à dissiper est :
+        $$P_{tot} = 6 \cdot \SI{1}{\watt} = \SI{6}{\watt}$$
+
+        \subsubsection{Caractéristiques thermiques}
+        D'après la fiche technique de la V35PW22 :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{Partie PD3/Caractéristiques thermiques V35PW22.png}
+            \caption{Caractéristiques thermiques de la diode (extrait de la fiche technique du composant)}
+            \label{fig:caractéristiques_thermiques}
+        \end{figure}
+        
+
+        On prend $R_{thJM} = \SI{1.5}{\celsius\per\watt}$.
+
+        \subsubsection{Dimensionnement du dissipateur}
+        On utilise la loi d'Ohm thermique pour trouver la résistance thermique maximale autorisée pour le radiateur $R_{thHA}$.
+
+        Hypothèses :
+        \begin{itemize}
+            \item Température ambiante ($T_A$) : $\SI{40}{\celsius}$ (température de sécurité standard en industrie).
+            \item Température de jonction cible ($T_J$) : $\SI{150}{\celsius}$.
+        \end{itemize}
+
+        Formule pour le pont complet sur un seul radiateur :
+        $$T_J = T_A + (P_{tot} \cdot R_{thHA}) + (P_{com} \cdot R_{thJC})$$
+
+        En isolant la résistance du dissipateur $R_{thHA}$ :
+        $$R_{thHA} = \frac{(T_J - T_A) - (P_{com} \cdot R_{thJC})}{P_{tot}} = \SI{13.92}{\celsius\per\watt}$$
+
+        \subsubsection{Choix du dissipateur thermique}
+        Pour assurer la gestion thermique du pont PD3, nous avons sélectionné des dissipateurs Aavid Thermalloy ($\SI{18}{\celsius\per\watt}$) à montage de surface, offrant une marge de sécurité de plus de $\SI{60}{\celsius\per\watt}$ par rapport à la limite thermique des composants. Voici sa référence : \href{https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/7124217}{\textbf{573300D00010G}}.
+
+        \subsubsection{Les Fusibles de Protection}
+        Pour protéger des semi-conducteurs (diodes Schottky), il faut impérativement des fusibles Ultra-Rapides (FF). Un fusible standard (F) ou temporisé (T) ne sautera pas assez vite pour éviter que la diode ne grille.
+
+        \textbf{Calibre calculé :} Notre courant efficace ($I_{eff}$) est de \SI{3.18}{\ampere}. Un fusible de \SI{4}{\ampere} est donc parfait (environ \SI{25}{\percent} de marge).
+
+        \textbf{Modèle choisi :} \href{https://fr.farnell.com/littelfuse/0216004-mxp/fusible-cartouche-act-rapide-4a/dp/1354546?srsltid=AfmBOornsAkjT_Xk2D6B0Ly6WX-joAbwvfaGCFQaKP9l-Uf8rfNmzPOX}{\textbf{0216004.MXP}}
+        \begin{itemize}
+            \item Type : FF (Very Fast-Acting).
+            \item Courant : $4 \, \text{A}$.
+            \item Tension : $250 \, \text{V}$.
+        \end{itemize}
+
+        \subsubsection{Porte-fusibles}
+        Dans la conception du PCB, les fusibles ne sont pas directement intégrés sous forme de composants fixes dans le schéma Proteus. À la place, nous avons choisi d'utiliser des supports de fusibles de type Schurter 0751.0110 fuse clip, permettant d'insérer et de remplacer facilement les fusibles sélectionnés.
+
+        Chaque fusible de format $5\times20 \, \text{mm}$ nécessite deux clips (un de chaque côté) pour assurer le maintien et le contact électrique. Ainsi, pour les trois phases du système, un total de 6 porte-fusibles est nécessaire.
+
+        Ce choix présente plusieurs avantages : facilité de maintenance et de remplacement des fusibles, meilleure intégration mécanique sur le PCB et compatibilité avec le format des fusibles choisis.
+
+        Les porte-fusibles ont été sélectionnés en fonction des dimensions des fusibles retenus, garantissant ainsi une bonne tenue mécanique et un contact électrique fiable.
+
+        \subsection{Schéma détaillé et PCB}
+        Après la phase de dimensionnement des différents composants, nous sommes passés à la conception du schéma électrique sous Proteus. Nous avons fait le choix d'intégrer le redresseur triphasé PD3 ainsi que le filtre LC sur une même carte afin de regrouper les éléments de conversion et de filtrage de l'énergie. Cette approche permet de limiter les interconnexions et d'améliorer la compacité du système. Une seconde carte sera dédiée à l'étage MPPT, assurant ainsi une séparation fonctionnelle entre la conversion AC/DC et la gestion de l'optimisation de puissance.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie PD3/Schéma proteus PD3.png}
+            \caption{Schéma électrique du redresseur PD3 et de son filtre LC (extrait de Proteus)}
+            \label{fig:schéma_pd3}
+        \end{figure}
+        
+
+        Le circuit comporte :
+        \begin{itemize}
+            \item Un bornier d'entrée triphasé (Tblock) permettant la connexion de l'alternateur (phases 1, 2 et 3).
+            \item Des porte-fusibles sont disposés sur chaque phase pour supporter les fusibles choisis et assurer la protection du système. Leur sélection a été effectuée en fonction des caractéristiques mécaniques (format et dimensions) des fusibles utilisés.
+            \item Six diodes de puissance organisées en pont triphasé (PD3), assurant le redressement de la tension alternative en tension continue.
+            \item Six dissipateurs thermiques associés aux diodes, permettant l'évacuation des pertes de conduction.
+            \item Une inductance de filtrage ($10 \, \mu\text{H}$) placée en sortie du redresseur, destinée à lisser le courant.
+            \item Trois condensateurs montés en parallèle (\SI{2.2}{\micro\farad} chacun) formant la capacité du filtre, afin de réduire l'ondulation de la tension continue.
+            \item Un bornier de sortie (Tblock) permettant la connexion vers les capteurs de courant et de tension ainsi que vers l'étage MPPT.
+        \end{itemize}
+
+        Après validation du schéma électrique, nous avons procédé à la conception du circuit imprimé (PCB) sous Proteus. L'objectif principal était d'assurer une implantation compacte tout en garantissant une bonne gestion des courants de puissance et des contraintes thermiques.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie PD3/PCB PD3.png}
+            \caption{PCB du redresseur PD3 et de son filtre LC (extrait de Proteus)}
+            \label{fig:pcb_pd3}
+        \end{figure}
+        
+
+        Le PCB regroupe l'ensemble du redresseur triphasé PD3 ainsi que le filtre en sortie. Les six diodes sont disposées de manière symétrique afin d'équilibrer les chemins de courant et de faciliter le routage. Des pistes larges ont été utilisées pour supporter les courants élevés et limiter les pertes ohmiques.
+
+        Une attention particulière a été portée à la dissipation thermique : des zones de cuivre étendues ont été prévues au niveau des diodes afin de permettre le soudage des dissipateurs thermiques après fabrication, tout en améliorant la conduction thermique et l'évacuation de la chaleur.
+
+        Les entrées triphasées sont positionnées sur un côté du PCB via des borniers, accompagnées de fusibles pour la protection. La sortie continue, après filtrage, est placée de manière à faciliter la connexion vers les capteurs de courant et de tension et l'étage MPPT.
+
+        Enfin, le routage a été optimisé pour réduire les boucles de courant et minimiser les perturbations électromagnétiques, tout en assurant une bonne lisibilité et une fabrication fiable de la carte.
+
+    \section{Hacheur MPPT}
+        \subsection{Solution technique}
+        La solution choisie pour le convertisseur DC/DC a été un hacheur SEPIC. En effet, ce dernier a pour caractéristique d'agir comme un abaisseur de tension ou comme un élévateur de tension. Ceci nous sera utile car, en fonction de la variation de la vitesse du vent, nous pourrons avoir un hacheur qui agira de manière variable et répondra ainsi à nos diverses contraintes, ce que le hacheur Buck ne pouvait faire.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schema-du-convertisseur-SEPIC.png}
+            \caption{Schema du convertisseur SEPIC}
+            \label{fig:schema_sepic}
+        \end{figure}
+        
+
+        Passons maintenant à l'étude théorique. Nous commençons par effectuer les schémas équivalents suivants :
+
+        \vspace{0.3cm}
+
+        \noindent
+        \begingroup
+        \setlength{\tabcolsep}{6pt}
+        \renewcommand{\arraystretch}{1}
+        \begin{tabular}{@{}p{0.47\textwidth}!{\color{remindercolor}\vrule width 1pt}p{0.47\textwidth}@{}}
+            \centering
+            \includegraphics[width=0.45\textwidth]{Partie MPPT/Schéma éq 0 à t.png}
+            \captionsetup{hypcap=false}
+            \captionof{figure}{Schéma équivalent de $0 < t < \alpha T$}
+
+            Dans ce cas présent, nous avons les équations suivantes :
+            \[
+                \begin{aligned}
+                    V_{L1}(t) &= V_{L2}(t) = V_e \\
+                    i_{L1}(t) &= \frac{V_e}{L_1}t + I_{L1min} \\
+                    i_{L2}(t) &= \frac{V_e}{L_2}t + I_{L2min} \\
+                    V_{T1}(t) &= 0 \\
+                    i_{T1}(t) &= i_{L1}(t) + i_{L2}(t) \\
+                    V_{D1}(t) &= -(V_e + V_S) \\
+                    i_{D1}(t) &= 0 \\
+                    i_C(t)    &= -i_{L2}(t)
+                \end{aligned}
+            \]
+            &
+            \centering
+            \includegraphics[width=0.45\textwidth]{Partie MPPT/Schéma eq alphaT à t.png}
+            \captionsetup{hypcap=false}
+            \captionof{figure}{Schéma équivalent de $\alpha T < t < T$}
+
+            Dans ce cas présent, avec $t' = t - \alpha T$, nous avons les équations suivantes :
+            \[
+                \begin{aligned}
+                    V_{L1}(t') &= V_{L2}(t') = -V_S \\
+                    i_{L1}(t') &= -\frac{V_S}{L_1}t' + I_{L1max} \\
+                    i_{L2}(t') &= -\frac{V_S}{L_2}t' + I_{L2max} \\
+                    V_{T1}(t') &= V_e + V_S \\
+                    i_{T1}(t') &= 0 \\
+                    V_{D1}(t') &= 0 \\
+                    i_{D1}(t') &= i_{L1}(t') + i_{L2}(t') \\
+                    i_C(t')    &= i_{L1}(t')
+                \end{aligned}
+            \]
+            \\
+        \end{tabular}
+        \endgroup
+        \vspace{0.3cm}
+
+        Nous sommes en régime permanent donc la valeur moyenne de la tension aux bornes des inductances est nulle : $\langle V_{L1}(t) \rangle = 0\,\text{V}$.
+        $$\alpha V_e = (1-\alpha)V_S \implies \frac{V_S}{V_e} = \frac{\alpha}{1-\alpha} \implies \alpha = \frac{V_S}{V_S+V_e}$$
+
+        \paragraph{Calcul au point nominal :}
+        $$\alpha_{nom} = \frac{V_{Snom}}{V_{Snom}+V_e} = \frac{50}{50+39{,}423} = 0{,}559 \approx 0{,}56$$
+
+        On peut dorénavant calculer $I_S$ :
+        $$I_S = \frac{1-\alpha}{\alpha} I_e = \SI{8{,}005}{\ampere}$$
+        On a alors un courant de sortie d'environ $\SI{8}{\ampere}$.
+
+        \subsection{Dimensionnement des composants}
+        On cherche maintenant à dimensionner les composants du hacheur, avec :
+        $$V_e = \frac{3\sqrt{6}}{\pi} V_S = \SI{39{,}423}{\volt} \quad;\quad F = \SI{100}{\kilo\hertz} \quad;\quad \alpha_{nom} = 0{,}56 \quad;\quad R = \SI{6{,}245}{\ohm}$$
+        $$\Delta i_L = I_{L1max} - I_{L1min} = \SI{1{,}5}{\ampere} \quad\text{et}\quad \Delta V_S = \SI{0{,}75}{\volt}$$
+
+        On commence par calculer $C$ :
+        $$\Delta Q = C \cdot \Delta V_C$$
+        $$C = \frac{I_S \cdot \alpha T}{\Delta V_C} = \frac{V_S}{R \cdot F \cdot \Delta V_C} = \frac{\alpha V_e}{R \cdot F \cdot \Delta V_C}$$
+        Or nous savons que $\Delta V_C = 0{,}02 V_e$ par exemple, ou d'après les données. D'après la formule initiale :
+        $$C = \frac{\alpha_{nom}^2 \cdot V_e}{R \cdot F \cdot \Delta V_C}$$
+        D'où on trouve :
+        $$C = \SI{2{,}28}{\micro\farad}$$
+
+        On calcule maintenant $C_S$ :
+        $$C_S = \frac{\alpha_{nom}^2 \cdot V_e}{(1-\alpha_{nom}) \cdot R \cdot F \cdot \Delta V_S} = \SI{59}{\micro\farad}$$
+
+        Passons maintenant aux calculs des inductances, avec l'hypothèse suivante : $L_1 = L_2$ et $\Delta i_L = \SI{1{,}5}{\ampere}$ :
+        $$L_1 = L_2 = \frac{\alpha_{nom} \cdot V_e}{\Delta i_L \cdot F} = \SI{147{,}17}{\micro\henry}$$
+
+        Passons maintenant au calcul du filtre LC qui va venir lisser la tension en sortie du redresseur PD3 dimensionné préalablement (Ici $F = \SI{50}{\hertz}$) :
+        $$I_{Lmax} = \SI{6{,}36}{\ampere} \quad\text{et}\quad I_{Lmin} = \SI{6{,}24}{\ampere} \implies \Delta i_L = \SI{0{,}12}{\ampere}$$
+        $$v_L = U_{red}(\theta) - V_e = L_e \frac{di_L(\theta)}{dt} = \sqrt{6} \cdot V_S \cdot \sin(\theta) - \frac{3\sqrt{6}}{\pi} \cdot V_S$$
+        $$i_L(\theta) = \frac{\sqrt{6} \cdot V_S}{L_e \cdot \omega} \left(-\cos(\theta) - \frac{3}{\pi}(\theta - \frac{\pi}{2} + \theta_{min})\right)$$
+        Or nous savons que : $\theta_{min} = \arcsin\left(\frac{3}{\pi}\right)$
+        D'où :
+        $$L_e = \frac{\sqrt{6} \cdot V_S}{\Delta i_L \cdot 2\pi f} \left(2\cos(\arcsin(3/\pi)) - \frac{3}{\pi}(\pi - 2\arcsin(3/\pi))\right) \approx \SI{19{,}79}{\milli\henry}$$
+        *(Note : L'équation originale comportait de multiples erreurs, le calcul de $L_e$ mène à $\approx \SI{19{,}79}{\milli\henry}$)*
+
+        Passons maintenant à $C_e$ :
+        $$i_C(t) = i_L(t) - I_{dc} \quad;\quad \Delta V_C = \frac{1}{C_e}\int i_C(t) dt = \frac{\Delta Q}{C_e}$$
+        $\Delta Q$ est l'aire d'un signal triangulaire d'où :
+        $$\Delta Q = \frac{1}{2} \cdot \frac{T_{ond}}{2} \cdot \frac{\Delta i_L}{2} = \frac{\Delta i_L \cdot T_{ond}}{8}$$
+        $$C_e = \frac{\Delta i_L}{8 \cdot \Delta V_C \cdot f_{ond}} = \SI{0{,}190}{\micro\farad} = \SI{190}{\nano\farad}$$
+        avec $\Delta V_C = 2\% \cdot V_e$.
+
+        \subsubsection{Étude sur PSIM}
+        \paragraph{1ère étude :}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma PSIM de la première étude.png}
+            \caption{Schéma PSIM de la 1ère étude}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Graphe comparant Pentree et Psortie.png}
+            \caption{Graphe comparant $P_{entrée}$ et $P_{sortie}$}
+        \end{figure}
+        Pour notre première solution (théorique), nous nous sommes basés sur des inductances de $\SI{147}{\micro\henry}$ en boucle ouverte. Cette configuration limite la puissance extraite à $\SI{285}{\watt}$ et impose des composants trop volumineux et coûteux pour une intégration réelle sur PCB (inductances).
+
+        \paragraph{Solution retenue :}
+        Ces valeurs ont été obtenues de manière empirique avec l'aide du professeur. On peut remarquer l'absence de la capacité $C_{red}$ préalablement utilisée pour réduire les bruits parasites provoqués par la fréquence de découpage du signal PWM ; cette dernière a pu être supprimée car la simulation était plus propre sans celle-ci. On obtient donc des composants assez éloignés des valeurs calculées théoriquement car il y a bien une différence entre la théorie et la simulation ; ces écarts s'expliquent par l'affinement des modèles et la prise en compte des contraintes réelles du montage.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma PSIM de la solution retenue.png}
+            \caption{Schéma PSIM de la solution retenue}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Graphe comparant Pentree et Psortie de la solution retenue.png}
+            \caption{Graphe comparant $P_{entrée}$ et $P_{sortie}$ de la solution retenue}
+        \end{figure}
+
+        En optimisant le système avec des inductances de \SI{33}{\micro\henry} et un filtre de sortie de \SI{150}{\micro\farad}, on stabilise la puissance à \SI{323}{\watt} tout en garantissant un signal propre pour la batterie et un encombrement réduit. Sur le plan dynamique, malgré un léger dépassement lors du démarrage (\SI{0}{\milli\second}--\SI{50}{\milli\second}), le système atteint rapidement un régime permanent très stable.
+
+        \subsubsection{Dimensionnement pratique des composants}
+        L'étape suivante était de passer du monde théorique au monde réel. Le dimensionnement des composants est une étape très piégeuse car il est important de bien comprendre les contraintes physiques que vont subir les composants. Pour ce faire, nous allons donc effectuer une simulation dans le pire des cas possible. Les paramètres sont les suivants :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma PSIM du pire cas possible.png}
+            \caption{Schéma PSIM pire cas possible}
+        \end{figure}
+
+        Le pire cas est régi par les paramètres suivants :
+        \begin{itemize}
+            \item La batterie est déchargée (\SI{47}{\volt}).
+            \item L'éolienne tourne au maximum de sa vitesse (\SI{750}{tr/min}) et par conséquent produit une tension maximale.
+        \end{itemize}
+
+        Une fois ces paramètres indiqués, nous établissons un tableau Excel recensant toutes les mesures à effectuer. Nous obtenons le tableau de relevé suivant :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Tableau des contraintes.png}
+            \caption{Tableau des contraintes}
+        \end{figure}
+
+        À l'aide de ce tableau, nous avons toutes les informations nécessaires pour caractériser chaque composant. Nous allons effectuer une méthodologie pour un condensateur type, les autres études seront similaires.
+
+        \paragraph{Dimensionnement de $C_e$ :}
+        Nous avons besoin d'une capacité de $\SI{2}{\micro\farad}$. Or, il faut faire attention car en fonction de la tension que nous utilisons, le condensateur n'aura pas la même capacité. Pour connaître parfaitement le fonctionnement de notre composant, nous utilisons le site internet KSIM, ce dernier dispose de différentes courbes qui vont nous permettre de mener à bien notre étude :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Variation de la capacité en fonction de la tension pour Ce.png}
+            \caption{Variation de la capacité en fonction de la tension pour $C_e$}
+        \end{figure}
+
+        Dans un premier temps, intéressons-nous à l'étude du changement de la capacité en fonction de la tension. On remarque que pour notre tension d'utilisation qui est d'environ $\SI{50}{\volt}$ nous avons une chute de capacité de \SI{55{,}9}{\percent}, ce qui est conséquent. Ce condensateur de base (pour $\SI{2{,}2}{\micro\farad}$) aurait donc une capacité de $\SI{0{,}97}{\micro\farad}$ à $\SI{50}{\volt}$. Pour compenser cela, nous allons mettre 3 condensateurs en parallèle, ce qui nous permettra d'additionner les 3 capacités.
+
+        On aura donc :
+        $$C_{eq} = C_1 + C_2 + C_3 = \SI{0{,}97}{\micro\farad} \times 3 = \SI{2{,}91}{\micro\farad}$$
+        Cette capacité est certes supérieure à $\SI{2}{\micro\farad}$ mais ceci n'impacte pas notre schéma au contraire, elle permet d'améliorer l'action du filtre.
+
+        Étant donné que nous avons trois capacités en parallèle, il faut faire attention à la potentielle chauffe des composants. Le site KSIM propose une courbe représentant la variation de la température en fonction du courant ondulatoire (ou $I_{eff}$) :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Variation de la température en fonction du courant ondulatoire pour Ce.png}
+            \caption{Variation de la température en fonction du courant ondulatoire pour $C_e$}
+        \end{figure}
+
+        Comme nous avons pu le constater dans le premier tableau (cf. tableau des contraintes), nous avons un courant efficace pour $C_e$ de $I_{eff} = \SI{2{,}2}{\ampere}$. 
+
+        À l'aide du graphe de KSIM, on se rend très vite compte que pour la courbe à $F = \SI{100}{\kilo\hertz}$ (notre fréquence de travail) nous avons une élévation de température très faible. Pour notre cas, dans chaque condensateur, nous avons un courant : $I = \frac{I_{eff}}{3} = \SI{0{,}733}{\ampere}$. Ce qui correspond sur le graphe à une température de \SI{176{,}1}{\milli\celsius}. Les condensateurs pourront donc fonctionner correctement à cette température car ils sont dimensionnés pour.
+
+        La solution retenue est donc la suivante : 3 condensateurs de $\SI{2{,}2}{\micro\farad}$ en parallèle de la marque KEMET.
+
+        \paragraph{Condensateur central $C$ :}
+        Nous avons besoin d'une capacité comprise entre $\SI{1}{\micro\farad}$ et $\SI{2}{\micro\farad}$. Pour faciliter les achats des composants, nous nous sommes donc tournés vers la même référence que le condensateur $C_e$ qui est vendu par bandelette de 10. Ce choix facilite donc nos recherches.
+
+        \paragraph{Condensateur de sortie $C_S$ :}
+        Le travail pour $C_S$ fut le même que précédemment. Une référence a été proposée mais, suite à un retour du professeur, nous avons opté pour une autre référence. La solution choisie est la suivante : trois condensateurs de type électrolytique alu polymère en parallèle de $\SI{47}{\micro\farad}$ supportant $\SI{80}{\volt}$ de la marque PANASONIC. Afin d'améliorer au maximum notre schéma nous avons décidé d'ajouter un condensateur du même type que $C$ et $C_e$ afin de faire chuter l'ESR équivalent et ainsi minimiser les pertes.
+
+        \paragraph{Dimensionnement des inductances :}
+        Étant donné que $L_1$ et $L_2$ sont égales, celles-ci possèdent les mêmes caractéristiques. Pour les dimensionner, nous nous basons sur le tableau des contraintes cité en début de partie :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{Partie MPPT/Tableau des contraintes pour L1 et L2.png}
+            \caption{Tableau des contraintes pour $L_1$ et $L_2$}
+        \end{figure}
+
+        Les deux valeurs qui nous importent sont le courant maximum $I_{max}$ et le courant efficace $I_{eff}$. Si on généralise pour les deux inductances on prendra la valeur maximale à chaque fois : $I_{max} = \SI{10{,}16}{\ampere}$ et $I_{eff} = \SI{6{,}614}{\ampere}$ pour être assuré de couvrir le pire des cas.
+
+        Nos recherches nous ont menés sur des inductances de $\SI{33}{\micro\henry}$.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{Partie MPPT/Datasheet Bourns 33µH.png}
+            \caption{Datasheet de l'inductance Bourns $\SI{33}{\micro\henry}$}
+        \end{figure}
+
+        En regardant la datasheet on peut faire la comparaison directe :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.4\textwidth]{Partie MPPT/Comparaison datasheet et tableau de contrainte.png}
+            \caption{Comparaison Datasheet et tableau de contrainte}
+        \end{figure}
+
+        Après des échanges avec le professeur, nous sommes partis sur d'autres inductances de la marque Bourns :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Datasheet inductance Bourns proposé par le professeur.png}
+            \caption{Datasheet inductance Bourns proposée par le professeur}
+        \end{figure}
+
+        Celle-ci possède une marge de sécurité au niveau des courants efficaces et maximaux supérieure à mon précédent choix. Elle est par conséquent plus appropriée et sûre pour le hacheur SEPIC. En revanche, nous avons observé que sur le site Farnell un problème de livraison allait impacter le projet. Il a donc fallu improviser et changer de référence d'inductance pour en avoir qui sont en stock et surtout dans les temps.
+
+        Notre choix s'est donc tourné vers des inductances Vishay avec les caractéristiques suivantes :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Datasheet de la solution retenue.png}
+            \caption{Datasheet de la solution retenue (Vishay)}
+        \end{figure}
+
+        La marge de sécurité est moindre mais rentre dans notre cahier des charges imposé par le tableau des contraintes.
+
+        \paragraph{Composants supplémentaires :}
+        Pour finir la partie dimensionnement, il a fallu trouver une référence de relais. Ce dernier se placera juste avant la batterie afin d'éviter une surcharge de celle-ci et ainsi l'endommager. Ce relais a été choisi à l'unanimité par le groupe entier afin de pouvoir l'utiliser dans d'autres cas d'applications ce qui permet de faire une commande groupée et ainsi de faciliter les recherches et baisser les coûts. Le reste des composants comme le MOSFET, le driver ou bien les diodes Schottky ont été imposés par le corps enseignant.
+
+        Cette étape de dimensionnement des composants pour passer de la simulation à la réalité était très enrichissante. En effet, non seulement c'était une première, mais surtout cela m'a permis de mieux appréhender les problèmes de caractérisations et de me poser davantage avant d'attaquer un problème de front. La chute de la capacité en fonction de la tension, par exemple, change toute la philosophie de notre dimensionnement et nous mène à des solutions totalement différentes, tout comme les problèmes de stock rencontrés chez les distributeurs.
+
+        Nous avons reporté toutes ces valeurs sur le schéma PSIM pour vérifier son fonctionnement en ajoutant toutes les pertes ($R_{DS(on)}$ du MOSFET, $V_f$ de la diode) et le résultat final était satisfaisant.
+
+        \subsection{Schéma détaillé et PCB}
+        Une fois le dimensionnement terminé, nous pouvons nous concentrer sur la conception physique de notre hacheur. Pour commencer, un brainstorming a eu lieu avec l'équipe chargée de la partie programmation pour discuter et débattre de la disposition des cartes. De cette discussion est sorti le schéma suivant :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Répartition des cartes.png}
+            \caption{Répartition des cartes}
+        \end{figure}
+
+        La partie alimentation est donc découpée en trois parties : une partie PD3 + Filtre, une carte de puissance, et une carte de commande. Notre partie s'est donc tournée sur la conception de la carte du convertisseur ainsi que de sa carte de commande.
+
+        \subsubsection{Carte convertisseur}
+        Notre première ébauche est la suivante. Nous avons d'abord reproduit le schéma de câblage sur Proteus et ensuite nous avons travaillé sur la conception du PCB.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma de câblage, carte puissance première ébauche.png}
+            \caption{Schéma de câblage, carte puissance (1ère ébauche)}
+        \end{figure}
+
+        Il est important de noter l'ajout d'un filtre pour le convertisseur 5V/15V. En effet, en étudiant la documentation technique du convertisseur, nous avons observé que le constructeur recommandait de créer un filtre composé d'une bobine et d'une capacité en entrée.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Filtre issu de la datasheet du convertisseur.png}
+            \caption{Filtre issu de la datasheet du convertisseur}
+        \end{figure}
+
+        \textbf{Bobine filtre, ref : LQH32PN220MN0L} \\
+        Cette référence présente un excellent compromis : elle offre l'inductance requise de $\SI{22}{\micro\henry}$ tout en garantissant une faible résistance série (DCR). Cela permet de limiter les chutes de tension et les pertes par effet Joule en entrée du convertisseur. De plus, son courant de saturation est largement supérieur à la consommation d'entrée du module, évitant tout risque de perte d'inductance en charge.
+
+        \textbf{Capacité filtre, ref : C1206C475M3RACTU} \\
+        Conformément aux préconisations du constructeur pour le filtre EMI Classe A, nous avons choisi une capacité de $\SI{4{,}7}{\micro\farad}$. Notre choix s'est porté sur un condensateur céramique multicouche de chez KEMET. Afin de garantir une bonne fiabilité et de limiter l'effet de perte de capacité sous tension continue, nous avons opté pour un modèle supportant une tension de de $\SI{25}{\volt}$ (pour une utilisation sous $\SI{5}{\volt}$).
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Variation de la capacité en fonction de la tension pour la capacité du filtre.png}
+            \caption{Variation de la capacité en fonction de la tension pour la capacité du filtre}
+        \end{figure}
+
+        \textbf{Capacité de découplage, ref : C3216X7R1H106K160AC} \\
+        Des condensateurs de découplage sont placés au plus près des composants actifs (PIC, drivers) pour filtrer les parasites et stabiliser la tension locale. Notre choix s'est porté sur ce modèle CMS pour plusieurs raisons :
+        \begin{itemize}
+            \item Valeur ($\SI{10}{\micro\farad}$) : Offre un réservoir d'énergie suffisant pour absorber les appels de courant transitoires liés aux commutations rapides.
+            \item Format CMS (1206) : Réduit considérablement l'inductance parasite (ESL), ce qui est indispensable pour un bon filtrage haute fréquence.
+            \item Tension de $\SI{50}{\volt}$ : Limite fortement le phénomène de DC Bias (perte de capacité sous tension continue), garantissant que les $\SI{10}{\micro\farad}$ restent effectifs sous $\SI{5}{\volt}$ ou $\SI{15}{\volt}$.
+            \item Diélectrique X7R : Assure une grande stabilité de la capacité face aux variations de température du système.
+        \end{itemize}
+
+        Nous avons aussi la présence de deux autres valeurs de capacité de découplage, une de $\SI{4{,}7}{\micro\farad}$ et deux de $\SI{100}{\nano\farad}$. Ces deux dernières proviennent directement de la datasheet du driver alimentant notre MOSFET (cf figure ci-dessous) :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Capacité de découplage issue de la datasheet du driver.png}
+            \caption{Capacité de découplage issue de la datasheet du driver}
+        \end{figure}
+
+        Pour la capacité de découplage de $\SI{100}{\nano\farad}$, notre choix s'est tourné vers cette référence : \textbf{C0805C104K5RACTU du Fabricant KEMET}. Cette dernière est conforme aux contraintes en tension et au courant.
+
+        Pour la capacité de découplage de $\SI{4{,}7}{\micro\farad}$, notre choix s'est tourné vers cette référence : \textbf{C1210C475M1R2C7186 du Fabricant KEMET}. Cette dernière est aussi conforme aux contraintes en tension et au courant.
+
+        Ceci conclut donc le choix général effectué par l'ensemble du groupe pour avoir les valeurs de composants "type" du filtre, utilisables pour la quasi-totalité des parties indépendantes du projet. Ceci facilite grandement la commande de composants et permet aussi de travailler l'aspect humain au travers de la communication nécessaire pour adopter cette solution générale.
+
+        \paragraph{Partie PCB :}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Premier PCB Puissance.png}
+            \caption{Premier PCB Puissance}
+        \end{figure}
+
+        Le premier PCB produit comportait de nombreux problèmes :
+        \begin{itemize}
+            \item Les pistes étaient parfois trop petites pour un courant trop important.
+            \item Le placement ainsi que le routage étaient à revoir.
+            \item Certaines pistes étaient sur la couche supérieure ("Top") alors que les composants étaient traversants, ce qui complexifiait grandement la soudure.
+        \end{itemize}
+
+        Avec tous ces axes d'amélioration, nous avons pu produire un schéma de câblage plus clair et un PCB plus pratique et, surtout, fonctionnel.
+
+        \textbf{Câblage retenu :}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma de câblage final de la puissance.png}
+            \caption{Schéma de câblage final de la puissance}
+        \end{figure}
+
+        Ce schéma utilise des symboles normalisés des composants, ce qui facilite sa compréhension. La répartition des composants à l'intérieur des blocs a été réfléchie pour s'approcher au plus possible du rendu final sur le PCB et ainsi simplifier la connexion entre les cartes.
+
+        \textbf{PCB partie puissance :}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/PCB final partie puissance.png}
+            \caption{PCB final partie puissance}
+        \end{figure}
+
+        Ce PCB est plus clair mais surtout plus pratique. La présence des T-blocs alignés va permettre un câblage plus simple sur le panneau de configuration. La présence d'un plan de masse permet de réduire le nombre de pistes et d'obtenir un agencement de la carte plus épuré. Les pistes jugées trop petites ont été remplacées par des zones en cuivre. Ces dernières pourront ainsi supporter de forts courants sans ajouter de contraintes thermiques. L'isolement entre les pistes a été ajusté afin d'éviter tout arc électrique.
+
+        En revanche, le MOSFET ainsi que la diode sont amenés à chauffer lors de la mise sous tension du système. Il faudrait donc réfléchir à faire de la place autour de ces composants pour ajouter des dissipateurs thermiques, soulageant ainsi la carte. Les deux inductances doivent aussi être changées car ces dernières correspondent aux anciennes retenues, qui ne sont plus disponibles à cause de la livraison. À noter aussi la suppression de $C_e$ (la capacité du filtre) qui sera placée sur la carte du redresseur PD3, ainsi que l'ajout de sérigraphies pour bien se repérer et éviter toute confusion lors de la soudure des composants.
+
+        En conclusion, ce PCB est très proche de sa version finale mais nécessite quelques petits ajustements avant d'être envoyé en impression.
+
+        \subsubsection{Carte de commande}
+        Ci-dessous se trouve le schéma de câblage final de la partie commande. Cette solution est le fruit d'un travail commun avec l'équipe qui s'occupe de la partie programmation. Ainsi, avec mon binôme, nous avons pu avoir une meilleure compréhension sur l'implémentation des capteurs en amont et en aval du MPPT, pour ensuite implémenter l'algorithme MPPT.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Premier schéma de cablâge partie commande.png}
+            \caption{Premier schéma de câblage partie commande}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Premier PCB partie commande.png}
+            \caption{Premier PCB partie commande}
+        \end{figure}
+
+        On pouvait observer sur ce PCB de nombreux problèmes :
+        \begin{itemize}
+            \item Des connexions en surface "Top" sur des borniers traversants, ce qui rend la soudure compliquée (comme pour la partie puissance).
+            \item La présence de composants CMS sur les deux faces, ce qui rend impossible la soudure via le four CMS (les composants n'auraient pas pu se fixer correctement).
+            \item Les capacités de découplage qui ne se situaient pas au plus proche de l'endroit où elles devaient agir.
+        \end{itemize}
+
+        Ces problèmes ont pu être identifiés en débattant avec l'équipe s'occupant de la programmation. Ceci a permis de concevoir une deuxième version du PCB avant de l'envoyer au professeur :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/V2 PCB partie commande.png}
+            \caption{V2 PCB partie commande}
+        \end{figure}
+
+        Sur cette version, nous avons corrigé tous les problèmes cités, avec notamment l'ajout d'un plan de masse en bottom (BOTTOM) et d'un plan d'alimentation en top (TOP). Les composants CMS ont tous été placés sur la même face. Les problèmes étant résolus, nous avons envoyé le PCB au professeur. Cette observation, ainsi que la rigueur de travail apportée à ce PCB, nous a valu un retour positif. Il ne manquait plus que l'ajout d'un filtre nécessaire au bon fonctionnement du PIC et que le PCB soit terminé.
+
+        Voici le schéma de câblage et le PCB final de notre carte de commande de la MPPT, avec l'ajout du filtre ainsi qu'une capacité de découplage au niveau de l'alimentation :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma de câblage final de la partie commande.png}
+            \caption{Schéma de câblage final de la partie commande}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            %\includegraphics[width=0.8\textwidth]{...}
+            \caption{PCB final de la partie commande}
+        \end{figure}
+
+        \subsection{Algorithme de contrôle MPPT}
+        L'objectif principal du MPPT est de maximiser en permanence l'extraction d'énergie issue de la source (l'éolienne), en s'assurant que le système opère systématiquement à son Point de Puissance Maximale (MPP). Concrètement, le dispositif mesure la tension et le courant en sortie de la source d'énergie pour calculer la puissance instantanée et ajuster le fonctionnement du convertisseur en conséquence.
+
+        \paragraph{Rôle et utilité dans le système :}
+        Le MPPT n'est pas un composant physique, mais un algorithme logiciel qui agit sur le rapport cyclique ($\alpha$, duty cycle) du hacheur pour remplir trois fonctions critiques :
+        \begin{itemize}
+            \item \textbf{Optimisation :} Ajuster le point de fonctionnement de l'alternateur pour qu'il délivre son maximum de puissance.
+            \item \textbf{Efficacité :} Garantir que chaque watt produit est récupéré malgré les pertes de conversion.
+            \item \textbf{Adaptation :} Faire le lien entre une source fluctuante (l'alternateur) et une charge fixe (la batterie).
+        \end{itemize}
+
+        En résumé : Le MPPT cherche le sommet de la courbe de puissance, là où le produit $P=V \cdot I$ est à son maximum.
+
+        \paragraph{Nécessité pour le projet éolien :}
+        Dans notre configuration, la puissance produite par l'alternateur est extrêmement variable car elle dépend de deux facteurs :
+        \begin{enumerate}
+            \item La vitesse de rotation : directement liée à la force du vent (simulée ou réelle).
+            \item La charge électrique : L'impédance vue par l'alternateur.
+        \end{enumerate}
+
+        Si nous connections la batterie directement à l'alternateur, la tension de cette dernière (environ $\SI{52}{\volt}$) "imposerait" son régime à la génératrice. L'alternateur serait alors bridé et ne travaillerait presque jamais à son régime optimal, entraînant une perte d'énergie massive. Le MPPT permet donc d'isoler ces deux éléments et de laisser la génératrice tourner à sa vitesse idéale pour un vent donné.
+
+        \paragraph{Implémentation et fonctionnement :}
+        Pour notre projet, le contrôle est assuré par le microcontrôleur qui suit une boucle itérative :
+        \begin{enumerate}
+            \item \textbf{Mesure :} Acquisition des données de $V_{in}$ (tension après le redresseur) et $I_{in}$ (courant fourni).
+            \item \textbf{Calcul :} Détermination de la puissance instantanée via la formule $P = V_{in} \cdot I_{in}$.
+            \item \textbf{Action :} L'algorithme modifie très légèrement le rapport cyclique du convertisseur.
+            \item \textbf{Observation :}
+            \begin{itemize}
+                \item Si la puissance augmente, l'algorithme continue dans la même direction de modification.
+                \item Si elle diminue, il inverse la direction de la modification.
+            \end{itemize}
+        \end{enumerate}
+
+        \paragraph{Choix de l'algorithme : Perturb and Observe (P\&O)}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Tableau de comparaison des algorithmes.png}
+            \caption{Tableau de comparaison des algorithmes MPPT}
+        \end{figure}
+
+        \paragraph{Implémentation du code (Script C pour PSIM) :}
+        Voici notre schéma PSIM, nous avons ajouté ici un capteur de courant ainsi qu'un capteur de tension en amont de notre bloc de commande. Ce qui nous permettra de calculer la puissance à l'intérieur et de faire varier le rapport cyclique.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma PSIM en BF.png}
+            \caption{Schéma PSIM en Boucle Fermée}
+        \end{figure}
+
+        Voici le code implémenté pour pouvoir asservir le système :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Programme de l_algorithme P&O.png}
+            \caption{Programme de l'algorithme P\&O}
+        \end{figure}
+
+        On lance la simulation sur PSIM et nous obtenons les graphes suivants :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Graphes obtenus après implémentation de l'algorithme P&O.png}
+            \caption{Graphes obtenus après implémentation de l'algorithme P\&O}
+        \end{figure}
+
+        On observe que l'algorithme MPPT parvient à extraire une puissance moyenne stable de $\SI{322}{\watt}$ en ajustant le rapport cyclique par paliers successifs (courbe $\alpha$). Cette simulation valide la capacité du filtre numérique à isoler la puissance utile pour garantir une poursuite du point de puissance maximale (MPP) sans instabilité.
+

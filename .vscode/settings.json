@@ -1,0 +1,15 @@
+{
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.fls": true,
+    "**/*.lof": true,
+    "**/*.log": true,
+    "**/*.out": true,
+    "**/*.synctex.gz": true,
+    "**/*.toc": true
+  },
+  "search.exclude": {
+    "**/%OUTDIR%/**": true
+  }
+}

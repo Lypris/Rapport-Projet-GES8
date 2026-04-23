@@ -1,0 +1,385 @@
+% --- Chapitre 5 : Supervision et Interface ---
+\chapter{Supervision et Interface Utilisateur}
+
+    \section{Microcontrôleur et Bus CAN}
+        Pour connaître l'état du système en temps réel, il est nécessaire que le système communique avec la Raspberry Pi. Cette communication est assurée par le protocole CAN.
+
+        \subsection{Solution technique}
+            \subsubsection{Microcontrôleur}
+            Pour le microcontrôleur, notre choix s'est porté vers un microcontrôleur de la famille PIC : le PIC18F27Q84. Ce choix est justifié par la présence d'un contrôleur CAN directement intégré au composant, ce qui permet de réduire le nombre de composants sur la carte. De plus, ce PIC est capable de générer des signaux PWM qui seront utiles pour la commande de certains convertisseurs de l'installation. Enfin, il comporte des convertisseurs Analogique/Numérique d'une précision de 12 bits, ce qui nous assure de pouvoir effectuer des mesures précises de tension et de courant.
+
+            Bien que le contrôleur CAN soit déjà présent dans le PIC, il est nécessaire d'y ajouter un transcepteur CAN. Le MCP2561 remplira ce rôle.
+
+            \subsubsection{Filtre LC}
+            La stabilité du microcontrôleur PIC18F est critique, particulièrement dans un environnement pollué par les commutations haute fréquence du bus CAN. Pour garantir une immunité électromagnétique (CEM) de classe A, un filtre passe-bas du second ordre en structure Pi (CLC) a été dimensionné pour isoler le rail d'alimentation.
+
+            La fréquence de coupure théorique ($f_c$) du filtre formé par l'inductance ($L_s$) et la capacité de découplage ($C_p$) est calculée par :
+            \begin{equation*}
+                f_c = \frac{1}{2\pi\sqrt{L_s C_p}}
+            \end{equation*}
+
+            Au-delà de cette fréquence, le filtre présente une pente d'atténuation de -40 dB/décade, offrant une forte réjection pour les hautes fréquences.
+
+            Avec ce dimensionnement, nous avons choisi les références suivantes pour remplir nos besoins :
+
+            \begin{tableau}[H]
+                \scriptsize
+                \centering
+                \begin{tabular}{|c|c|p{4cm}|p{5cm}|}
+                    \hline
+                    \textbf{Composant} & \textbf{Référence} & \textbf{Caractéristiques Clés} & \textbf{Rôle} \\ \hline
+                    Inductance ($L_s$) & Murata LQH32PN100MN0L & 10 \textmu H, 1.2A, Blindage résine & Barrière série HF et stockage d'énergie \\ \hline
+                    Capacité ($C_p$) & TDK C3216X7R1H106K & 10 \textmu F, X7R, 50V (Boîtier 1206) & Réservoir d'énergie (Tank Capacitor) \\ \hline
+                    Capacité local & KEMET C0805C104K5RAC & 100 nF, X7R, ESL ultra-faible & Découplage local haute vitesse \\ \hline
+                \end{tabular}
+                \caption{Composants du filtre de l'alimentation du microcontrôleur}
+            \end{tableau}
+
+            Pour la réalisation du circuit imprimé, nous prenons soin de placer le condensateur de découplage au plus proche des broches d'alimentation du microcontrôleur pour maximiser son effet.
+
+        \subsection{Dimensionnement des composants}
+            Pour assurer une bonne communication sur le bus CAN, le PIC doit fonctionner sur une fréquence d'oscillation fixe et précise. Cette précision ne peut être assurée par l'horloge interne du PIC. L'ajout d'un oscillateur externe est donc nécessaire. Après étude de la fiche technique de notre PIC, le type d'oscillateur à utiliser est un oscillateur de Pierce, composé d'un quartz et de deux condensateurs. En particulier, dans notre cas, nous utilisons un quartz de 20 MHz. Notre quartz possède une capacité de charge $C_L$ de 18 pF et on estime la capacité parasite $C_S$ à 7 pF. On sait ainsi que, dans le cadre d'un oscillateur de Pierce, on a :
+            \begin{equation*}
+                C_1 = C_2 = 2(C_L - C_S) = 2(18 - 7) = 22 \text{ pF}
+            \end{equation*}
+
+            La résistance série n'est ici pas utile puisque l'on ne travaille pas avec de faibles niveaux de commande.
+
+        \subsection{Schéma détaillé}
+            On obtient donc le schéma suivant :
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\linewidth]{Partie Microcontroleur et Bus CAN/01_Schéma_PIC_periphérique.pdf}
+                \caption{Schéma du PIC et de ses périphériques}
+                \label{fig:pic_periph}
+            \end{figure}
+
+            Il comporte :
+            \begin{itemize}
+                \item Le PIC18F27Q84
+                \item Le filtre en PI pour l'alimentation du PIC :
+                \begin{itemize}
+                    \item Une bobine de 10 \textmu H
+                    \item Deux condensateurs de 100 nF et 10 \textmu F
+                \end{itemize}
+                \item Le MCP2561 :
+                \begin{itemize}
+                    \item La résistance de 120 $\Omega$ du bus CAN
+                    \item La capacité de découplage (100 nF)
+                \end{itemize}
+                \item L'oscillateur externe :
+                \begin{itemize}
+                    \item Un quartz de 20 MHz
+                    \item Deux condensateurs de 22 pF
+                \end{itemize}
+                \item Les broches permettant la programmation via le PicKit :
+                \begin{itemize}
+                    \item Une résistance de pull-up de 10 k$\Omega$ entre le 5V et le MasterClear
+                \end{itemize}
+                \item Une LED de contrôle avec sa résistance de 150 $\Omega$
+            \end{itemize}
+
+        \subsection{Structuration de la Matrice CAN}
+            Le réseau doit supporter les échanges entre le superviseur et les différents nœuds PIC. Pour optimiser la bande passante du bus (fixée à 500 kbit/s), nous avons dimensionné les échanges selon les matrices suivantes.
+            
+            % TODO: Insérer la matrice d'échanges générale ici s'il y en a une
+            
+            Par ailleurs, il existe en informatique deux façons de gérer et stocker des données représentées sur plusieurs octets :
+            \begin{itemize}
+                \item \textbf{Little-Endian} : L'octet de poids faible (le moins significatif) est stocké à l'adresse mémoire la plus basse. C'est le format utilisé par l'architecture Intel x86 et, dans notre cas, par les microcontrôleurs PIC.
+                \item \textbf{Big-Endian} : L'octet de poids fort (le plus significatif) est stocké à l'adresse mémoire la plus basse. C'est le format traditionnellement utilisé par les réseaux (comme TCP/IP).
+            \end{itemize}
+
+            Nous avons opté pour le format Little-Endian pour les données du bus. Ce choix permet une correspondance directe avec la mémoire des microcontrôleurs PIC (architecture 8-bit/16-bit), évitant ainsi des opérations de retournement d'octets coûteuses en ressources lors du traitement en C.
+
+            Nous avons ainsi pu établir une matrice d'adresses et des matrices de données pour normaliser notre communication.
+
+            \subsubsection{Matrice d'adresses}
+                Pour la matrice d'adresses, le choix s'est fait en fonction de la catégorie et de l'importance de la donnée échangée comme ci-dessous :
+                
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{Partie Microcontroleur et Bus CAN/02_adresses.png}
+                    \caption{Matrice d'adresses du bus CAN}
+                    \label{fig:matrice_adresses}
+                \end{figure}
+                
+
+            \subsubsection{Matrices de données}
+                En ce qui concerne les matrices de données, nous avons pu identifier deux formats différents : l'un informant sur l'état des équipements, l'autre transférant les données récupérées par les capteurs de tension et de courant. Nous avons donc établi les trames de données ci-dessous :
+                
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{Partie Microcontroleur et Bus CAN/03_donnees.png}
+                    \caption{Matrice de données du bus CAN}
+                    \label{fig:matrice_donnees}
+                \end{figure}
+                
+
+
+    \section{Carte capteur}
+        L'objectif de la carte capteur est de, comme son nom l'indique, regrouper les composants de mesure, notamment ceux pour le courant et la tension. Dans le cadre de ce projet, nous avons besoin de capteurs en amont de chaque équipement. Plus précisément, en amont des convertisseurs associés, pour mesurer la consommation de chaque équipement en prenant en compte les pertes liées à la conversion d'énergie.
+
+        \subsection{Solution technique}
+            L'idée principale de cette carte capteur est la généralisation. Entre autres, nous voulons concevoir une seule carte, facilement adaptable pour tous les types de courant et de tension. C'est sur ce principe que nous avons conçu notre carte et choisi nos composants.
+
+            \subsubsection{Emplacement dans le système}
+                Nos cartes capteurs sont conçues pour se connecter sur la carte relais. Ce choix nous permet de simplifier la conception des cartes convertisseurs, qui ne nécessitent ainsi pas de ports adaptés. D'autant plus que, plus tôt on mesure le courant et la tension dans le système, plus on connaît la consommation réelle.
+                
+                En termes de connectique, le choix s'est tourné vers un connecteur bord de carte. Ce choix technique nous permet d'éviter les fils, mais aussi de n'acheter qu'un seul composant au lieu de deux. En effet, la carte capteur sera directement adaptée pour venir se brancher sur les connecteurs placés sur la carte relais.
+
+            \subsubsection{Capteur de courant}
+                Le choix technique du capteur de courant devra respecter deux critères importants. Premièrement, ce capteur devra exister en plusieurs versions de différents ampérages avec la même empreinte (pour des cartes universelles). Deuxièmement, il devra nous assurer la sécurité du système (autrement dit, une isolation galvanique).
+
+                Le choix s'est ainsi tourné vers un capteur à effet Hall. Cette technologie utilise le champ magnétique créé par le courant lors de son passage dans un conducteur. Une différence de potentiel, proportionnelle au courant, en est alors déduite par l'intermédiaire d'un semi-conducteur sensible à ce champ.
+                
+                Ce capteur nous assure une isolation galvanique : il n'y a pas de connexion électrique entre les lignes de puissance et les lignes de commande. Cette technologie nous permet aussi de limiter les pertes (peu de puissance est dissipée sur la ligne de courant fort).
+
+            \subsubsection{Capteur de tension}
+                Comme pour le capteur de courant, les principaux critères de sélection de la technologie du capteur sont :
+                \begin{itemize}
+                    \item La possibilité de mesurer différentes tensions avec un même capteur.
+                    \item Assurer une isolation galvanique entre la partie puissance et la partie commande.
+                    \item Limiter les pertes liées à la mesure.
+                \end{itemize}
+
+                Pour ce faire, notre choix s'est tourné vers l'utilisation d'un optocoupleur. Cette technologie utilise une LED alimentée par la partie puissance (où l'on réalise la mesure), qui va émettre une intensité lumineuse proportionnelle à la tension. Cette luminosité est ensuite mesurée par un phototransistor, ce qui permet de renvoyer une tension image de la tension mesurée. L'utilisation de la lumière comme moyen de transport de l'information garantit l'isolation électrique du système.
+
+        \subsection{Dimensionnement des composants}
+            \subsubsection{Capteur de courant}
+                Pour les capteurs de courant, nous avons sélectionné la famille ACS723 de chez ALLEGRO Microsystems. Cette famille de capteurs à effet Hall est disponible dans un large choix d'ampérages, tous adoptant le même boîtier (même empreinte). Ce choix nous permet donc de concevoir une carte capteur universelle (il nous suffit de souder le capteur adéquat).
+                
+                Au vu des contraintes de courant du système, nous nous sommes tournés vers deux références de la gamme ACS723 : 
+                \begin{itemize}
+                    \item L'ACS723LLCTR-05AB-T (5A bidirectionnel) : utilisé pour des courants inférieurs à 5A (ports USB, alimentation des microcontrôleurs et lumières). La capacité de détection bidirectionnelle n'est ici pas indispensable, mais la disponibilité des composants nous l'a imposé.
+                    \item L'ACS723LLCTR-20AU-T (20A unidirectionnel) : utilisé pour tous les courants supérieurs à 5A (MPPT, rice cooker, réfrigérateur).
+                \end{itemize}
+
+                Ces capteurs nous permettent d'obtenir une sensibilité de 400 mV/A pour la version 5A et de 200 mV/A pour la version 20A.
+                
+                En suivant les recommandations du constructeur, une capacité de découplage de 100 nF est placée entre l'alimentation et la masse, et une autre de 10 nF sert de filtre en sortie du capteur.
+
+            \subsubsection{Capteur de tension}
+                L'optocoupleur choisi est un 4N35, voici le schéma de son câblage avec les composants que nous allons utiliser : 
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\linewidth]{Partie Capteur/01_Cablage Optocoupleur.png}
+                    \caption{Schéma de l'optocoupleur 4N35}
+                    \label{fig:schema_optocoupleur}
+                \end{figure}
+
+                Pour utiliser ce composant, nous avons trois éléments à dimensionner.
+                Premièrement, la résistance $R_1$ a pour rôle de protéger la LED interne de l'optocoupleur. D'après la fiche technique du constructeur, le courant nominal dans la LED est de 10 mA. Nous devons donc dimensionner $R_1$ en fonction de la tension à mesurer. Par exemple, si la tension à mesurer est d'environ 48V, nous utiliserons une résistance de 4,8 k$\Omega$ (car $48 / 4800 = 0,01\text{ A}$). Les tensions nominales de notre installation étant autour de 48V et 24V, nous utiliserons respectivement des résistances de 4,8 k$\Omega$ et 2,4 k$\Omega$.
+
+                Deuxièmement, la résistance $R_2$ permet au microcontrôleur de convertir le courant traversant le phototransistor en une tension image exploitable. Le phototransistor se comporte comme un robinet qui laisse passer plus ou moins de courant en fonction de la luminosité perçue. Connecté au 5V, le courant de saturation est défini par la résistance $R_2$ selon la loi d'Ohm : $I_{sat} = \frac{V_{CC}}{R_2}$. Plus la résistance $R_2$ est grande, plus le courant de saturation du transistor sera faible et vite atteint lorsque la luminosité augmente. Ainsi, après différents tests expérimentaux, nous avons choisi une résistance $R_2$ de 680 $\Omega$, offrant une plage de fonctionnement de 16V sur laquelle l'optocoupleur demeure approximativement linéaire.
+
+                Enfin, la diode Zener a pour fonction de décaler la zone linéaire du capteur aux voisinages des tensions attendues. Nous plaçons une diode Zener en série avec la LED pour que le circuit ne soit passant qu'à partir de sa tension d'avalanche. Par exemple, la tension venant de la batterie pouvant varier entre 40V et 56V, nous utiliserons une diode Zener de 40V. Le montage conduira uniquement au-delà de cette tension. Combiné à la dynamique de 16V définie par $R_2$, nous pourrons mesurer des tensions comprises entre 40V et 56V. De même, pour une tension autour de 24V, nous emploierons une diode Zener de 16V.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{Partie Capteur/02_Caractéristique_Optocoupleur.png}
+                    \caption{Caractéristique expérimentale de l'optocoupleur 4N35 avec les composants choisis}
+                    \label{fig:caracteristique_optocoupleur}
+                \end{figure}
+                
+
+                Nous sommes conscients que ce choix pose problème si les tensions deviennent inférieures aux seuils fixés par les diodes Zener (qui induiront un signal nul en sortie). Or, les risques que les tensions de l'installation chutent en dehors de ces plages tout en maintenant le système opérationnel sont minimes. Nous avons donc privilégié la précision de la mesure (en restreignant la plage dynamique autour de la tension nominale) plutôt qu'une mesure très large et imprécise.
+
+        \subsection{Schéma détaillé et PCB}
+            On obtient donc le schéma suivant :
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\linewidth]{Partie Capteur/03_Schéma_carte_capteurs.pdf}
+                \caption{Schéma détaillé de la carte capteurs}
+                \label{fig:schema_carte_capteurs}
+            \end{figure}
+
+            Avec :
+            \begin{itemize}
+                \item Les composants relatifs au PIC (voir partie V.A.2)
+                \item Le capteur de courant :
+                \begin{itemize}
+                    \item La capacité de découplage de 100 nF
+                    \item La capacité de charge de 10 nF
+                \end{itemize}
+                \item Le capteur de tension :
+                \begin{itemize}
+                    \item La résistance de protection $R_1$
+                    \item La résistance de pull-down $R_2$
+                    \item La diode Zener
+                \end{itemize}
+                \item Le bornier type connecteur bord de carte
+            \end{itemize}
+
+            En ce qui concerne le PCB, nous devions respecter plusieurs contraintes. Tout d'abord, il doit pouvoir s'enficher dans les connecteurs bord de carte présents sur la carte relais (détaillée dans la partie suivante). En suivant les préconisations du connecteur, nous avons ainsi pu concevoir l'empreinte de la carte pour garantir un bon ajustement.
+            
+            Ensuite, la carte ne doit pas être trop large. En effet, placée verticalement, une carte trop large viendrait gêner l'intégration d'autres éléments. Nous avons donc privilégié une forme rectangulaire tout en hauteur.
+            
+            Pour le routage, nous avons choisi de placer les composants traversants sur l'envers de la cible, à l'inverse des composants CMS. Par ailleurs, nous avons positionné les broches du PICKIT en haut de la carte pour en faciliter l'accès, autorisant ainsi un programmation sans débrancher la carte.
+
+
+    \section{Carte relais}
+        \subsection{Solution technique}
+            Pour notre installation, nous avons décidé de regrouper sur la même carte : les fusibles de protection, les relais utilisés pour le délestage de l'installation, les cartes capteurs pour chaque équipement et le capteur de tension dédié à la batterie. Centraliser la majorité des mesures et protections sur une carte unique permet de simplifier considérablement le routage et de minimiser le câblage global du boîtier électronique.
+
+        \subsection{Dimensionnement des composants}
+            Sur cette carte, nous retrouvons des porte-fusibles (référence : \href{https://fr.farnell.com/schurter/0751-0110/fuse-clip-5x20mm-pcb-mount/dp/1453528}{\textbf{0751.0110}}) en ligne pour la protection de chaque branche de l'installation. Nous avons fait le choix de porte-fusibles cylindriques au format 5x20 mm pour des raisons d'encombrement, de coût, et de standardisation du format.
+
+            La référence des relais choisis est : \href{https://fr.farnell.com/te-connectivity-potter-brumfield/ojs-sh-105hef-00000/power-relay-spst-no-5vdc-16a-tht/dp/3776345}{\textbf{OJS-SH-105HEF,00000}}. Les relais ont été choisis pour être pilotés en 5V, exploitant directement le rail d'alimentation distribué dans l'installation (ce qui évite de rajouter une conversion DCDC supplémentaire). Côté puissance (contacts), ce relais est capable de couper jusqu'à 16A, alors que l'ensemble de nos équipements ne devrait pas consommer plus de 10A, ce qui représente une marge de sécurité robuste à l'ouverture de pleine charge.
+
+            Le pilotage de ces relais n'est pas possible en connexion directe depuis les broches de sortie du microcontrôleur PIC, qui ne délivrent pas suffisamment de courant. L'utilisation d'un circuit intégré de commande ("driver") est nécessaire. Ces derniers agissent comme des interrupteurs commandés aptes à supporter le courant requis par la bobine du relais. La référence retenue pour ce montage est le  \href{https://fr.farnell.com/on-semiconductor/sznud3124lt1g/driver-charge-inductive-aec-q101/dp/2774634}{\textbf{SZNUD3124LT1G}} en CMS.
+
+            La carte relais accueille également des connecteurs encartables (référence : \href{https://fr.rs-online.com/web/p/connecteurs-de-bord-de-carte/7188245}{\textbf{7-5530843-5}}, connecteur de bord de carte à 12 broches) pour les cartes capteurs. Chaque broche est spécifiée pour supporter jusqu'à 3A. En mettant en parallèle 3 contacts, nous disposons d'une liaison de 9A, par laquelle la carte capteur prélèvera et injectera le courant de puissance. Les contacts restants achemineront le bus CAN et l'alimentation 5V des dites cartes.
+
+            Enfin, un dernier microcontrôleur PIC (disposant de sa circuiterie détaillée dans la partie V.A.3) anime cette carte principale afin de gérer la communication CAN vers la Raspberry Pi et l'actionnement en temps réel des relais. On y retrouve également le capteur de tension de charge globale de la batterie.
+
+        \subsection{Schéma détaillé et PCB}
+            Voici le schéma de câblage de cette carte relais :   
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\linewidth]{Partie Carte Relais/01_Schéma Carte Relais.pdf}
+                \caption{Schéma de câblage de la carte relais}
+                \label{fig:schema_carte_relais}
+            \end{figure}
+
+            Pour le routage de la carte, nous avons mis un point d'honneur à respecter les contraintes usuelles (isolement galvanique, largeur de pistes proportionnée aux courants prévus, plan de masse). Afin de faciliter son assemblage selon les moyens matériels de notre atelier pédagogique, nous avons maximisé l'usage de composants conventionnels ou de taille standardisée pour les CMS.
+            
+           \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie Carte Relais/02_PCB carte relais.png}
+            \caption{PCB de la carte relais}
+            \label{fig:pcb_carte_relais}
+           \end{figure}
+           
+
+    \section{Interface de commande de l'éclairage}
+        \subsection{Rôle et cahier des charges}
+            La carte de commande de l'éclairage constitue un nœud intelligent du bus CAN de l'installation. Son rôle est de piloter quatre lignes d'éclairage indépendantes fonctionnant sous une tension de \textbf{24\,V}, avec un courant nominal de \textbf{0,2\,A} par voie. Le microcontrôleur superviseur fonctionnant en logique 5V, il est incapable de piloter directement ces charges. L'objectif de cette carte de commande est donc d'assurer l'interface de puissance entre la logique de commande et l'éclairage physique, tout en garantissant la protection du système. Le système doit répondre à trois exigences majeures :
+            \begin{itemize}
+                \item \textbf{Interfaçage de puissance} : Assurer l'interface entre la logique de commande (5\,V) et la puissance (24\,V).
+                \item \textbf{Dualité de commande} : L'utilisateur doit pouvoir agir sur l'éclairage via l'interface tactile (IHM) ou via des interrupteurs physiques.
+                \item \textbf{Robustesse et Protection} : Le système doit être protégé contre les courts-circuits et les perturbations électromagnétiques induites par les commutations de puissance.
+            \end{itemize}
+
+        
+        \subsection{Solution technique}
+            L'architecture de la carte repose sur quatre blocs fonctionnels principaux, articulés autour d'un microcontrôleur \textbf{PIC18F27Q84} :
+            
+            \begin{enumerate}
+                \item \textbf{Bloc Logique et Communication} : Le microcontrôleur gère la pile protocolaire CAN via un transceiver dédié et assure le traitement des entrées/sorties.
+                \item \textbf{Bloc de Puissance (Driver)} : Un circuit intégré spécifique assure la commutation "High-Side" des charges.
+                \item \textbf{Bloc de Protection et Filtrage} : Mise en place de protections par filtrage d'alimentation CLC.
+                \item \textbf{Bloc d'Entrées Utilisateur} : Interface pour interrupteurs physiques.
+            \end{enumerate}
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\textwidth]{Partie Carte Lumière/01_Schéma Carte Commande Lumiere_V2.pdf}
+                \caption{Schéma Proteus de la carte de commande de l'éclairage}
+                \label{fig:schema_carte_lumiere}
+            \end{figure}
+            
+
+            \subsubsection{Contrôleur de puissance : Relais statique VN340SP-33-E}
+                Pour la commutation, le choix s'est porté sur le driver intelligent à 4 voies \textbf{VN340SP-33-E} (STMicroelectronics). Ce composant monolithique (composant tout intégré) remplace avantageusement les relais mécaniques (encombrement, usure) et les MOSFET (complexité de protection).
+                \begin{itemize}
+                    \item \textbf{Compatibilité logique} : Le suffixe "-33" indique que les entrées de contrôle sont directement compatibles avec les niveaux logiques CMOS 3,3V et 5V du PIC18F, sans nécessiter de circuit d'adaptation.
+                    \item \textbf{Marge de puissance} : Le composant tolère une tension maximale de 36V (compatible avec notre bus 24V) et peut délivrer jusqu'à 1A par voie. Cela offre une marge de sécurité confortable pour alimenter l'éclairage (0,2A).
+                    \item \textbf{Sécurité} : Le driver intègre une protection thermique et une protection contre les courts-circuits.
+            \end{itemize}
+
+            % Insérer ici une figure du VN340SP-33-E avec ses caractéristiques clés
+
+            \subsubsection{Communication CAN}
+                Le bus est géré par le même transceiver que les autres cartes du projet. Une résistance de terminaison de \textbf{120\,$\Omega$} a été intégrée, activable via un cavalier (\textit{jumper}) labellisé \texttt{CAN TERM} en bout de ligne.            
+      
+            
+        \subsection{Schéma détaillé et PCB}
+            La phase de routage (PCB) a fait l'objet de nombreuses modifications liées aux contraintes de fabrication.
+            
+            Initialement, le design intégrait un driver VNI4140K (boîtier PowerSO-24). Cependant, ce composant présente un pas ultra-fin de 0,65 mm. Les machines d'usinage de circuits imprimés disponibles à l'INSA (fraiseuses numériques LPKF) utilisent des outils de coupe d'une largeur minimale de 10th (environ 0,25 mm). Pour garantir l'absence de courts-circuits lors de l'usinage, les règles de conception (DRC - Design Rule Check) imposent une distance d'isolement (Clearance) sécuritaire d'au moins 15th.
+            
+            Pour rendre la carte usinable, nous avons procédé au remplacement du composant par le VN340SP-33-E qui se présente dans un boîtier PowerSO-10.
+            Le driver dispose d'un pad thermique (\textit{Exposed Pad}) situé sous le boîtier. Dans cette architecture "High-Side", ce pad est électriquement relié au potentiel \textbf{VCC (24\,V)}. Sur le PCB, une zone de cuivre étendue reliée au 24\,V a été créée pour dissiper cette chaleur.
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\textwidth]{Partie Carte Lumière/03_PCB.png}
+                \caption{PCB de la carte de commande de l'éclairage}
+                \label{fig:pcb_carte_lumiere}
+            \end{figure}
+            
+
+\subsection{Synthèse des protections}
+    Enfin, pour assurer la sécurité matérielle, chaque sortie vers les lampes est protégée par un fusible calibré en fonction de la section des câbles et de la charge. Des diodes de roue libre sont intégrées au driver pour protéger le circuit contre d'éventuels retours inductifs lors de la coupure de l'éclairage.
+
+
+    \section{Interface Homme Machine}
+        Pour ce projet, la maquette doit être pilotée par une unité centrale, agissant comme le cerveau de la maison. Ici, la solution technique nous était imposée dans le sujet, à savoir un nano-ordinateur (SBC) Raspberry Pi 3B. Ce choix s'explique par plusieurs facteurs : Raspberry est un programme mis en place pour proposer des microcontrôleurs puissants et économiques, et la communauté de projets ainsi que les ressources disponibles sont très vastes. De plus, c'est une carte de développement modulaire qui permet de choisir son système d'exploitation (OS) mais aussi d'ajouter les modules que l'on souhaite. Enfin, ce choix permet de bénéficier d'une puissance de calcul suffisante pour gérer simultanément un serveur de données, une logique de contrôle et une interface graphique en haute résolution.
+
+        \subsection{Solution technique (Architecture matérielle et logicielle)}
+            L'architecture logicielle est décomposée en trois couches distinctes :
+            \begin{itemize}
+                \item \textbf{Couche Bas-niveau} : Le système d'exploitation Raspberry Pi OS gère l'interface matérielle. C'est ici le choix préférentiel, car il s'agit d'un dérivé (\textit{fork}) de Linux spécialement conçu pour les cartes Raspberry Pi. La communication avec le bus CAN est assurée par le démon SocketCAN, qui transforme les signaux provenant du contrôleur MCP2515 en une interface réseau standard. Cela s'apparente à ce que l'on peut retrouver sur un ordinateur classique avec une carte réseau qui gère l'interface avec le bus Ethernet. Pour rappel, un démon (ou \textit{daemon}) sous Linux est un programme d'arrière-plan, sans interface utilisateur directe, qui s'exécute de manière persistante pour gérer des services système ou des tâches automatisées.
+                \item \textbf{Couche Métier (Back-End)} : En informatique, on a pour habitude de séparer le côté serveur et le côté logique (\textit{back}) de la partie visible du programme (\textit{front}). Ici, le côté \textit{back} est géré par le moteur de flux Node-RED, qui permet de centraliser l'intelligence du système. Il décode les trames CAN circulantes, gère les historiques de consommation et exécute les algorithmes de délestage.
+                \item \textbf{Couche Front-End} : L'interface utilisateur est développée avec la bibliothèque React, qui s'utilise avec des langages modernes de développement web comme TypeScript. Contrairement au tableau de bord (\textit{Dashboard}) standard de Node-RED, ce choix offre une flexibilité totale sur le design (\textit{responsive}) et l'ergonomie. Elle est exécutée via le module \texttt{uibuilder}, disponible sur Node-RED, et affichée sur l'écran tactile via un navigateur Chromium configuré en mode Kiosk (plein écran sans bordures).
+            \end{itemize}
+
+            Voici un schéma général de la solution retenue permettant de synthétiser cette partie :
+
+            % TODO: Insérer l'image de l'architecture de communication matérielle et logicielle
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\textwidth]{Partie IHM/01_Synoptique de la chaîne de traitement.png}
+                \caption{Architecture de communication matérielle et logicielle du superviseur}
+                \label{fig:arch_superviseur}
+            \end{figure}
+
+        \subsection{Dimensionnement et Configuration du système}
+            Le dimensionnement de l'IHM ne repose pas sur des puissances électriques, mais sur le dimensionnement des flux de données et la gestion de l'espace d'affichage.
+
+            \subsubsection{Structure sur Node-RED}
+                Node-RED est un outil de développement \textit{low-code}, autrement dit de programmation visuelle basée sur des flux. Son fonctionnement repose sur la manipulation de nœuds (des blocs) interconnectés par des fils permettant d'échanger des messages. La donnée entre dans le bloc par la gauche, subit une transformation, et ressort par la droite.
+
+                Afin d'optimiser la maintenabilité du code et la redondance, l'architecture logicielle a été structurée autour des principes de flux et de sous-flux :
+                \begin{itemize}
+                    \item \textbf{Les Flux} : Ils correspondent aux grandes fonctions du système (ex. : Traitement MPPT, Gestion de l'Éclairage, Délestage) et permettent de compartimenter l'exécution.
+                    \item \textbf{Les Sous-flux} : Les opérations de décodage complexes ou répétitives ont été encapsulées dans des sous-flux personnalisés. Cette approche orientée objet permet d'instancier une fonction modulaire plusieurs fois (par exemple, la conversion de deux octets en un entier) sans surcharger l'interface de développement.
+                \end{itemize}
+
+                Chaque flux représente un onglet dans l'interface. Chaque onglet permet de rassembler toutes les informations concernant un seul sujet. Le sous-flux, quant à lui, est un groupe de nœuds. L'interface propose un bon nombre de nœuds qui peuvent être reliés entre eux pour former des fonctions complexes. Une fois ces fonctions établies, le groupe de nœuds peut être compressé pour que la fonction n'apparaisse que sous la forme d'un seul et unique nœud. Ces sous-flux peuvent être utilisés pour définir une fonction se répétant plusieurs fois, permettant ainsi de ne la définir qu'une seule fois.
+
+                Afin de bien définir l'organisation de la programmation sur Node-RED, nous avons réalisé un schéma semblable à un organigramme :
+
+                % TODO: Insérer l'image du schéma/organigramme Node-RED
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{Partie IHM/02_Organigramme Node RED.png}
+                    \caption{Organisation de la programmation sur Node-RED}
+                    \label{fig:orga_nodered}
+                \end{figure}
+
+                Sur ce schéma, les blocs représentent les flux, autrement dit les différents onglets. Nous pouvons y voir les données qui arrivent et sortent de ces flux ainsi que les fonctions qui y sont définies pour assurer le pilotage intelligent de l'installation.
+
+            \subsubsection{Protocole de sécurité}
+                Par défaut, l'environnement de développement Node-RED est ouvert sur le réseau local, il n'est donc pas sécurisé. Les informations sont publiques et peuvent facilement être interceptées et compromises. C'est pourquoi il est impératif de prévenir toute intrusion ou modification non autorisée, en sécurisant notre système selon deux axes distincts :
+                \begin{itemize}
+                    \item Le chiffrement des données (HTTPS).
+                    \item La sécurisation de l'éditeur.
+                \end{itemize}
+
+                Tout d'abord, il est important de protéger les données qui circulent sur le réseau. Par défaut, Node-RED communique via le protocole HTTP. Dans cette configuration, les échanges transitent en texte clair. Une personne malveillante connectée au même réseau pourrait donc facilement intercepter ces paquets de données et les lire. L'activation du protocole HTTPS permet de créer un tunnel chiffré entre le navigateur de l'utilisateur et la Raspberry Pi.
+
+                Ensuite, les onglets créés sur Node-RED restent quand même publics. Ainsi, toute personne ayant accès à l'adresse IP de la Raspberry Pi pourrait accéder à l'éditeur et apporter des modifications au projet, voire le supprimer. Il est donc essentiel de sécuriser l'accès à l'éditeur Node-RED avec un identifiant et un mot de passe pour prévenir toute modification non autorisée du flux de travail. Pour cela, nous utilisons le protocole SSH afin de prendre le contrôle de la console de commande directement depuis un ordinateur personnel. Nous avons alors pu modifier le fichier \texttt{settings.js} de Node-RED afin d'y ajouter le mot de passe préalablement haché. Nous avons généré une empreinte sécurisée du mot de passe voulu pour éviter les piratages : dans le fichier n'apparaît donc que l'empreinte, le mot de passe n'étant pas directement visible.
+
+            \subsubsection{Interface Utilisateur}
+                En ce qui concerne l'interface utilisateur, l'IHM locale est contrainte par les dimensions physiques de l'écran tactile intégré à la maquette : dans notre cas, un Raspberry Pi Touch Display 2 de 5 pouces. Une étude ergonomique préliminaire a permis d'évaluer la latence tactile, la précision de pointage et la visualisation générale sur un petit écran. Ces tests nous ont permis de définir les choix définitifs en ce qui concerne l'architecture de l'interface. Par exemple, nous avons déterminé qu'il serait plus simple et plus efficace de mettre en place des boutons fléchés pour naviguer entre chaque page plutôt qu'un balayage avec le doigt (\textit{swipe}), jugé trop imprécis sur ce type de dalle.
+
+                L'application est structurée autour de deux modes d'exploitation, conformément au cahier des charges :
+                \begin{itemize}
+                    \item \textbf{Mode Habitant (Simplifié)} : Offre une vue macroscopique du système (charge globale, état de la batterie, disponibilité des équipements).
+                    \item \textbf{Mode Expert (Diagnostic)} : Permet la supervision en temps réel des grandeurs électriques brutes (tension/courant via les tableaux définis en Partie 1) et le forçage manuel des relais, utile lors de la maintenance ou des essais techniques.
+                \end{itemize}
+

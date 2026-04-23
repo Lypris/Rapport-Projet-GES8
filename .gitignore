@@ -1,0 +1,15 @@
+# Python virtual env
+.venv/
+
+# LaTeX build artifacts (all reports)
+**/*.aux
+**/*.fdb_latexmk
+**/*.fls
+**/*.lof
+**/*.log
+**/*.out
+**/*.synctex.gz
+**/*.toc
+
+# Generated build folders
+**/%OUTDIR%/
