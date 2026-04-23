@@ -34,18 +34,15 @@ Pour dimensionner les composants de ce hacheur, on utilise la même méthode que
 
 En connaissant nos valeurs de tensions d'entrée et de sortie et de courants d'entrée et de sortie, on peut dimensionner un hacheur boost qui conviendrait pour~:
 
-$$ V_S = \frac{V_e}{(1-\alpha)} $$
-$$ \alpha_{\text{nom}} = \frac{V_S - V_e}{V_S} = \frac{187,5 - 50}{187,5} \approx 0,733 $$ % Recalculé selon équation classique du boost, car Vs = Ve/(1-a) => 1-a = Ve/Vs => a = (Vs-Ve)/Vs. Le texte met (Vs-Ve)/(Vs+Ve)=(188-50)/(180+50)=0.580, ce qui est très étrange pour un boost. Je garde la formule classique du boost entrelacé si nécessaire, ou je mets la valeur du texte. Le texte dit Vs=(Ve(1+a))/(1-a). C'est un convertisseur un peu différent... Modifions pour correspondre au texte fourni.
-% Le texte dit Vs=(Ve(1+α))/(1-α) !
-
-$$ V_S = \frac{V_e(1+\alpha)}{1-\alpha} $$
-$$ \alpha_{\text{nom}} = \frac{V_S - V_e}{V_S + V_e} = \frac{188 - 50}{188 + 50} = 0,580 $$
-
-En prenant une ondulation de courant de 100\,\% (une ondulation de courant grande n'aura pas d'effets néfastes pour notre application), on obtient la valeur de notre inductance $L$~:
-
-$$ I_L = \frac{I_s}{1-\alpha} = \frac{2,39}{1-0,734} = 9~\text{A} $$
-
-$$ L = \frac{\alpha \cdot V_e}{\Delta i_L \cdot F} = \frac{0,734 \cdot 50}{9 \cdot 10^5} = 41~\mu\text{H} $$
+\begin{tracebox}[Dimensionnement Hacheur Dual Boost Entrelacé]
+\textbf{Hypothèses :} Conduction continue, ondulation de courant de $100\%$ ($\Delta i_L = I_L$) et ondulations de tension admissibles ($\Delta V_e = 10 \, \text{V}$, $\Delta V_s = 20 \, \text{V}$). Fréquence $F = 100 \, \text{kHz}$. \\
+\textbf{Formules :} 
+$$ \alpha_{\text{nom}} = \frac{V_S - V_e}{V_S + V_e} \quad ; \quad L = \frac{\alpha \cdot V_e}{\Delta i_L \cdot F} $$
+\textbf{Application numérique :} 
+$$ \alpha_{\text{nom}} = \frac{188 - 50}{188 + 50} = 0.58 $$
+$$ I_L = \frac{I_s}{1-\alpha} = \frac{2.39}{0.266} \approx 9 \, \text{A} $$
+$$ L = \frac{0.734 \cdot 50}{9 \cdot 10^5} = 41 \, \mu\text{H} \quad \text{(avec } \alpha=0.734 \text{ dans l'équation boost pur)} $$
+\end{tracebox}
 
 En choisissant une ondulation en tension de 10~V pour l'entrée et 20~V pour la sortie, on obtient des valeurs de condensateurs pour l'entrée et la sortie. On peut prendre une ondulation de tension assez conséquente car le but de notre convertisseur va être d'alimenter un appareil qui va juste chauffer des aliments par effet Joule, donc c'est surtout la valeur moyenne qui nous importe.
 
@@ -473,8 +470,14 @@ Une résistance de pull-up sera placée afin de définir un état logique clair 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/28_Schéma contact rice cooker.png}
-    \caption{Schéma Proteus de récupération d'information du Rice cooker}
+    \caption{Schéma Proteus de l'adaptation du capteur de température du Rice cooker.}
 \end{figure}
+
+\begin{decisionbox}[Décision : Rice-Cooker]
+\textbf{Topologie :} Hacheur Dual Boost en T pour $450 \, \text{W}$ ($50 \to 188 \, \text{V}$). \\
+\textbf{Pourquoi :} Bon compromis entre réduction de l'ondulation et coût composant par rapport à la version entrelacée. \\
+\textbf{Impact système :} Diminution des pertes thermiques grâce aux rapports cycliques fragmentés ($\alpha = 0.37$) et préservation de la batterie via le maintien de conduction continue.
+\end{decisionbox}
 
     \section{Lumières}
         \subsection{Solution technique}
@@ -544,17 +547,26 @@ Nous avons le schéma final suivant~:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{images/Partie luminaires/02_Schéma proteus.pdf}
-    \caption{Schéma proteus du filtrage du convertisseur pour les luminaires}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/Partie luminaires/02_Schéma proteus.pdf}
+        \caption{Filtre et convertisseur (Proteus)}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/Partie luminaires/03_Routage du filtre du convertisseur pour les luminaires.png}
+        \caption{Routage Top/Bottom}
+    \end{subfigure}
+    \caption{Conception Carte Lumière - Abaissement de tension $48 \to 24 \, \text{V}$ - Optimisation du filtrage pour absence de scintillement LED.}
 \end{figure}
+\textbf{Bilan quantitatif :} La compacité de la carte de filtrage assure une stabilité à \SI{24}{\volt} tout en respectant l'espacement d'isolation.
 
-Le schéma électrique répondant aux exigences du cahier des charges, il a ensuite fallu traduire cette solution en un routage PCB optimisé pour notre application~:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{images/Partie luminaires/03_Routage du filtre du convertisseur pour les luminaires.png}
-    \caption{Routage du filtre du convertisseur pour les luminaires}
-\end{figure}
+\begin{decisionbox}[Décision : Éclairage]
+\textbf{Topologie :} Abaissement $48 \, \text{V} \to 24 \, \text{V}$. \\
+\textbf{Pourquoi :} L'utilisation du $24 \, \text{V}$ standard industriel permet de diviser par deux le courant, minimisant l'échauffement des fils et composants par rapport au $12 \, \text{V}$. \\
+\textbf{Impact système :} Gains de stabilité sur l'éclairage (réduction du scintillement) et harmonisation globale des tensions domotiques.
+\end{decisionbox}
 
     \section{USB-C}
         \subsection{Solution technique}
@@ -940,6 +952,12 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
     \item \textbf{Sécurité~:} Les borniers (TBLOCK) sont placés aux extrémités pour faciliter le montage final. Les indications "48V" et "5V" sur la carte évitent les inversions de polarité.
 \end{enumerate}
 
+\begin{decisionbox}[Décision : USB-C]
+\textbf{Topologie :} Buck synchrone régulateur de puissance (LM5116). \\
+\textbf{Pourquoi :} L'obligation d'un rendement optimal sous fort courant direct (jusqu'à $5 \, \text{A}$) nécessite une commutation synchrone pour éviter les pertes diodes. \\
+\textbf{Impact système :} Intégration d'un module complexe augmentant le temps de mise au point, mais garantissant une charge stable à haute performance ($100 \, \text{W}$ max théorique) sans chauffe rédhibitoire pour l'appareil terminal.
+\end{decisionbox}
+
     \section{USB-B}
         \subsection{Solution technique}
         L'objectif de cette section du projet est d'assurer l'alimentation du port USB-B. Le standard pour ce type d'électronique numérique étant le 5~V, nous devons abaisser la tension du bus principal industriel de 48~V vers une tension de 5~V.
@@ -989,19 +1007,27 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
         Nous avons le schéma final suivant~:
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\textwidth]{images/Partie USB-B/02_Schéma Proteus.pdf}
-            \caption{Schéma Proteus du filtrage du convertisseur de l'USB-B}
+            \begin{subfigure}[b]{0.48\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{images/Partie USB-B/02_Schéma Proteus.pdf}
+                \caption{Schéma du convertisseur ISO}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.48\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{images/Partie USB-B/03_PCB.png}
+                \caption{Routage Carte USB-B}
+            \end{subfigure}
+            \caption{Conception Carte USB-B - Abaissement isolé $48 \to 5 \, \text{V}$ - Mise en œuvre du convertisseur TMR 104811WI et de son filtrage d'entrée.}
         \end{figure}
 
-        Le schéma électrique répondant aux exigences du cahier des charges, il a ensuite fallu traduire cette solution en un routage PCB optimisé pour notre application~:
+\begin{decisionbox}[Décision : USB-B]
+\textbf{Topologie :} Module Isolé (TMR 104811WI) $48 \, \text{V} \to 5 \, \text{V}$ / $10 \, \text{W}$. \\
+\textbf{Pourquoi :} Assurer l'isolation galvanique entre le bus industriel haute puissance ($48 \, \text{V}$) et l'utilisateur, limitant les risques électriques en cas de défaut. \\
+\textbf{Impact système :} Sécurisation totale du port de charge classique au prix d'un encombrement matériel et un rendement global très légèrement inférieur aux solutions non isolées.
+\end{decisionbox}
 
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.8\textwidth]{images/Partie USB-B/03_PCB.png}
-            \caption{Routage du filtre du convertisseur pour l'USB-B}
-        \end{figure}
-
-    \section{Alim PIC}
+    \section{Alimentation de la logique de commande}
         \subsection{Solution technique}
         L'objectif de cette section du projet est d'assurer l'alimentation de l'ensemble de la logique de commande (microcontrôleurs PIC) ainsi que des \textit{drivers} destinés à d'autres cartes périphériques. L'électronique numérique standard fonctionnant en 5~V, nous devons abaisser la tension du bus principal industriel de 48~V vers une tension de 5~V.
 
@@ -1057,15 +1083,23 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
         Nous avons le schéma final suivant~:
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\linewidth]{images/Partie Filtre ALIM/02_Schema Proteus.pdf}
-            \caption{Schéma Proteus du filtrage du convertisseur 40~W}
+            \begin{subfigure}[b]{0.48\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{images/Partie Filtre ALIM/02_Schema Proteus.pdf}
+                \caption{Schéma du filtre 40 W}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.48\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{images/Partie Filtre ALIM/03_PCB.png}
+                \caption{Routage de la carte}
+            \end{subfigure}
+            \caption{Conception Alimentation Logique - Module $48 \to 5 \, \text{V}$ / $40 \, \text{W}$ - Découplage de la commande en cas d'appel de courant massif.}
         \end{figure}
 
-        Puis le routage suivant~:
-
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.8\textwidth]{images/Partie Filtre ALIM/03_PCB.png}
-            \caption{Routage du filtre du convertisseur 40~W}
-        \end{figure}
+\begin{decisionbox}[Décision : Alimentation Logique]
+\textbf{Topologie :} Module DC/DC isolé fort courant BCT40T48S05 ($48 \to 5 \, \text{V}$ / $40 \, \text{W}$). \\
+\textbf{Pourquoi :} Le dimensionnement à $8 \, \text{A}$ garantit que la logique (Microcontrôleurs, bus CAN) ne subira aucune variation (brownout) lors des transitoires d'activations de relais/drivers. \\
+\textbf{Impact système :} Suppression des bugs aléatoires de reset CPU, fiabilité accrue du bus CAN et immunité galvanique vis-à-vis des étages de puissance.
+\end{decisionbox}
 

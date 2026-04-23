@@ -1,6 +1,37 @@
 % --- Chapitre 3 : Partie Alimentation ---
 \chapter{Alimentation}
 
+\section*{Conventions et Notations}
+Afin de garantir la cohérence scientifique du rapport, les notations suivantes sont rigoureusement appliquées dans l'ensemble de ce document :
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Symbole} & \textbf{Désignation} & \textbf{Unité (SI)} \\
+        \hline
+        $V, U$ & Tension continue & \si{\volt} (Volts) \\
+        \hline
+        $v(t), u(t)$ & Tension instantanée & \si{\volt} (Volts) \\
+        \hline
+        $I, I_{moy}$ & Courant continu ou moyen & \si{\ampere} (Ampères) \\
+        \hline
+        $I_{eff}$ & Courant efficace (RMS) & \si{\ampere} (Ampères) \\
+        \hline
+        $\alpha$ & Rapport cyclique (Hacheur) / Angle d'amorçage & - (sans dimension) / \si{\radian} \\
+        \hline
+        $P, P_{cond}, P_{tot}$ & Puissance & \si{\watt} (Watts) \\
+        \hline
+        $R_{th}$ & Résistance thermique & \si{\celsius\per\watt} \\
+        \hline
+        $F$ & Fréquence de découpage & \si{\hertz} (Hertz) \\
+        \hline
+        $L, C$ & Inductance, Capacité & \si{\henry}, \si{\farad} \\
+        \hline
+    \end{tabular}
+    \caption{Tableau centralisé des notations et unités}
+\end{table}
+Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour les composants de précision géométrique ou fréquentielle.
+
     \section{Redresseur PD3 (Convertisseur AC/DC)}
         \subsection{Solution technique}
         L'alternateur fournit en sortie une tension alternative, alors que notre système nécessite une tension continue. Les redresseurs, qui assurent la transformation de l'énergie alternative en énergie continue, constituent l'une des solutions les plus courantes parmi les convertisseurs statiques. Cette conversion est essentielle pour obtenir une source de tension continue à partir de notre alimentation alternative.
@@ -19,7 +50,7 @@
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie PD3/Représentation des redresseurs commandés.png}
-            \caption{Représentation des redresseurs commandés}
+            \caption{Redresseurs commandés en monophasé - Fonctionnement théorique - Contrôle de la tension moyenne via l'angle $\alpha$.}
             \label{fig:redresseurs_commandés}
         \end{figure}
         
@@ -44,17 +75,13 @@
         En raison de leur simplicité de fonctionnement, de leur fiabilité et de leur faible coût, les redresseurs à diodes sont très largement utilisés dans les systèmes de conversion d'énergie où la régulation de la tension de sortie n'est pas indispensable.
 
         \subsubsection{Choix du type de convertisseur}
-        Pour convertir la tension alternative produite par l'alternateur en tension continue, deux solutions principales peuvent être envisagées : l'utilisation d'un redresseur commandé à thyristors (SCR) ou d'un redresseur non commandé à diodes.
+        \label{sec:choix_convertisseur}
+        Deux solutions se dégagent pour la conversion AC/DC : le redresseur à thyristors ou à diodes. Le premier permet d'ajuster finement la tension, nécessitant une commande complexe. Le second, robuste et économique, ne permet pas de régler la tension de sortie mais fournit un lissage brut de l'alternatif.
 
-        Le redresseur commandé permet d'ajuster la tension continue de sortie en agissant sur l'angle d'amorçage des thyristors. Cette solution offre un meilleur contrôle de la tension appliquée à la batterie et permet d'optimiser sa charge en fonction de son état. Toutefois, la mise en œuvre d'un tel dispositif nécessite un circuit de commande complexe ainsi qu'une régulation active afin d'éviter les phénomènes de surcharge ou de sous-charge de la batterie.
+        Une caractérisation de l'alternateur entre 500 tr/min et 750 tr/min indique une tension efficace à vide variant de \SI{120}{\volt} à \SI{213}{\volt}, et une tension en charge s'établissant entre \SI{39.2}{\volt} et \SI{56.0}{\volt} (aux environs de 700 tr/min). Les niveaux en charge demeurant compatibles avec l'étage de conversion DC/DC situé en aval (Hacheur SEPIC) qui fera office de régulateur de tension et de charge batterie, l'usage d'un pont commandé n'est pas impératif. La solution retenue est donc le pont à diodes non commandées (PD3) pour la fiabilité et la simplicité structurelle.
 
-        À l'inverse, le redresseur non commandé, généralement réalisé sous forme de pont de diodes, est une solution beaucoup plus simple à mettre en œuvre. Il permet de convertir directement la tension alternative en tension continue, mais sans possibilité de régulation de la tension de sortie.
-
-        Afin de déterminer la solution la plus adaptée à notre système, nous avons étudié l'alternateur dans notre plage de fonctionnement, comprise entre 500 tr/min et 750 tr/min. Les mesures réalisées montrent que la tension efficace à vide de l'alternateur varie entre \SI{120}{\volt} et \SI{213}{\volt}. En condition de charge, la tension dépend de la vitesse de rotation et de la charge appliquée et se situe, par exemple, entre \SI{39.2}{\volt} et \SI{56.0}{\volt} pour une vitesse d'environ 700 tr/min.
-
-        Ces valeurs étant compatibles avec la plage de tension nécessaire pour alimenter l'étage de conversion et charger la batterie via le convertisseur DC/DC, l'utilisation d'un redresseur commandé ne s'avère pas indispensable. Le contrôle et l'adaptation de la tension seront en effet assurés par le convertisseur DC/DC piloté par l'algorithme MPPT, placé en aval du redresseur.
-
-        Ainsi, afin de privilégier une architecture plus simple, plus robuste et plus économique, nous avons choisi d'utiliser un redresseur non commandé à diodes pour la conversion AC/DC de la tension fournie par l'alternateur.
+        \subsection{Retour de conception et choix matériel}
+        Lors des phases d'évaluation du système, plusieurs contraintes ont été observées guidant les choix constructifs détaillés dans cette section (dimensionnement, composants, dissipation). En pratique, observer les courants transitoires induits a conduit à préférer un fonctionnement hybride séparant les conversions sur des PCBs distincts pour minimiser l'influence thermique des diodes sur le régulateur MPPT. Ainsi le PD3 est physiquement séparé de l'étage SEPIC.
 
         \subsubsection{Les trois types de montages redresseurs}
         Pour obtenir une tension continue, on redresse un ensemble de $q$ tensions alternatives, d'ordinaire supposées sinusoïdales et formant un système polyphasé équilibré ($q$ est le nombre de phases). Ces tensions peuvent être les tensions aux bornes d'un alternateur. Généralement, elles sont fournies par le réseau monophasé ou, plus souvent, par le réseau triphasé, d'ordinaire par l'intermédiaire d'un transformateur.
@@ -94,7 +121,7 @@
                 \end{subfigure}
             \end{center}
 
-            \caption{Les trois types de montages redresseurs pour une source triphasée}
+            \caption{Topologies des montages redresseurs triphasés - Théorie de la conversion AC/DC - Le montage PD3 offre la plus faible ondulation résiduelle.}
             \label{fig:pd3_abc}
         \end{figure}
 
@@ -124,7 +151,7 @@
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie PD3/Caractéristique courant-tension diode Schottky.png}
-            \caption{Caractéristique courant-tension directe instantanée typique d'une diode Schottky (extrait de la fiche technique du composant)}
+            \caption{Caractéristique $I(V)$ - Diode Schottky Vishay V35PW22HM3 sous $T_j=125^\circ\text{C}$ - Extraction des paramètres thermiques $V_0$ et $R_D$.}
             \label{fig:caractéristique_diode}
         \end{figure}
         
@@ -147,7 +174,7 @@
         \begin{figure}[H]
             \centering
             %\includegraphics[width=0.8\textwidth]{Partie PD3/Courants_diodes_PD3.png}
-            \caption{Résultats de simulation - courants dans les diodes du pont PD3}
+            \caption{Chronogrammes des courants - Simulation PSIM en charge nominale - Estimation de $I_{eff}$ et $I_{moy}$ pour le dimensionnement thermique.}
             \label{fig:courants_diodes}
         \end{figure}
         
@@ -177,7 +204,7 @@
         \begin{figure}[H]
             \centering
             \includegraphics[width=1\textwidth]{Partie PD3/Caractéristiques thermiques V35PW22.png}
-            \caption{Caractéristiques thermiques de la diode (extrait de la fiche technique du composant)}
+            \caption{Valeurs types thermiques - Diode Schottky Vishay V35PW22HM3 - Extraction de $R_{thJM}$ pour valider l'impact de l'échauffement de jonction.}
             \label{fig:caractéristiques_thermiques}
         \end{figure}
         
@@ -224,15 +251,7 @@
         Les porte-fusibles ont été sélectionnés en fonction des dimensions des fusibles retenus, garantissant ainsi une bonne tenue mécanique et un contact électrique fiable.
 
         \subsection{Schéma détaillé et PCB}
-        Après la phase de dimensionnement des différents composants, nous sommes passés à la conception du schéma électrique sous Proteus. Nous avons fait le choix d'intégrer le redresseur triphasé PD3 ainsi que le filtre LC sur une même carte afin de regrouper les éléments de conversion et de filtrage de l'énergie. Cette approche permet de limiter les interconnexions et d'améliorer la compacité du système. Une seconde carte sera dédiée à l'étage MPPT, assurant ainsi une séparation fonctionnelle entre la conversion AC/DC et la gestion de l'optimisation de puissance.
-
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.8\textwidth]{Partie PD3/Schéma proteus PD3.png}
-            \caption{Schéma électrique du redresseur PD3 et de son filtre LC (extrait de Proteus)}
-            \label{fig:schéma_pd3}
-        \end{figure}
-        
+        Après la phase de dimensionnement des différents composants, la conception du schéma électrique a été menée sous Proteus. L'intégration du redresseur triphasé PD3 et du filtre LC sur une carte unique regroupe les éléments de conversion et de filtrage, ce qui raccourcit les boucles de courant et améliore la compacité globale. Une carte distincte est dédiée à l'étage MPPT, séparant ainsi l'acquisition AC de la régulation de puissance.
 
         Le circuit comporte :
         \begin{itemize}
@@ -249,11 +268,23 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\textwidth]{Partie PD3/PCB PD3.png}
-            \caption{PCB du redresseur PD3 et de son filtre LC (extrait de Proteus)}
-            \label{fig:pcb_pd3}
+            \begin{subfigure}[b]{0.48\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{Partie PD3/Schéma proteus PD3.png}
+                \caption{Schéma électronique Proteus}
+                \label{fig:schéma_pd3}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.48\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{Partie PD3/PCB PD3.png}
+                \caption{Routage du PCB (Top \& Bottom)}
+                \label{fig:pcb_pd3}
+            \end{subfigure}
+            \caption{Conception Carte PD3 - Saisie et routage Proteus - Optimisation de la symétrie et de la thermique avec de larges plans de dissipation.}
+            \label{fig:pd3_conception_complete}
         \end{figure}
-        
+        \textbf{Bilan quantitatif :} La carte mesure approximativement $100 \times \SI{80}{\milli\meter}$, offrant une dissipation thermique suffisante pour évacuer les $\SI{6}{\watt}$ de pertes par conduction sans excéder une température critique de \SI{80}{\celsius}.
 
         Le PCB regroupe l'ensemble du redresseur triphasé PD3 ainsi que le filtre en sortie. Les six diodes sont disposées de manière symétrique afin d'équilibrer les chemins de courant et de faciliter le routage. Des pistes larges ont été utilisées pour supporter les courants élevés et limiter les pertes ohmiques.
 

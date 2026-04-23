@@ -276,6 +276,38 @@
     bottom=2mm
 }
 
+% Macro pour décision retenue
+\newtcolorbox{decisionbox}[1][Décision retenue]{
+    colback=conclusionbg,
+    colframe=conclusioncolor,
+    coltitle=white,
+    colbacktitle=conclusioncolor,
+    title=#1,
+    fonttitle=\bfseries,
+    arc=3mm,
+    boxrule=1pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+% Macro pour Trace de raisonnement standardisé
+\newtcolorbox{tracebox}[1][Dimensionnement du convertisseur]{
+    colback=calculbg,
+    colframe=gray,
+    coltitle=white,
+    colbacktitle=gray,
+    title=#1,
+    fonttitle=\bfseries,
+    arc=3mm,
+    boxrule=1pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
 \usepackage{enumitem}               % Pour personnaliser les listes
 
 % --- Configuration des listes ---

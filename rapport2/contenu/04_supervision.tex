@@ -83,8 +83,6 @@
         \subsection{Structuration de la Matrice CAN}
             Le réseau doit supporter les échanges entre le superviseur et les différents nœuds PIC. Pour optimiser la bande passante du bus (fixée à 500 kbit/s), nous avons dimensionné les échanges selon les matrices suivantes.
             
-            % TODO: Insérer la matrice d'échanges générale ici s'il y en a une
-            
             Par ailleurs, il existe en informatique deux façons de gérer et stocker des données représentées sur plusieurs octets :
             \begin{itemize}
                 \item \textbf{Little-Endian} : L'octet de poids faible (le moins significatif) est stocké à l'adresse mémoire la plus basse. C'est le format utilisé par l'architecture Intel x86 et, dans notre cas, par les microcontrôleurs PIC.
@@ -329,7 +327,6 @@
 
             Voici un schéma général de la solution retenue permettant de synthétiser cette partie :
 
-            % TODO: Insérer l'image de l'architecture de communication matérielle et logicielle
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=1\textwidth]{Partie IHM/01_Synoptique de la chaîne de traitement.png}
@@ -353,7 +350,6 @@
 
                 Afin de bien définir l'organisation de la programmation sur Node-RED, nous avons réalisé un schéma semblable à un organigramme :
 
-                % TODO: Insérer l'image du schéma/organigramme Node-RED
                 \begin{figure}[H]
                     \centering
                     \includegraphics[width=1\textwidth]{Partie IHM/02_Organigramme Node RED.png}
