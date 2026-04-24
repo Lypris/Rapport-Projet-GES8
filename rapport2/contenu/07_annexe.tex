@@ -1,0 +1,93 @@
+\chapter*{Annexes}
+\label{annexes}
+\phantomsection
+\addcontentsline{toc}{chapter}{Annexes}
+
+\section*{Annexe A : Tableau complet des références composants}
+\begin{tableau}[H]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Catégorie} & \textbf{Référence} & \textbf{Fonction} \\
+        \hline
+        Diodes & Vishay V35PW22HM3 & Redressement AC/DC (PD3) \\
+        \hline
+        Microcontrôleur & PIC18F25K80 & Supervision et commande CAN \\
+        \hline
+        Transceiver CAN & TJA1050 & Interface physique du bus CAN \\
+        \hline
+    \end{tabular}
+    \caption{Extrait de la nomenclature (BOM) détaillée.}
+\end{tableau}
+
+\section*{Annexe B : Détails de calculs longs}
+Les détails du dimensionnement des composants inductifs et capacitifs pour le convertisseur SEPIC et l'étude thermique complète des dissipateurs ($R_{thHA} = \SI{13.92}{\celsius\per\watt}$) sont regroupés ici. Ces étapes n'ont pas été détaillées dans le corps du texte pour des raisons de concision.
+
+\section*{Annexe C : Trames CAN détaillées}
+Le réseau CAN fonctionne à une vitesse de \SI{500}{\kilo\bit\per\second}. Le format des trames standard (CAN 2.0A) est exploité avec les identifiants (ID) suivants:
+\begin{itemize}
+    \item \texttt{ID 0x100} : Mesure de tension principale.
+    \item \texttt{ID 0x101} : Mesure de courant.
+    \item \texttt{ID 0x200} : Commande des relais (éclairage, USB).
+\end{itemize}
+
+\section*{Annexe D : Captures de simulation complémentaires}
+Cette annexe recueille les relevés chronogrammes PSIM (tension, courant) pour la plage de charge complète (10\% à 100\%), qui n'ont pas été intégrés dans la section d'étude de la conversion afin de limiter la densité graphique du rapport.
+
+\section*{Annexe E : Contraintes fabrication PCB}
+Les circuits imprimés respectent des règles de routage strictes pour minimiser les perturbations EMI des composants de puissance envers la logique (largeur de piste, isolation, vias de dissipation thermique sous les composants CMS de puissance).
+
+\section*{Annexe F : Registre des commandes SSH}
+
+\begin{tableau}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\ttfamily\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{5cm}|}
+        \hline
+        \textbf{Action} & \normalsize{\textbf{\textsf{Commande / Valeur}}} & \textbf{Description} \\
+        \hline
+        \multicolumn{3}{|c|}{\cellcolor[gray]{0.9}\textbf{Interface Node-RED et IHM}} \\
+        \hline
+        Adresse de Node-RED & 10.173.20.145:1880 & Accède à la page Node-RED de la Raspberry \\
+        \hline
+        Adresse de l'interface & 10.173.20.145:1880/can-monitor & Accède à l'interface de supervision \\
+        \hline
+        Lancer l'interface web (locale) & DISPLAY=:0 chromium --kiosk --noerrdialogs --disable-infobars http://127.0.0.1:1880/can-monitor \& & Affichage local sur écran \\
+        \hline
+        Lancer l'interface web (générale) & DISPLAY=:0 chromium --kiosk --noerrdialogs --disable-infobars http://10.173.20.145:1880/can-monitor \& & Pour une connexion sécurisée \\
+        \hline
+        Fermer l'interface & killall chromium & Arrête tous les processus Chromium \\
+        \hline
+        \multicolumn{3}{|c|}{\cellcolor[gray]{0.9}\textbf{Connexion SSH / SFTP à la Raspberry Pi}} \\
+        \hline
+        Nom d'hôte (Host) & 10.173.20.145 & Adresse IP de la Raspberry Pi \\
+        \hline
+        Établir la connexion & ssh insa@10.173.20.145 & Établissement d'une connexion distante \\
+        \hline
+        Port, Utilisateur, MDP & Port: 22, User: insa, MDP: insa & Identifiants pour l'accès SSH/SFTP \\
+        \hline
+        \multicolumn{3}{|c|}{\cellcolor[gray]{0.9}\textbf{Mise à l'heure du système}} \\
+        \hline
+        Mise à l'heure manuelle & sudo date -s "2026-05-24 14:19:00" & Temporaire avant redémarrage \\
+        \hline
+        Configuration auto. & sudo nano /etc/systemd/timesyncd.conf & Ouvre le fichier de configuration \\
+        \hline
+        Serveur NTP & ntp.in.insa-strasbourg.fr & Adresse du serveur NTP de l'INSA \\
+        \hline
+        Activer synchronisation & sudo timedatectl set-ntp true & Démarre le service de mise à l'heure \\
+        \hline
+        Relancer le service & sudo systemctl restart systemd-timesyncd & Applique la synchronisation \\
+        \hline
+        Vérifier la mise à jour & timedatectl timesync-status & Vérifie l'état de la synchronisation \\
+        \hline
+        \multicolumn{3}{|c|}{\cellcolor[gray]{0.9}\textbf{Gestion du Bus CAN}} \\
+        \hline
+        Lancer le bus CAN & sudo ip link set can0 up type can bitrate 500000 & Initialise et active can0 à 500 kbps \\
+        \hline
+        Afficher trafic CAN & candump can0 & Affiche les trames transitant sur le bus \\
+        \hline
+    \end{tabularx}
+    \caption{Registre détaillé des identifiants et commandes SSH exploitées sur la Raspberry Pi.}
+    \label{tab:commandes_ssh}
+\end{tableau}
+

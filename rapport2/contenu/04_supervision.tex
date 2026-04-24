@@ -50,7 +50,7 @@
             
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=1\linewidth]{Partie Microcontroleur et Bus CAN/01_Schéma_PIC_periphérique.pdf}
+                \includegraphics[width=1\linewidth]{Partie Microcontroleur et Bus CAN/01_Schema_PIC_peripherique.pdf}
                 \caption{Schéma du PIC et de ses périphériques.}
                 \label{fig:pic_periph}
             \end{figure}
@@ -158,7 +158,7 @@
                 L'optocoupleur choisi est un 4N35, voici le schéma de son câblage avec les composants que nous allons utiliser : 
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.6\linewidth]{Partie Capteur/01_Cablage Optocoupleur.png}
+                    \includegraphics[width=0.6\linewidth]{Partie Capteur/01_Cablage_Optocoupleur.png}
                     \caption{Schéma de l'optocoupleur 4N35.}
                     \label{fig:schema_optocoupleur}
                 \end{figure}
@@ -172,7 +172,7 @@
 
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.8\textwidth]{Partie Capteur/02_Caractéristique_Optocoupleur.png}
+                    \includegraphics[width=0.8\textwidth]{Partie Capteur/02_Caracteristique_Optocoupleur.png}
                     \caption{Caractéristique expérimentale de l'optocoupleur 4N35 avec les composants choisis.}
                     \label{fig:caracteristique_optocoupleur}
                 \end{figure}
@@ -184,7 +184,7 @@
             On obtient donc le schéma suivant :
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=1\linewidth]{Partie Capteur/03_Schéma_carte_capteurs.pdf}
+                \includegraphics[width=1\linewidth]{Partie Capteur/03_Schema_carte_capteurs.pdf}
                 \caption{Schéma détaillé de la carte capteurs.}
                 \label{fig:schema_carte_capteurs}
             \end{figure}
@@ -242,7 +242,7 @@
             
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=1\linewidth]{Partie Carte Relais/01_Schéma Carte Relais.pdf}
+                \includegraphics[width=1\linewidth]{Partie Carte Relais/01_Schema_Carte_Relais.pdf}
                 \caption{Schéma de câblage de la carte relais.}
                 \label{fig:schema_carte_relais}
             \end{figure}
@@ -251,7 +251,7 @@
             
            \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\textwidth]{Partie Carte Relais/02_PCB carte relais.png}
+            \includegraphics[width=0.8\textwidth]{Partie Carte Relais/02_PCB_carte_relais.png}
             \caption{PCB de la carte relais.}
             \label{fig:pcb_carte_relais}
            \end{figure}
@@ -279,7 +279,7 @@
 
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=1\textwidth]{Partie Carte Lumière/01_Schéma Carte Commande Lumiere_V2.pdf}
+                \includegraphics[width=1\textwidth]{Partie Carte Lumière/01_Schema_Carte_Commande_Lumiere_V2.pdf}
                 \caption{Schéma Proteus de la carte de commande de l'éclairage.}
                 \label{fig:schema_carte_lumiere}
             \end{figure}
@@ -319,68 +319,4 @@
     Enfin, pour assurer la sécurité matérielle, chaque sortie vers les lampes est protégée par un fusible calibré en fonction de la section des câbles et de la charge. Des diodes de roue libre sont intégrées au driver pour protéger le circuit contre d'éventuels retours inductifs lors de la coupure de l'éclairage.
 
 
-    \section{Interface Homme Machine}
-        Pour ce projet, la maquette doit être pilotée par une unité centrale, agissant comme le cerveau de la maison. Ici, la solution technique nous était imposée dans le sujet, à savoir un nano-ordinateur (SBC) Raspberry Pi 3B. Ce choix s'explique par plusieurs facteurs : Raspberry est un programme mis en place pour proposer des microcontrôleurs puissants et économiques, et la communauté de projets ainsi que les ressources disponibles sont très vastes. De plus, c'est une carte de développement modulaire qui permet de choisir son système d'exploitation (OS) mais aussi d'ajouter les modules que l'on souhaite. Enfin, ce choix permet de bénéficier d'une puissance de calcul suffisante pour gérer simultanément un serveur de données, une logique de contrôle et une interface graphique en haute résolution.
-
-        \subsection{Solution technique (Architecture matérielle et logicielle)}
-            L'architecture logicielle est décomposée en trois couches distinctes :
-            \begin{itemize}
-                \item \textbf{Couche Bas-niveau} : Le système d'exploitation Raspberry Pi OS gère l'interface matérielle. C'est ici le choix préférentiel, car il s'agit d'un dérivé (\textit{fork}) de Linux spécialement conçu pour les cartes Raspberry Pi. La communication avec le bus CAN est assurée par le démon SocketCAN, qui transforme les signaux provenant du contrôleur MCP2515 en une interface réseau standard. Cela s'apparente à ce que l'on peut retrouver sur un ordinateur classique avec une carte réseau qui gère l'interface avec le bus Ethernet. Pour rappel, un démon (ou \textit{daemon}) sous Linux est un programme d'arrière-plan, sans interface utilisateur directe, qui s'exécute de manière persistante pour gérer des services système ou des tâches automatisées.
-                \item \textbf{Couche Métier (Back-End)} : En informatique, on a pour habitude de séparer le côté serveur et le côté logique (\textit{back}) de la partie visible du programme (\textit{front}). Ici, le côté \textit{back} est géré par le moteur de flux Node-RED, qui permet de centraliser l'intelligence du système. Il décode les trames CAN circulantes, gère les historiques de consommation et exécute les algorithmes de délestage.
-                \item \textbf{Couche Front-End} : L'interface utilisateur est développée avec la bibliothèque React, qui s'utilise avec des langages modernes de développement web comme TypeScript. Contrairement au tableau de bord (\textit{Dashboard}) standard de Node-RED, ce choix offre une flexibilité totale sur le design (\textit{responsive}) et l'ergonomie. Elle est exécutée via le module \texttt{uibuilder}, disponible sur Node-RED, et affichée sur l'écran tactile via un navigateur Chromium configuré en mode Kiosk (plein écran sans bordures).
-            \end{itemize}
-
-            Voici un schéma général de la solution retenue permettant de synthétiser cette partie :
-
-            \begin{figure}[H]
-                \centering
-                \includegraphics[width=1\textwidth]{Partie IHM/01_Synoptique de la chaîne de traitement.png}
-                \caption{Architecture de communication matérielle et logicielle du superviseur.}
-                \label{fig:arch_superviseur}
-            \end{figure}
-
-        \subsection{Dimensionnement et Configuration du système}
-            Le dimensionnement de l'IHM ne repose pas sur des puissances électriques, mais sur le dimensionnement des flux de données et la gestion de l'espace d'affichage.
-
-            \subsubsection{Structure sur Node-RED}
-                Node-RED est un outil de développement \textit{low-code}, autrement dit de programmation visuelle basée sur des flux. Son fonctionnement repose sur la manipulation de nœuds (des blocs) interconnectés par des fils permettant d'échanger des messages. La donnée entre dans le bloc par la gauche, subit une transformation, et ressort par la droite.
-
-                Afin d'optimiser la maintenabilité du code et la redondance, l'architecture logicielle a été structurée autour des principes de flux et de sous-flux :
-                \begin{itemize}
-                    \item \textbf{Les Flux} : Ils correspondent aux grandes fonctions du système (ex. : Traitement MPPT, Gestion de l'Éclairage, Délestage) et permettent de compartimenter l'exécution.
-                    \item \textbf{Les Sous-flux} : Les opérations de décodage complexes ou répétitives ont été encapsulées dans des sous-flux personnalisés. Cette approche orientée objet permet d'instancier une fonction modulaire plusieurs fois (par exemple, la conversion de deux octets en un entier) sans surcharger l'interface de développement.
-                \end{itemize}
-
-                Chaque flux représente un onglet dans l'interface. Chaque onglet permet de rassembler toutes les informations concernant un seul sujet. Le sous-flux, quant à lui, est un groupe de nœuds. L'interface propose un bon nombre de nœuds qui peuvent être reliés entre eux pour former des fonctions complexes. Une fois ces fonctions établies, le groupe de nœuds peut être compressé pour que la fonction n'apparaisse que sous la forme d'un seul et unique nœud. Ces sous-flux peuvent être utilisés pour définir une fonction se répétant plusieurs fois, permettant ainsi de ne la définir qu'une seule fois.
-
-                Afin de bien définir l'organisation de la programmation sur Node-RED, nous avons réalisé un schéma semblable à un organigramme :
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=1\textwidth]{Partie IHM/02_Organigramme Node RED.png}
-                    \caption{Organisation de la programmation sur Node-RED.}
-                    \label{fig:orga_nodered}
-                \end{figure}
-
-                Sur ce schéma, les blocs représentent les flux, autrement dit les différents onglets. Nous pouvons y voir les données qui arrivent et sortent de ces flux ainsi que les fonctions qui y sont définies pour assurer le pilotage intelligent de l'installation.
-
-            \subsubsection{Protocole de sécurité}
-                Par défaut, l'environnement de développement Node-RED est ouvert sur le réseau local, il n'est donc pas sécurisé. Les informations sont publiques et peuvent facilement être interceptées et compromises. C'est pourquoi il est impératif de prévenir toute intrusion ou modification non autorisée, en sécurisant notre système selon deux axes distincts :
-                \begin{itemize}
-                    \item Le chiffrement des données (HTTPS).
-                    \item La sécurisation de l'éditeur.
-                \end{itemize}
-
-                Tout d'abord, il est important de protéger les données qui circulent sur le réseau. Par défaut, Node-RED communique via le protocole HTTP. Dans cette configuration, les échanges transitent en texte clair. Une personne malveillante connectée au même réseau pourrait donc facilement intercepter ces paquets de données et les lire. L'activation du protocole HTTPS permet de créer un tunnel chiffré entre le navigateur de l'utilisateur et la Raspberry Pi.
-
-                Ensuite, les onglets créés sur Node-RED restent quand même publics. Ainsi, toute personne ayant accès à l'adresse IP de la Raspberry Pi pourrait accéder à l'éditeur et apporter des modifications au projet, voire le supprimer. Il est donc essentiel de sécuriser l'accès à l'éditeur Node-RED avec un identifiant et un mot de passe pour prévenir toute modification non autorisée du flux de travail. Pour cela, nous utilisons le protocole SSH afin de prendre le contrôle de la console de commande directement depuis un ordinateur personnel. Nous avons alors pu modifier le fichier \texttt{settings.js} de Node-RED afin d'y ajouter le mot de passe préalablement haché. Nous avons généré une empreinte sécurisée du mot de passe voulu pour éviter les piratages : dans le fichier n'apparaît donc que l'empreinte, le mot de passe n'étant pas directement visible.
-
-            \subsubsection{Interface Utilisateur}
-                En ce qui concerne l'interface utilisateur, l'IHM locale est contrainte par les dimensions physiques de l'écran tactile intégré à la maquette : dans notre cas, un Raspberry Pi Touch Display 2 de 5 pouces. Une étude ergonomique préliminaire a permis d'évaluer la latence tactile, la précision de pointage et la visualisation générale sur un petit écran. Ces tests nous ont permis de définir les choix définitifs en ce qui concerne l'architecture de l'interface. Par exemple, nous avons déterminé qu'il serait plus simple et plus efficace de mettre en place des boutons fléchés pour naviguer entre chaque page plutôt qu'un balayage avec le doigt (\textit{swipe}), jugé trop imprécis sur ce type de dalle.
-
-                L'application est structurée autour de deux modes d'exploitation, conformément au cahier des charges :
-                \begin{itemize}
-                    \item \textbf{Mode Habitant (Simplifié)} : Offre une vue macroscopique du système (charge globale, état de la batterie, disponibilité des équipements).
-                    \item \textbf{Mode Expert (Diagnostic)} : Permet la supervision en temps réel des grandeurs électriques brutes (tension/courant via les tableaux définis en Partie 1) et le forçage manuel des relais, utile lors de la maintenance ou des essais techniques.
-                \end{itemize}
 

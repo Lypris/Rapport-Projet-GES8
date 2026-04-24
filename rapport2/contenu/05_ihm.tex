@@ -1,0 +1,159 @@
+% --- Chapitre 5 : Supervision Logicielle ---
+\chapter{Interface Homme-Machine}
+
+\section{Architecture Globale et Application Raspberry Pi}
+    Pour ce projet, la maquette doit être pilotée par une unité centrale, agissant comme le cerveau de la maison. Ici, la solution technique nous était imposée dans le sujet, à savoir un nano-ordinateur Raspberry Pi 3B. Ce choix s'explique par plusieurs facteurs : Raspberry est un programme mis en place pour proposer des microcontrôleurs puissants et économiques, et la communauté de projets ainsi que les ressources disponibles sont très vastes. De plus, c'est une carte de développement modulaire qui permet de choisir son système d'exploitation (OS) mais aussi d'ajouter les modules que l'on souhaite. Enfin, ce choix permet de bénéficier d'une puissance de calcul suffisante pour gérer simultanément un serveur de données, une logique de contrôle et une interface graphique en haute résolution.
+
+    \subsection{Solution technique}
+        L'architecture logicielle est décomposée en trois couches distinctes :
+        \begin{itemize}
+            \item \textbf{Couche Bas-niveau} : Le système d'exploitation Raspberry Pi OS gère l'interface matérielle. C'est ici le choix préférentiel, car il s'agit d'un dérivé (\textit{fork}) de Linux spécialement conçu pour les cartes Raspberry Pi. La communication avec le bus CAN est assurée par le démon SocketCAN, qui transforme les signaux provenant du contrôleur MCP2515 en une interface réseau standard. Cela s'apparente à ce que l'on peut retrouver sur un ordinateur classique avec une carte réseau qui gère l'interface avec le bus Ethernet. Pour rappel, un démon (ou \textit{daemon}) sous Linux est un programme d'arrière-plan, sans interface utilisateur directe, qui s'exécute de manière persistante pour gérer des services système ou des tâches automatisées.
+            \item \textbf{Couche Métier (Back-End)} : En informatique, on a pour habitude de séparer le côté serveur et le côté logique (\textit{back}) de la partie visible du programme (\textit{front}). Ici, le côté \textit{back} est géré par Node-RED, qui permet de centraliser l'intelligence du système sous forme de serveur gérant des flux. Il décode les trames CAN circulantes, gère les historiques de consommation et exécute les algorithmes de délestage.
+
+            \item \textbf{Couche Front-End} : \begin{sloppypar}L'interface utilisateur est développée avec la bibliothèque React, qui s'utilise avec des langages modernes de développement web comme TypeScript. Contrairement au tableau de bord (\textit{Dashboard}) standard de Node-RED, ce choix offre une flexibilité totale sur le design (\textit{responsive}) et l'ergonomie. Elle est exécutée via le module \texttt{uibuilder}, disponible sur Node-RED, et affichée sur l'écran tactile via un navigateur Chromium configuré en mode Kiosk (plein écran sans bordures). Ce choix s'est également offert à nous, car nous avions déjà une expérience préalable avec React et ces technologies.\end{sloppypar}
+        \end{itemize}
+
+        Voici un schéma général de la solution retenue permettant de synthétiser cette partie :
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{Partie IHM/01_Synoptique_de_la_chaine_de_traitement.png}
+            \caption{Architecture de communication matérielle et logicielle du superviseur.}
+            \label{fig:arch_superviseur}
+        \end{figure}
+
+\section{Configuration du Bus CAN et Essais de Communication}
+   Pour mettre en place la communication CAN côté serveur, on commence par la mise en place matérielle et logicielle de la communication CAN entre une Arduino Uno et la Raspberry Pi, ainsi que sur l'intégration et le traitement des données reçues sur notre interface web via Node-RED.
+
+    \subsection{Configuration matérielle du CAN Hat sur la Raspberry Pi}
+        Conformément à la documentation du CAN Hat de la Raspberry Pi, la première étape consiste à éditer le fichier de configuration de démarrage pour y inclure les spécifications nécessaires.
+        Nous avons ouvert le fichier de configuration via la commande : \texttt{sudo nano /boot/firmware/config.txt}.
+
+        Afin d'activer la communication SPI et de définir les paramètres de l'oscillateur du composant MCP2515, nous avons ajouté les deux lignes suivantes à la fin du fichier :
+        \begin{verbatim}
+dtparam=spi=on
+dtoverlay=mcp2515-can0,oscillator=12000000,interrupt=25,spimaxfrequency=2000000
+        \end{verbatim}
+
+        Une fois les modifications sauvegardées, nous avons redémarré la Raspberry Pi avec la commande \texttt{sudo reboot} pour appliquer les changements.
+
+    \subsection{Démarrage de l'interface réseau CAN}
+        Une fois la Pi redémarrée, l'interface réseau doit être activée avec le même débit binaire que l'Arduino, soit 500 kbps. La commande saisie dans le terminal SSH fut :
+        \begin{verbatim}
+sudo ip link set can0 up type can bitrate 500000
+        \end{verbatim}
+
+        Pour confirmer que l'interface était bien active, la commande \texttt{ifconfig} a été utilisée. L'interface \texttt{can0} devait alors apparaître dans la liste des réseaux.
+
+    \subsection{Tests de communication}
+        Cette étape visait à vérifier la bonne transmission des trames entre l'Arduino et la Raspberry Pi.
+        \begin{itemize}
+            \item \textbf{Côté Arduino} : Nous avons branché l'Arduino Uno en USB au PC, puis compilé et téléversé notre code de test (exemple send de la librairie). Il a fallu s'assurer que la bibliothèque "CAN\_BUS\_Shield" de Seeed Studio était bien installée dans l'IDE Arduino. En ouvrant le moniteur série à 115200 bauds, nous avons pu vérifier l'affichage régulier du message : \texttt{CAN BUS sendMsgBuf ok!}.
+            \item \textbf{Côté Raspberry Pi} : Sur la console SSH, nous avons installé les utilitaires de diagnostic CAN via la commande \texttt{sudo apt install can-utils -y}. Nous avons ensuite lancé l'outil de surveillance de trames pour écouter le réseau : \texttt{candump can0}.
+            \item \textbf{Résultat} : On a pu voir s'afficher correctement les trames envoyées dans le terminal, validant ainsi le fonctionnement du câblage et de l'envoi de données.
+        \end{itemize}
+
+\section{Architecture et Traitement sous Node-RED}
+    \subsection{Structure et Décentralisation des Flux}
+        Node-RED est un outil de développement \textit{low-code}, autrement dit de programmation visuelle basée sur des flux. Son fonctionnement repose sur la manipulation de nœuds (des blocs) interconnectés par des fils permettant d'échanger des messages. 
+
+        Au lieu de créer un seul flux gigantesque et illisible, nous avons opté pour une structure \textbf{décentralisée} par onglets, reliés par des ponts invisibles (nœuds \textbf{Link In/Out}).
+        \begin{itemize}
+            \item \textbf{Avantage (Architecture Entonnoir)} : On peut ajouter ou supprimer un appareil (un nouveau PIC sur le bus CAN) en 2 minutes sans risquer de casser le reste du système.
+            \item \textbf{Centralisation IHM} : Un seul point d'entrée pour le nœud \texttt{uibuilder} (React), évitant les conflits d'URL et simplifiant le code Front-End qui reçoit des objets JSON déjà triés par \texttt{id}.
+        \end{itemize}
+
+        Dans Node-RED, il existe trois niveaux de mémoire que nous exploitons :
+        \begin{itemize}
+            \item \textbf{Node} : Visible uniquement par le nœud lui-même.
+            \item \textbf{Flow} : Visible par tous les nœuds d'un même onglet.
+            \item \textbf{Global} : Visible par tous les nœuds de tous les onglets.
+        \end{itemize}
+
+        Afin de bien définir l'organisation de la programmation, nous avons réalisé le schéma suivant :
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=1\textwidth]{Partie IHM/02_Organigramme_Node_RED.png}
+            \caption{Organisation de la programmation sous Node-RED.}
+            \label{fig:orga_nodered}
+        \end{figure}
+
+    \subsection{La Source de Vérité (Context Global)}
+        C'est le cœur de la synchronisation. On ne se base pas sur l'ordre que l'on pense avoir envoyé, mais sur ce que le terrain nous renvoie physiquement.
+        \begin{itemize}
+            \item \textbf{Trame 0x011 (Délestage) \& 0x012 (LEDs)} : Dès qu'un retour d'état arrive, il écrase la valeur précédente dans le \textit{global context}.
+            \item \textbf{Exploitation} : Tous les autres flux viennent interroger cette mémoire partagée pour savoir s'ils doivent continuer à compter de l'énergie ou s'ils doivent afficher une alerte.
+        \end{itemize}
+
+    \subsection{Décodage Physique et Standardisation des Données}
+        Nous avons élaboré un code Arduino capable de générer une valeur de tension fictive. Sur Node-RED, nous avons exploité la librairie \texttt{node-red-contrib-socketcan} et le nœud \texttt{socketcan-out} pour intercepter ces messages. 
+        Pour uniformiser notre traitement entre le matériel et le logiciel, nous avons créé une couche d'abstraction :
+        \begin{itemize}
+            \item \textbf{Parsing CAN} : Utilisation de la fonction Javascript (ex : \texttt{readFloatLE}) depuis le noeud de fonction pour transformer les 8 octets binaires de la trame en valeurs réelles (Volt, Ampère). 
+            \item \textbf{Objets JSON} : Chaque appareil transforme sa donnée brute en un objet standardisé \texttt{\{id, tension, courant, puissance, etat\}}. Cela permet à l'interface React d'être totalement agnostique des détails bas niveau du protocole CAN.
+        \end{itemize}
+
+    \subsection{La Logique d'Agrégation (Calculateur)}
+        Il s'agit du nœud chargé de fournir la "photo instantanée" de la consommation énergétique :
+        \begin{itemize}
+            \item \textbf{Mémoire contextuelle} : Le calculateur maintient un dictionnaire (\texttt{consos}) stockant la dernière puissance connue pour chaque source.
+            \item \textbf{Sommation asynchrone} : Dès qu'un appareil affiche une fluctuation, $P_{total}$ est immédiatement recalculé, garantissant au système une réactivité optimale face aux variations de charge.
+        \end{itemize}
+
+    \subsection{Le Cerveau Énergétique de la Batterie}
+        Le poste accumulateur bénéficie d'une attention logicielle plus poussée. Outre les mesures instantanées, il repose sur des algorithmes prédictifs :
+        \begin{itemize}
+            \item \textbf{Coulomb Counting} : Afin de déterminer la capacité restante en d'obtenir les mAh (milliampère-heure), le noeud réalise une intégration numérique du courant par rapport au temps :
+            \begin{equation}
+                Q(t) = \int I(t) \, dt
+            \end{equation}
+            \item \textbf{Autonomie Utile} : Au-delà d'un simple calcul capacitif, un \textbf{seuil de sécurité critique est fixé à 60\,\% de SoC (soit $48.8\,\text{V}$)}. L'autonomie calculée affiche le temps restant avant d'atteindre ce seuil protecteur pour pallier toute détérioration chimique de la structure Plomb/Acide.
+        \end{itemize}
+
+\section{Pilotage par Priorités et Délestage}
+    Pour prévenir le déclenchement des seuils critiques des batteries, un pilotage intelligent et hiérarchisé du délestage est mis en place :
+    \begin{itemize}
+        \item \textbf{Hystérésis} : Des marges de réactivation et de désactivation ont été paramétrées (coupure initiale à une valeur donnée, puis réactivation retardée à un pourcentage supérieur) afin d’annuler les effets de "pompage" (oscillations intempestives des relais).
+        \item \textbf{Priorisation de l'Energie} : Le système impose une hiérarchie catégorique : \textit{Rice Cooker} > \textit{USB-C} > \textit{Frigo}. Ce triage autorise la coupure des équipements de confort pour préserver l'alimentation vitale.
+        \item \textbf{Optimisation du Bus CAN} : Les ordres de commutation ne transitent par le CAN qu'en cas de variation d'état vérifiée, allégeant de ce fait la saturation réseau.
+    \end{itemize}
+
+    \subsubsection{Paramétrages Intégrés au Superviseur}
+    L'intégralité du pilotage repose sur une base capacitaire de la batterie plomb de 200 000 mAh (maximal) et d'un Seuil Critique de 120 000 mAh correspondants aux fameux $60\%$. Le tableau ci-dessous indique le calendrier des actions automatiques de délestage selon le niveau de charge évalué :
+
+    \begin{tableau}[H]
+        \centering
+        \begin{tabular}{|l|c|c|c|}
+            \hline
+            \textbf{Équipement} & \textbf{Seuil de Coupure} & \textbf{Seuil de Réactivation (+ Hystérésis)} & \textbf{Priorité} \\
+            \hline
+            \hline
+            Rice Cooker & $< 160\,000$ mAh (50\%) & $> 168\,000$ mAh (60\%) & 1 (Moins vital) \\
+            \hline
+            USB-C & $< 140\,000$ mAh (25\%) & $> 148\,000$ mAh (35\%) & 2 \\
+            \hline
+            Frigo & $< 128\,000$ mAh (10\%) & $> 136\,000$ mAh (20\%) & 3 (Vital) \\
+            \hline
+            Sécurité Tensions & $< 48.8$ V & $> 50.0$ V & Arrêt Immédiat \\
+            \hline
+        \end{tabular}
+        \caption{Paliers et priorités de délestage autonome.}
+        \label{tab:delestage}
+    \end{tableau}
+
+\section{Sécurisation Modulaire et Interface Utilisateur finale}
+    \subsection{Protocole de sécurité Node-RED}
+        Par défaut, l'environnement de développement Node-RED est ouvert sur le réseau local et n'est donc pas sécurisé. Il était impératif de prévenir toute modification ou intrusion :
+        \begin{itemize}
+            \item \textbf{Chiffrement HTTPS} : Assure que les échanges, initialement en texte clair sur HTTP, transitent par un tunnel chiffré entre le client et la Raspberry Pi.
+            \item \textbf{Authentification de l'éditeur} : Utilisation du SSH distant pour modifier \texttt{settings.js} et y ajouter une empreinte (hash) du mot de passe pour verrouiller l'éditeur sans que l'identifiant soit apparent dans la configuration.
+        \end{itemize}
+
+    \subsection{Interface Utilisateur Tactile}
+        Sur la base de tests sur un écran $5''$ (latence, précision, défilement fléché plutôt que glissé tactile), l'IHM s'est vue scindée en deux dimensions correspondant au cahier des charges :
+        \begin{itemize}
+            \item \textbf{Mode Habitant (Simplifié)} : Panorama général du système avec focus sur l'autonomie restante (SoC), la charge globale et l'état des appareils de confort.
+            \item \textbf{Mode Expert (Diagnostic)} : Relève en direct des métriques de bas niveau (tensions et courantes de la matrice), accès aux retours d'état non filtrés, autorisant le \textit{override} (forçage) manuel des relais.
+        \end{itemize}
+        
+    Cette configuration applicative s'impose comme une composante logicielle performante, permettant de fluidifier la remontée d'alerte, de sécuriser l'intégrité énergétique du parc 48V, tout en posant des fondations solides pour une évolution incrémentale à la volée.
