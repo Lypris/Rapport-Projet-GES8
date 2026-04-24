@@ -2,8 +2,9 @@
 \chapter{Alimentation}
 
 \section*{Conventions et Notations}
-Afin de garantir la cohérence scientifique du rapport, les notations suivantes sont rigoureusement appliquées dans l'ensemble de ce document :
-\begin{table}[H]
+Dans l'ensemble de ce rapport, les notations suivantes sont utilisées pour les grandeurs électriques :
+\begin{tableau}[H]
+    \small
     \centering
     \begin{tabular}{|l|l|l|}
         \hline
@@ -28,8 +29,8 @@ Afin de garantir la cohérence scientifique du rapport, les notations suivantes 
         $L, C$ & Inductance, Capacité & \si{\henry}, \si{\farad} \\
         \hline
     \end{tabular}
-    \caption{Tableau centralisé des notations et unités}
-\end{table}
+    \caption{Tableau centralisé des notations et unités.}
+\end{tableau}
 Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour les composants de précision géométrique ou fréquentielle.
 
     \section{Redresseur PD3 (Convertisseur AC/DC)}
@@ -50,7 +51,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie PD3/Représentation des redresseurs commandés.png}
-            \caption{Redresseurs commandés en monophasé - Fonctionnement théorique - Contrôle de la tension moyenne via l'angle $\alpha$.}
+            \caption{Représentation des redresseurs commandés en monophasé.}
             \label{fig:redresseurs_commandés}
         \end{figure}
         
@@ -80,9 +81,6 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
 
         Une caractérisation de l'alternateur entre 500 tr/min et 750 tr/min indique une tension efficace à vide variant de \SI{120}{\volt} à \SI{213}{\volt}, et une tension en charge s'établissant entre \SI{39.2}{\volt} et \SI{56.0}{\volt} (aux environs de 700 tr/min). Les niveaux en charge demeurant compatibles avec l'étage de conversion DC/DC situé en aval (Hacheur SEPIC) qui fera office de régulateur de tension et de charge batterie, l'usage d'un pont commandé n'est pas impératif. La solution retenue est donc le pont à diodes non commandées (PD3) pour la fiabilité et la simplicité structurelle.
 
-        \subsection{Retour de conception et choix matériel}
-        Lors des phases d'évaluation du système, plusieurs contraintes ont été observées guidant les choix constructifs détaillés dans cette section (dimensionnement, composants, dissipation). En pratique, observer les courants transitoires induits a conduit à préférer un fonctionnement hybride séparant les conversions sur des PCBs distincts pour minimiser l'influence thermique des diodes sur le régulateur MPPT. Ainsi le PD3 est physiquement séparé de l'étage SEPIC.
-
         \subsubsection{Les trois types de montages redresseurs}
         Pour obtenir une tension continue, on redresse un ensemble de $q$ tensions alternatives, d'ordinaire supposées sinusoïdales et formant un système polyphasé équilibré ($q$ est le nombre de phases). Ces tensions peuvent être les tensions aux bornes d'un alternateur. Généralement, elles sont fournies par le réseau monophasé ou, plus souvent, par le réseau triphasé, d'ordinaire par l'intermédiaire d'un transformateur.
 
@@ -99,14 +97,14 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
             \begin{subfigure}[b]{0.48\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{Partie PD3/Montage P3.png}
-                \caption{Montage P3}
+                \caption{Montage P3.}
                 \label{fig:pd3_a}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.48\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{Partie PD3/Montage PD3.png}
-                \caption{Montage PD3}
+                \caption{Montage PD3.}
                 \label{fig:pd3_b}
             \end{subfigure}
 
@@ -116,12 +114,12 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
                 \begin{subfigure}[b]{0.48\textwidth}
                     \centering
                     \includegraphics[width=\linewidth]{Partie PD3/Montage S3.png}
-                    \caption{Montage S3}
+                    \caption{Montage S3.}
                     \label{fig:pd3_c}
                 \end{subfigure}
             \end{center}
 
-            \caption{Topologies des montages redresseurs triphasés - Théorie de la conversion AC/DC - Le montage PD3 offre la plus faible ondulation résiduelle.}
+            \caption{Topologies des montages redresseurs triphasés.}
             \label{fig:pd3_abc}
         \end{figure}
 
@@ -151,7 +149,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie PD3/Caractéristique courant-tension diode Schottky.png}
-            \caption{Caractéristique $I(V)$ - Diode Schottky Vishay V35PW22HM3 sous $T_j=125^\circ\text{C}$ - Extraction des paramètres thermiques $V_0$ et $R_D$.}
+            \caption{Caractéristique $I(V)$ - Diode Schottky Vishay V35PW22HM3.}
             \label{fig:caractéristique_diode}
         \end{figure}
         
@@ -173,8 +171,8 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
 
         \begin{figure}[H]
             \centering
-            %\includegraphics[width=0.8\textwidth]{Partie PD3/Courants_diodes_PD3.png}
-            \caption{Chronogrammes des courants - Simulation PSIM en charge nominale - Estimation de $I_{eff}$ et $I_{moy}$ pour le dimensionnement thermique.}
+            \includegraphics[width=0.8\textwidth]{Partie PD3/Résultats de simulation - courants dans les diodes.png}
+            \caption{Chronogrammes des courants - Simulation PSIM en charge nominale.}
             \label{fig:courants_diodes}
         \end{figure}
         
@@ -204,7 +202,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=1\textwidth]{Partie PD3/Caractéristiques thermiques V35PW22.png}
-            \caption{Valeurs types thermiques - Diode Schottky Vishay V35PW22HM3 - Extraction de $R_{thJM}$ pour valider l'impact de l'échauffement de jonction.}
+            \caption{Valeurs types thermiques - Diode Schottky Vishay V35PW22HM3.}
             \label{fig:caractéristiques_thermiques}
         \end{figure}
         
@@ -251,7 +249,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         Les porte-fusibles ont été sélectionnés en fonction des dimensions des fusibles retenus, garantissant ainsi une bonne tenue mécanique et un contact électrique fiable.
 
         \subsection{Schéma détaillé et PCB}
-        Après la phase de dimensionnement des différents composants, la conception du schéma électrique a été menée sous Proteus. L'intégration du redresseur triphasé PD3 et du filtre LC sur une carte unique regroupe les éléments de conversion et de filtrage, ce qui raccourcit les boucles de courant et améliore la compacité globale. Une carte distincte est dédiée à l'étage MPPT, séparant ainsi l'acquisition AC de la régulation de puissance.
+        Après la phase de dimensionnement des différents composants, la conception du schéma électrique a été menée sous Proteus. L'intégration du redresseur triphasé PD3 et du filtre LC sur une carte unique regroupe les éléments de conversion et de filtrage, ce qui raccourcit les boucles de courant et améliore la compacité globale. Une carte distincte est dédiée à l'étage MPPT, séparant ainsi la conversion AC/DC de la régulation de puissance.
 
         Le circuit comporte :
         \begin{itemize}
@@ -271,17 +269,17 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
             \begin{subfigure}[b]{0.48\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{Partie PD3/Schéma proteus PD3.png}
-                \caption{Schéma électronique Proteus}
+                \caption{Schéma électronique Proteus.}
                 \label{fig:schéma_pd3}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.48\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{Partie PD3/PCB PD3.png}
-                \caption{Routage du PCB (Top \& Bottom)}
+                \caption{Routage du PCB (Top \& Bottom).}
                 \label{fig:pcb_pd3}
             \end{subfigure}
-            \caption{Conception Carte PD3 - Saisie et routage Proteus - Optimisation de la symétrie et de la thermique avec de larges plans de dissipation.}
+            \caption{Conception Carte PD3 - Schéma et routage Proteus.}
             \label{fig:pd3_conception_complete}
         \end{figure}
         \textbf{Bilan quantitatif :} La carte mesure approximativement $100 \times \SI{80}{\milli\meter}$, offrant une dissipation thermique suffisante pour évacuer les $\SI{6}{\watt}$ de pertes par conduction sans excéder une température critique de \SI{80}{\celsius}.
@@ -301,7 +299,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Schema-du-convertisseur-SEPIC.png}
-            \caption{Schema du convertisseur SEPIC}
+            \caption{Schema du convertisseur SEPIC.}
             \label{fig:schema_sepic}
         \end{figure}
         
@@ -393,7 +391,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         Or nous savons que : $\theta_{min} = \arcsin\left(\frac{3}{\pi}\right)$
         D'où :
         $$L_e = \frac{\sqrt{6} \cdot V_S}{\Delta i_L \cdot 2\pi f} \left(2\cos(\arcsin(3/\pi)) - \frac{3}{\pi}(\pi - 2\arcsin(3/\pi))\right) \approx \SI{19{,}79}{\milli\henry}$$
-        *(Note : L'équation originale comportait de multiples erreurs, le calcul de $L_e$ mène à $\approx \SI{19{,}79}{\milli\henry}$)*
+        %(Note : L'équation originale comportait de multiples erreurs, le calcul de $L_e$ mène à $\approx \SI{19{,}79}{\milli\henry}$)*
 
         Passons maintenant à $C_e$ :
         $$i_C(t) = i_L(t) - I_{dc} \quad;\quad \Delta V_C = \frac{1}{C_e}\int i_C(t) dt = \frac{\Delta Q}{C_e}$$
@@ -407,12 +405,12 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma PSIM de la première étude.png}
-            \caption{Schéma PSIM de la 1ère étude}
+            \caption{Schéma PSIM de la 1ère étude.}
         \end{figure}
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Graphe comparant Pentree et Psortie.png}
-            \caption{Graphe comparant $P_{entrée}$ et $P_{sortie}$}
+            \caption{Graphe comparant $P_{entrée.}$ et $P_{sortie}$.}
         \end{figure}
         Pour notre première solution (théorique), nous nous sommes basés sur des inductances de $\SI{147}{\micro\henry}$ en boucle ouverte. Cette configuration limite la puissance extraite à $\SI{285}{\watt}$ et impose des composants trop volumineux et coûteux pour une intégration réelle sur PCB (inductances).
 
@@ -422,12 +420,12 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma PSIM de la solution retenue.png}
-            \caption{Schéma PSIM de la solution retenue}
+            \caption{Schéma PSIM de la solution retenue.}
         \end{figure}
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Graphe comparant Pentree et Psortie de la solution retenue.png}
-            \caption{Graphe comparant $P_{entrée}$ et $P_{sortie}$ de la solution retenue}
+            \caption{Graphe comparant $P_{entrée.}$ et $P_{sortie}$ de la solution retenue}
         \end{figure}
 
         En optimisant le système avec des inductances de \SI{33}{\micro\henry} et un filtre de sortie de \SI{150}{\micro\farad}, on stabilise la puissance à \SI{323}{\watt} tout en garantissant un signal propre pour la batterie et un encombrement réduit. Sur le plan dynamique, malgré un léger dépassement lors du démarrage (\SI{0}{\milli\second}--\SI{50}{\milli\second}), le système atteint rapidement un régime permanent très stable.
@@ -438,7 +436,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma PSIM du pire cas possible.png}
-            \caption{Schéma PSIM pire cas possible}
+            \caption{Schéma PSIM pire cas possible.}
         \end{figure}
 
         Le pire cas est régi par les paramètres suivants :
@@ -452,7 +450,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Tableau des contraintes.png}
-            \caption{Tableau des contraintes}
+            \caption{Tableau des contraintes.}
         \end{figure}
 
         À l'aide de ce tableau, nous avons toutes les informations nécessaires pour caractériser chaque composant. Nous allons effectuer une méthodologie pour un condensateur type, les autres études seront similaires.
@@ -463,7 +461,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Variation de la capacité en fonction de la tension pour Ce.png}
-            \caption{Variation de la capacité en fonction de la tension pour $C_e$}
+            \caption{Variation de la capacité en fonction de la tension pour $C_e$.}
         \end{figure}
 
         Dans un premier temps, intéressons-nous à l'étude du changement de la capacité en fonction de la tension. On remarque que pour notre tension d'utilisation qui est d'environ $\SI{50}{\volt}$ nous avons une chute de capacité de \SI{55{,}9}{\percent}, ce qui est conséquent. Ce condensateur de base (pour $\SI{2{,}2}{\micro\farad}$) aurait donc une capacité de $\SI{0{,}97}{\micro\farad}$ à $\SI{50}{\volt}$. Pour compenser cela, nous allons mettre 3 condensateurs en parallèle, ce qui nous permettra d'additionner les 3 capacités.
@@ -477,7 +475,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Variation de la température en fonction du courant ondulatoire pour Ce.png}
-            \caption{Variation de la température en fonction du courant ondulatoire pour $C_e$}
+            \caption{Variation de la température en fonction du courant ondulatoire pour $C_e$.}
         \end{figure}
 
         Comme nous avons pu le constater dans le premier tableau (cf. tableau des contraintes), nous avons un courant efficace pour $C_e$ de $I_{eff} = \SI{2{,}2}{\ampere}$. 
@@ -498,7 +496,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.5\textwidth]{Partie MPPT/Tableau des contraintes pour L1 et L2.png}
-            \caption{Tableau des contraintes pour $L_1$ et $L_2$}
+            \caption{Tableau des contraintes pour $L_1$ et $L_2$.}
         \end{figure}
 
         Les deux valeurs qui nous importent sont le courant maximum $I_{max}$ et le courant efficace $I_{eff}$. Si on généralise pour les deux inductances on prendra la valeur maximale à chaque fois : $I_{max} = \SI{10{,}16}{\ampere}$ et $I_{eff} = \SI{6{,}614}{\ampere}$ pour être assuré de couvrir le pire des cas.
@@ -508,7 +506,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.6\textwidth]{Partie MPPT/Datasheet Bourns 33µH.png}
-            \caption{Datasheet de l'inductance Bourns $\SI{33}{\micro\henry}$}
+            \caption{Datasheet de l'inductance Bourns $\SI{33.}{\micro\henry}$}
         \end{figure}
 
         En regardant la datasheet on peut faire la comparaison directe :
@@ -516,7 +514,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.4\textwidth]{Partie MPPT/Comparaison datasheet et tableau de contrainte.png}
-            \caption{Comparaison Datasheet et tableau de contrainte}
+            \caption{Comparaison Datasheet et tableau de contrainte.}
         \end{figure}
 
         Après des échanges avec le professeur, nous sommes partis sur d'autres inductances de la marque Bourns :
@@ -524,7 +522,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Datasheet inductance Bourns proposé par le professeur.png}
-            \caption{Datasheet inductance Bourns proposée par le professeur}
+            \caption{Datasheet inductance Bourns proposée par le professeur.}
         \end{figure}
 
         Celle-ci possède une marge de sécurité au niveau des courants efficaces et maximaux supérieure à mon précédent choix. Elle est par conséquent plus appropriée et sûre pour le hacheur SEPIC. En revanche, nous avons observé que sur le site Farnell un problème de livraison allait impacter le projet. Il a donc fallu improviser et changer de référence d'inductance pour en avoir qui sont en stock et surtout dans les temps.
@@ -534,7 +532,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Datasheet de la solution retenue.png}
-            \caption{Datasheet de la solution retenue (Vishay)}
+            \caption{Datasheet de la solution retenue (Vishay).}
         \end{figure}
 
         La marge de sécurité est moindre mais rentre dans notre cahier des charges imposé par le tableau des contraintes.
@@ -552,7 +550,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Répartition des cartes.png}
-            \caption{Répartition des cartes}
+            \caption{Répartition des cartes.}
         \end{figure}
 
         La partie alimentation est donc découpée en trois parties : une partie PD3 + Filtre, une carte de puissance, et une carte de commande. Notre partie s'est donc tournée sur la conception de la carte du convertisseur ainsi que de sa carte de commande.
@@ -563,7 +561,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma de câblage, carte puissance première ébauche.png}
-            \caption{Schéma de câblage, carte puissance (1ère ébauche)}
+            \caption{Schéma de câblage, carte puissance (1ère ébauche).}
         \end{figure}
 
         Il est important de noter l'ajout d'un filtre pour le convertisseur 5V/15V. En effet, en étudiant la documentation technique du convertisseur, nous avons observé que le constructeur recommandait de créer un filtre composé d'une bobine et d'une capacité en entrée.
@@ -571,7 +569,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Filtre issu de la datasheet du convertisseur.png}
-            \caption{Filtre issu de la datasheet du convertisseur}
+            \caption{Filtre issu de la datasheet du convertisseur.}
         \end{figure}
 
         \textbf{Bobine filtre, ref : LQH32PN220MN0L} \\
@@ -583,7 +581,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Variation de la capacité en fonction de la tension pour la capacité du filtre.png}
-            \caption{Variation de la capacité en fonction de la tension pour la capacité du filtre}
+            \caption{Variation de la capacité en fonction de la tension pour la capacité du filtre.}
         \end{figure}
 
         \textbf{Capacité de découplage, ref : C3216X7R1H106K160AC} \\
@@ -600,7 +598,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Capacité de découplage issue de la datasheet du driver.png}
-            \caption{Capacité de découplage issue de la datasheet du driver}
+            \caption{Capacité de découplage issue de la datasheet du driver.}
         \end{figure}
 
         Pour la capacité de découplage de $\SI{100}{\nano\farad}$, notre choix s'est tourné vers cette référence : \textbf{C0805C104K5RACTU du Fabricant KEMET}. Cette dernière est conforme aux contraintes en tension et au courant.
@@ -610,11 +608,8 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         Ceci conclut donc le choix général effectué par l'ensemble du groupe pour avoir les valeurs de composants "type" du filtre, utilisables pour la quasi-totalité des parties indépendantes du projet. Ceci facilite grandement la commande de composants et permet aussi de travailler l'aspect humain au travers de la communication nécessaire pour adopter cette solution générale.
 
         \paragraph{Partie PCB :}
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.8\textwidth]{Partie MPPT/Premier PCB Puissance.png}
-            \caption{Premier PCB Puissance}
-        \end{figure}
+
+        
 
         Le premier PCB produit comportait de nombreux problèmes :
         \begin{itemize}
@@ -623,13 +618,19 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
             \item Certaines pistes étaient sur la couche supérieure ("Top") alors que les composants étaient traversants, ce qui complexifiait grandement la soudure.
         \end{itemize}
 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/Premier PCB Puissance.png}
+            \caption{Premier PCB Puissance.}
+        \end{figure}
+
         Avec tous ces axes d'amélioration, nous avons pu produire un schéma de câblage plus clair et un PCB plus pratique et, surtout, fonctionnel.
 
         \textbf{Câblage retenu :}
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma de câblage final de la puissance.png}
-            \caption{Schéma de câblage final de la puissance}
+            \includegraphics[width=1\textwidth]{Partie MPPT/Schéma puissance MPPT.pdf}
+            \caption{Schéma de câblage final de la puissance.}
         \end{figure}
 
         Ce schéma utilise des symboles normalisés des composants, ce qui facilite sa compréhension. La répartition des composants à l'intérieur des blocs a été réfléchie pour s'approcher au plus possible du rendu final sur le PCB et ainsi simplifier la connexion entre les cartes.
@@ -638,7 +639,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/PCB final partie puissance.png}
-            \caption{PCB final partie puissance}
+            \caption{PCB final partie puissance.}
         \end{figure}
 
         Ce PCB est plus clair mais surtout plus pratique. La présence des T-blocs alignés va permettre un câblage plus simple sur le panneau de configuration. La présence d'un plan de masse permet de réduire le nombre de pistes et d'obtenir un agencement de la carte plus épuré. Les pistes jugées trop petites ont été remplacées par des zones en cuivre. Ces dernières pourront ainsi supporter de forts courants sans ajouter de contraintes thermiques. L'isolement entre les pistes a été ajusté afin d'éviter tout arc électrique.
@@ -653,13 +654,13 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Premier schéma de cablâge partie commande.png}
-            \caption{Premier schéma de câblage partie commande}
+            \caption{Premier schéma de câblage partie commande.}
         \end{figure}
 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Premier PCB partie commande.png}
-            \caption{Premier PCB partie commande}
+            \caption{Premier PCB partie commande.}
         \end{figure}
 
         On pouvait observer sur ce PCB de nombreux problèmes :
@@ -674,7 +675,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/V2 PCB partie commande.png}
-            \caption{V2 PCB partie commande}
+            \caption{V2 PCB partie commande.}
         \end{figure}
 
         Sur cette version, nous avons corrigé tous les problèmes cités, avec notamment l'ajout d'un plan de masse en bottom (BOTTOM) et d'un plan d'alimentation en top (TOP). Les composants CMS ont tous été placés sur la même face. Les problèmes étant résolus, nous avons envoyé le PCB au professeur. Cette observation, ainsi que la rigueur de travail apportée à ce PCB, nous a valu un retour positif. Il ne manquait plus que l'ajout d'un filtre nécessaire au bon fonctionnement du PIC et que le PCB soit terminé.
@@ -683,14 +684,14 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma de câblage final de la partie commande.png}
-            \caption{Schéma de câblage final de la partie commande}
+            \includegraphics[width=1\textwidth]{Partie MPPT/Schéma commande MPPT.pdf}
+            \caption{Schéma de câblage final de la partie commande.}
         \end{figure}
 
         \begin{figure}[H]
             \centering
-            %\includegraphics[width=0.8\textwidth]{...}
-            \caption{PCB final de la partie commande}
+            \includegraphics[width=0.8\textwidth]{Partie MPPT/PCB Final Carte commande MPPT.png}
+            \caption{PCB final de la partie commande.}
         \end{figure}
 
         \subsection{Algorithme de contrôle MPPT}
@@ -732,7 +733,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Tableau de comparaison des algorithmes.png}
-            \caption{Tableau de comparaison des algorithmes MPPT}
+            \caption{Tableau de comparaison des algorithmes MPPT.}
         \end{figure}
 
         \paragraph{Implémentation du code (Script C pour PSIM) :}
@@ -741,7 +742,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Schéma PSIM en BF.png}
-            \caption{Schéma PSIM en Boucle Fermée}
+            \caption{Schéma PSIM en Boucle Fermée.}
         \end{figure}
 
         Voici le code implémenté pour pouvoir asservir le système :
@@ -749,7 +750,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Programme de l_algorithme P&O.png}
-            \caption{Programme de l'algorithme P\&O}
+            \caption{Programme de l'algorithme P\&O.}
         \end{figure}
 
         On lance la simulation sur PSIM et nous obtenons les graphes suivants :
@@ -757,7 +758,7 @@ Les valeurs numériques sont arrondies à deux décimales au maximum, sauf pour 
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie MPPT/Graphes obtenus après implémentation de l'algorithme P&O.png}
-            \caption{Graphes obtenus après implémentation de l'algorithme P\&O}
+            \caption{Graphes obtenus après implémentation de l'algorithme P\&O.}
         \end{figure}
 
         On observe que l'algorithme MPPT parvient à extraire une puissance moyenne stable de $\SI{322}{\watt}$ en ajustant le rapport cyclique par paliers successifs (courbe $\alpha$). Cette simulation valide la capacité du filtre numérique à isoler la puissance utile pour garantir une poursuite du point de puissance maximale (MPP) sans instabilité.

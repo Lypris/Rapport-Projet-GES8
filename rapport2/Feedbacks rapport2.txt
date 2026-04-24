@@ -1,0 +1,17 @@
+
+Surligner 
+ - En rouge = A supprimer
+ - En jaune = A modifier ou supprimer
+ - En vert = A modifier
+
+Introduction a faire car c'est encore celle du rapport 1
+
+
+page 19, 20, 22 : qualité des images pas ouf ? images de Gaël pas de bonne qualité ? Je lui ai demandé de mettre ne meilleure qualité sur le drive, je te tiens au jus quand il  l'a fait
+
+
+page 39-40 : toutes les images de gael sont zen mauvaise qualité mais il est en train de refaire un dossier avec les image de bonne qualité sur le drive, je lui ai dis de garder le même nom pour chaque image comme ca ca sera facile pour toi de les changer.
+
+Conclusion beaucoup trop grosse et trop dans les détail, faut faire un truc bien plus simple qui résume qu'on a tous dimensionner nos composants, réaliser les schéma puis routé nos cartes. Et que la prochaine étape c'est de souder les cartes et de réaliser des tests sur les carte pour ensuite réaliser l'installation finale
+
+

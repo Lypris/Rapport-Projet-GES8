@@ -27,7 +27,7 @@ C'est une structure composée de deux hacheurs boost classiques qui sont entrela
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/01_Schéma hacheur entrelacé.png}
-    \caption{Schéma Hacheur dual boost entrelacé}
+    \caption{Schéma Hacheur dual boost entrelacé.}
 \end{figure}
 
 Pour dimensionner les composants de ce hacheur, on utilise la même méthode que pour un hacheur boost classique car il s'agit simplement de deux hacheurs boost classiques entrelacés.
@@ -59,7 +59,7 @@ Le hacheur dual boost entrelacé fonctionne avec un rapport cyclique nettement m
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/02_Schéma hacheur dual boost T.png}
-    \caption{Schéma Hacheur dual boost en T}
+    \caption{Schéma Hacheur dual boost en T.}
 \end{figure}
 
 Nous devons faire une étude théorique du montage car c'est un montage que nous n'avons pas encore étudié. On commence par réaliser les schémas équivalents pour déterminer les équations pour les deux périodes de fonctionnement~:
@@ -69,7 +69,7 @@ Nous devons faire une étude théorique du montage car c'est un montage que nous
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/03_dual boost T petit signaux1.png}
-    \caption{Schéma d'étude entre 0 et $\alpha T$, hacheur dual boost en T}
+    \caption{Schéma d'étude entre 0 et $\alpha T$, hacheur dual boost en T.}
 \end{figure}
 
 \begin{align*}
@@ -86,7 +86,7 @@ Nous devons faire une étude théorique du montage car c'est un montage que nous
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/04_dual boost T petit signaux 2.png}
-    \caption{Schéma d'étude entre $\alpha T$ et $T/2$, hacheur dual boost en T}
+    \caption{Schéma d'étude entre $\alpha T$ et $T/2$, hacheur dual boost en T.}
 \end{figure}
 
 \begin{align*}
@@ -125,7 +125,7 @@ Cette solution a l'avantage de nécessiter assez peu de composants comparée aux
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/05_Schéma hacheur entrelacé PSIM.png}
-    \caption{Schéma hacheur dual boost entrelacé PSIM}
+    \caption{Schéma hacheur dual boost entrelacé PSIM.}
 \end{figure}
 
 En simulant ce montage avec un rapport cyclique de 0,59, on obtient ceci en sortie de notre convertisseur~:
@@ -133,7 +133,7 @@ En simulant ce montage avec un rapport cyclique de 0,59, on obtient ceci en sort
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/06_Simulation puissance sortie Hacheur entrelacé.png}
-    \caption{Relevé de puissance en sortie du hacheur}
+    \caption{Relevé de puissance en sortie du hacheur.}
 \end{figure}
 
 Les valeurs de tensions et courants en sortie sont bien conformes à ce que l'on devait obtenir ($187,5~\text{V}$ / $2,4~\text{A}$ / $450~\text{W}$). Cependant, on observe un fort pic au démarrage que l'on pourrait corriger avec une montée progressive du rapport cyclique.
@@ -145,7 +145,7 @@ Pour dimensionner nos inductances, nous sommes partis de notre valeur calculée 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/07_Simulation courant et tension dans la bobine , hacheur entrelacé.png}
-    \caption{Relevé courant et tension dans la bobine L1}
+    \caption{Relevé courant et tension dans la bobine L1.}
 \end{figure}
 
 Pour les condensateurs d'entrée et de sortie, nous sommes restés sur les valeurs calculées car les valeurs obtenues sont acceptables pour la taille des condensateurs.
@@ -158,7 +158,7 @@ Le paramètre le plus important à regarder pour les contraintes sur nos condens
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/08_Ice hacheur entrelacé.png}
-    \caption{Relevé courant dans la capacité d'entrée du montage Ce1}
+    \caption{Relevé courant dans la capacité d'entrée du montage Ce1.}
 \end{figure}
 
 On relève~:
@@ -170,7 +170,7 @@ On relève~:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/09_Ics hacheur entrelacé.png}
-    \caption{Relevé courant dans la capacité de sortie Cs1}
+    \caption{Relevé courant dans la capacité de sortie Cs1.}
 \end{figure}
 
 On relève~:
@@ -184,7 +184,7 @@ On relève~:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/10_It1 hacheur entrelacé.png}
-    \caption{Relevé courant dans le transistor T1}
+    \caption{Relevé courant dans le transistor T1.}
 \end{figure}
 
 On relève~:
@@ -196,7 +196,7 @@ On relève~:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/11_ID1 VT1 hacheur entrelacé.png}
-    \caption{Relevé courant dans la diode D1 et tension aux bornes de T1}
+    \caption{Relevé courant dans la diode D1 et tension aux bornes de T1.}
 \end{figure}
 
 On relève~:
@@ -212,7 +212,7 @@ On relève~:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/12_Schéma hacheur dual boost simulation.png}
-    \caption{Schéma PSIM avec composants réels, Hacheur dual boost en T}
+    \caption{Schéma PSIM avec composants réels, Hacheur dual boost en T.}
 \end{figure}
 
 On retrouve ici le schéma étudié précédemment mais avec les composants réels (choisis dans la partie dimensionnement).
@@ -222,7 +222,7 @@ En simulant ce montage avec un rapport cyclique de 0,37, on obtient ceci en sort
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/13_Puissance charge sans rampe.png}
-    \caption{Relevé tension, courant et puissance en sortie}
+    \caption{Relevé tension, courant et puissance en sortie.}
 \end{figure}
 
 Les valeurs de tensions et courants en sortie sont bien conformes à ce que l'on devait obtenir ($187,5~\text{V}$ / $2,4~\text{A}$ / $450~\text{W}$). Cependant, on observe un fort pic au démarrage que l'on pourrait corriger avec une montée progressive du rapport cyclique. On a donc mis en place une montée progressive du rapport cyclique pour ce montage puisque c'est celui que l'on a choisi de mettre en œuvre au final, voici ce que l'on obtient~:
@@ -230,7 +230,7 @@ Les valeurs de tensions et courants en sortie sont bien conformes à ce que l'on
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/14_Puissance charge avec rampe.png}
-    \caption{Relevé tension, courant et puissance en sortie avec rapport cyclique progressif (rampe)}
+    \caption{Relevé tension, courant et puissance en sortie avec rapport cyclique progressif (rampe).}
 \end{figure}
 
 Le pic de puissance lors de la mise sous tension de notre convertisseur a disparu, ce qui nous permet de limiter les contraintes sur nos composants. Nous devrons mettre en place cette mise sous tension douce à l'aide d'un code dans notre PIC qui va contrôler les signaux PWM des transistors.
@@ -245,7 +245,7 @@ Pour dimensionner nos inductances, nous sommes partis de la valeur calculée com
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/15_Ice d.png}
-    \caption{Relevé courant dans la capacité d'entrée Ce}
+    \caption{Relevé courant dans la capacité d'entrée Ce.}
 \end{figure}
 
 On relève~:
@@ -257,7 +257,7 @@ On relève~:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/16_Ics.png}
-    \caption{Relevé courant dans la capacité de sortie Cs}
+    \caption{Relevé courant dans la capacité de sortie Cs.}
 \end{figure}
 
 On relève~:
@@ -271,7 +271,7 @@ On relève~:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/17_ID1.png}
-    \caption{Relevé courant dans la diode D1}
+    \caption{Relevé courant dans la diode D1.}
 \end{figure}
 
 On relève~:
@@ -283,7 +283,7 @@ On relève~:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/18_IT1.png}
-    \caption{Relevé courant dans le transistor T1}
+    \caption{Relevé courant dans le transistor T1.}
 \end{figure}
 
 On relève~:
@@ -295,7 +295,7 @@ On relève~:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/19_VT1.png}
-    \caption{Tension aux bornes du transistor T1}
+    \caption{Tension aux bornes du transistor T1.}
 \end{figure}
 
 On relève~:
@@ -321,14 +321,14 @@ On relève~:
     \textbf{Condensateurs sortie} & Courant moyen : $2,4~\text{A}$ \newline Pic de courant : $8~\text{A}$ & Courant moyen : $3,55~\text{A}$ \newline Pic de courant : $11~\text{A}$ \\
     \hline
     \end{tabular}
-    \caption{Récapitulatif des contraintes}
+    \caption{Récapitulatif des contraintes.}
 \end{tableau}
 
 \textbf{Analyse~:} Le principal avantage que l'on aura avec la structure entrelacée est que la contrainte de tension sur les MOSFETs est de $120~\text{V}$ contre $195~\text{V}$ pour la structure en T. Plus la tension nominale d'un MOSFET est élevée, plus sa résistance à l'état passant $R_{\text{Dson}}$ est grande, ce qui génère plus de pertes par conduction et fait chauffer le composant. On aura le choix entre deux gammes : $150~\text{V}$ ou $250~\text{V}$. Cependant dans notre cas, si on choisit la structure entrelacée, la gamme $150~\text{V}$ est un peu juste car on a peu de marge par rapport à la surtension au blocage due à l'inductance du circuit ($30~\text{V}$), donc on devra choisir la gamme au-dessus ($250~\text{V}$). Au final, pour le choix des transistors, les deux structures ne présentent pas de net avantage. En ce qui concerne les autres composants (diodes et condensateurs), la structure entrelacée permet d'obtenir des courants crêtes moins élevés pour les condensateurs et les diodes, mais il n'y a pas d'énormes différences entre les valeurs qui nous pousseraient à choisir cette structure plutôt que le hacheur en T.
 
 \textbf{Choix de la solution technique~:}
 
-Au regard des calculs théoriques et des simulations effectuées, pour obtenir le meilleur compromis sur le plan économique, le nombre de composants, la facilité de mise en œuvre tout en ayant une structure qui fonctionne pour notre application (faire chauffer une résistance, tout simplement), nous avons choisi le hacheur dual boost en T car il présente des avantages en termes de facilité de réalisation~: pas d'entrelacement qui rendrait le PCB plus complexe avec des pistes qui se croisent, moins de composants donc une solution moins chère et pour notre application, ce montage suffit amplement.
+Au regard des calculs théoriques et des simulations effectuées, pour obtenir le meilleur compromis sur le plan économique, le nombre de composants, la facilité de mise en œuvre tout en ayant une structure qui fonctionne pour notre application (faire chauffer une résistance, tout simplement), nous avons choisi le \textbf{hacheur dual boost en T} car il présente des avantages en termes de facilité de réalisation~: pas d'entrelacement qui rendrait le PCB plus complexe avec des pistes qui se croisent, moins de composants donc une solution moins chère et pour notre application, ce montage suffit amplement.
 
         \subsection{Choix des composants}
 
@@ -344,13 +344,13 @@ Dans le cadre de la gestion globale du projet et afin d'optimiser les coûts via
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/20_bobine caractéristiques.png}
-    \caption{Caractéristiques bobine L1}
+    \caption{Caractéristiques bobine L1.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{images/Partie Rice cooker/21_bobine aspect extérieur.png}
-    \caption{Aspect extérieur bobine L1}
+    \caption{Aspect extérieur bobine L1.}
 \end{figure}
 
 Composant plus qu'important pour le stockage d'énergie, cette bobine a été choisie pour ses performances élevées et sa compacité. Ses caractéristiques répondent précisément à nos besoins~:
@@ -363,7 +363,7 @@ Composant plus qu'important pour le stockage d'énergie, cette bobine a été ch
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/22_capacité d_entrée.png}
-    \caption{Caractéristiques capacité d'entrée}
+    \caption{Caractéristiques capacité d'entrée.}
 \end{figure}
 
 Nous avons choisi un condensateur X7R (céramiques de classe II) pour l'entrée car, à $50~\text{V}$, un X7R perdra de la capacité, mais cela reste gérable. Les céramiques multi-couches de Classe II offrent le meilleur équilibre entre la taille, les performances à haute fréquence et la capacité de gestion du courant, face aux autres technologies disponibles.
@@ -379,7 +379,7 @@ Nous avons alors utilisé cette valeur de $6~\mu\text{F}$ lors des simulations.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/23_Capacité de sortie.png}
-    \caption{Caractéristiques capacité de sortie}
+    \caption{Caractéristiques capacité de sortie.}
 \end{figure}
 
 Nous avons choisi un condensateur X7T pour la sortie car il permet d'utiliser une valeur nominale de départ très élevée dans un boîtier standard. Ainsi, même après s'être effondrée sous l'effet des $188~\text{V}$ (DC Bias), la capacité restante est toujours suffisante. Le X7R ne permettrait tout simplement pas d'obtenir cette capacité résiduelle sans démultiplier la taille ou le nombre de composants.
@@ -400,7 +400,7 @@ En étudiant la documentation technique du convertisseur, nous avons observé qu
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/24_Filtre classe A 5 15.png}
-    \caption{Filtre conseillé par le constructeur}
+    \caption{Filtre conseillé par le constructeur.}
 \end{figure}
 
 \textbf{Bobine filtre~:} Ref~: LQH32PN220MN0L \\
@@ -412,7 +412,7 @@ Conformément aux préconisations du constructeur pour le filtre EMI Classe A, n
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/25_Courbe chute capacité en fonction de la tension ( 5_15 filtre).PNG}
-    \caption{Chute de la valeur de la capacité du filtre en fonction de la tension (DC)}
+    \caption{Chute de la valeur de la capacité du filtre en fonction de la tension (DC).}
 \end{figure}
 
 \textbf{Capacité de découplage~:} Ref~: C3216X7R1H106K160AC \\
@@ -436,7 +436,7 @@ Malgré cela, ce PCB reste plus compliqué à réaliser au vu du nombre de compo
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{images/Partie Rice cooker/26_SCHEMA PROTEUS VERSION1.pdf}
-    \caption{Schéma Proteus}
+    \caption{Schéma Proteus.}
 \end{figure}
 
 \textbf{PCB première version~:}
@@ -444,7 +444,7 @@ Malgré cela, ce PCB reste plus compliqué à réaliser au vu du nombre de compo
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/27_PCB VERSION 1.PNG}
-    \caption{PCB version 1}
+    \caption{PCB version 1.}
 \end{figure}
 
 Cette première version permet de se rendre compte des différentes problématiques énoncées précédemment, mais également du fait qu'il faut prévoir de la place pour la dissipation thermique autour des transistors et de la diode. L'objectif est d'améliorer ce PCB jusqu'à arriver à une version finale.
@@ -506,7 +506,7 @@ Le choix du convertisseur a été directement dicté par le bilan de puissance d
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie luminaires/01_Schéma filtre CEM.png}
-    \caption{Schéma extrait de la datasheet du filtre CEM autour du convertisseur pour les luminaires}
+    \caption{Schéma extrait de la datasheet du filtre CEM autour du convertisseur pour les luminaires.}
 \end{figure}
 
 Cependant, une adaptation majeure a été réalisée~: la suppression de l'inductance de mode commun en entrée. Bien que recommandée pour des environnements extrêmement pollués ou pour des équipements de communication très sensibles, cette bobine a été jugée superflue dans notre cas. Nos charges (des luminaires LED) sont intrinsèquement peu sensibles au bruit de mode commun. S'en affranchir nous a permis d'optimiser l'encombrement du PCB et de réduire les coûts, tout en maintenant un niveau de filtrage largement suffisant pour notre application.
@@ -538,7 +538,7 @@ Bien que l'inductance ait été retirée, le choix des condensateurs a été fai
     \textbf{Capacité (C5)} & \scriptsize GRM32EC72A106KE05K & 10~$\mu$F, Céramique CMS (X7R), Boîtier 1210 & Lissage de sortie : stabilise la tension 24~V pour éviter le scintillement des LED. \\
     \hline
     \end{tabular}
-    \caption{Choix des composants pour la partie Lumières}
+    \caption{Choix des composants pour la partie Lumières.}
 \end{tableau}
 
         \subsection{Schéma détaillé et PCB}
@@ -550,15 +550,15 @@ Nous avons le schéma final suivant~:
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/Partie luminaires/02_Schéma proteus.pdf}
-        \caption{Filtre et convertisseur (Proteus)}
+        \caption{Filtre et convertisseur (Proteus).}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/Partie luminaires/03_Routage du filtre du convertisseur pour les luminaires.png}
-        \caption{Routage Top/Bottom}
+        \caption{Routage Top/Bottom.}
     \end{subfigure}
-    \caption{Conception Carte Lumière - Abaissement de tension $48 \to 24 \, \text{V}$ - Optimisation du filtrage pour absence de scintillement LED.}
+    \caption{Conception Carte Lumière.}
 \end{figure}
 \textbf{Bilan quantitatif :} La compacité de la carte de filtrage assure une stabilité à \SI{24}{\volt} tout en respectant l'espacement d'isolation.
 
@@ -590,11 +590,11 @@ Pour bien comprendre le fonctionnement de notre convertisseur, il faut séparer 
     \item \textbf{Le Cerveau (Le Contrôleur)~:} C'est la puce intelligente de notre carte. Son rôle est de surveiller en permanence ce qui se passe à la sortie du port USB-C. Si la tension chute brutalement, le contrôleur le détecte instantanément. Il envoie alors un signal aux muscles pour leur dire de s'ouvrir un peu plus longtemps afin de compenser. Il ajuste ce rythme des centaines de milliers de fois par seconde ! C'est ce pilotage qui garantit que l'utilisateur aura toujours un 20~V parfait et sécurisé, quoi qu'il arrive.
 \end{itemize}
 
-Pour jouer ce rôle crucial, nous avons comparé deux composants performants : le LM5116 et le LM5117. Voici le bilan de notre étude :
 
 \paragraph{1.2.2 Tableau comparatif~: LM5116 vs LM5117}
+Pour jouer ce rôle crucial, nous avons comparé deux composants performants : le LM5116 et le LM5117. Voici le bilan de notre étude :
 
-\begin{tableau}[H]
+\begin{tableau}[htbp]
     \centering
     \begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|p{6cm}|}
     \hline
@@ -607,7 +607,7 @@ Pour jouer ce rôle crucial, nous avons comparé deux composants performants : l
     \textbf{Tension de référence} & 1,215~V & 0,8~V & Cela change simplement la valeur des résistances pour régler le 20~V en sortie. \\
     \hline
     \end{tabular}
-    \caption{Comparatif LM5116 et LM5117}
+    \caption{Comparatif LM5116 et LM5117.}
 \end{tableau}
 
 \paragraph{1.2.3 Pourquoi avoir choisi le LM5116~?}
@@ -624,7 +624,7 @@ Outre cet avantage décisif sur la tension, le LM5116 regroupe toutes les caract
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie USB-C/01_Schéma d_application typique du LM5116 illustrant le pilotage intégré des MOSFETs de puissance (Source _ Datasheet Texas Instruments).png}
-    \caption{Schéma d'application typique du LM5116 illustrant le pilotage intégré des MOSFETs de puissance (Source~: Datasheet Texas Instruments)}
+    \caption{Schéma d'application typique du LM5116 illustrant le pilotage intégré des MOSFETs de puissance (Source~: Datasheet Texas Instruments).}
 \end{figure}
 
 \subsubsection*{1.3 Intégration dans l'architecture globale}
@@ -674,7 +674,7 @@ Afin de vérifier la justesse de nos calculs mathématiques avant de passer à l
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie USB-C/02_Schéma de simulation PSIM du convertisseur Buck Synchrone avec les valeurs théoriques calculées.png}
-    \caption{Schéma de simulation PSIM du convertisseur Buck Synchrone avec les valeurs théoriques calculées}
+    \caption{Schéma de simulation PSIM du convertisseur Buck Synchrone avec les valeurs théoriques calculées.}
 \end{figure}
 
 Ce schéma de principe présente notre source de 48~V (dimensionnée avec une valeur maximale de 50~V), nos composants passifs dimensionnés et une charge résistive de 4 ohms simulant un appel de courant continu de 5~A. Le pilotage des transistors (T1 et T2) est assuré par des blocs de commande idéaux configurés à 400~kHz respectant notre rapport cyclique de 0,416.
@@ -684,7 +684,7 @@ Ce schéma de principe présente notre source de 48~V (dimensionnée avec une va
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie USB-C/03_Relevés de la simulation théorique (Tension de sortie V(Cs) en rouge, Courant d_inductance I(L) en vert).png}
-    \caption{Relevés de la simulation théorique (Tension de sortie V(Cs) en rouge, Courant d'inductance I(L) en vert)}
+    \caption{Relevés de la simulation théorique (Tension de sortie V(Cs) en rouge, Courant d'inductance I(L) en vert).}
 \end{figure}
 
 Les courbes générées par la simulation confirment notre dimensionnement théorique en régime permanent~:
@@ -708,7 +708,7 @@ La première simulation nous a permis de valider la chaîne d'énergie idéale. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie USB-C/04_Modèle PSIM réaliste intégrant l_asservissement PI, les temps morts et les éléments parasites.png}
-    \caption{Modèle PSIM réaliste intégrant l'asservissement PI, les temps morts et les éléments parasites}
+    \caption{Modèle PSIM réaliste intégrant l'asservissement PI, les temps morts et les éléments parasites.}
 \end{figure}
 
 Ce schéma de niveau avancé introduit des modifications majeures et justifiées :
@@ -748,7 +748,7 @@ Pour vérifier l'efficacité de nos modifications et du régulateur PI, nous avo
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie USB-C/06_Relevés en régime permanent du convertisseur avec boucle de régulation (Courant d_inductance, Tension d_entrée et Tension de sortie).png}
-    \caption{Relevés en régime permanent du convertisseur avec boucle de régulation (Courant d'inductance, Tension d'entrée et Tension de sortie)}
+    \caption{Relevés en régime permanent du convertisseur avec boucle de régulation (Courant d'inductance, Tension d'entrée et Tension de sortie).}
 \end{figure}
 
 \textbf{Analyse de la régulation et du filtrage~:}
@@ -839,7 +839,7 @@ Maintenant que la logique de commande est validée et sécurisée, il est crucia
     \textbf{Diode Bootstrap} & ES1PB-M3/84A & Alimentation Driver & Indispensable pour permettre au LM5116 de piloter le MOSFET du haut. \\
     \hline
     \end{tabular}
-    \caption{Choix des composants de puissance (USB-C)}
+    \caption{Choix des composants de puissance (USB-C).}
 \end{tableau}
 
 \subsubsection*{3.3. Gestion Thermique : Calcul des pertes et Dissipation}
@@ -890,7 +890,7 @@ Pour nous assurer de la fiabilité de nos composants industriels, nous avons sou
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie USB-C/09_Simulation de l_ondulation de la tension de sortie (Vout) et du courant capacitif (Icout) en régime permanent sous 5A.png}
-    \caption{Simulation de l'ondulation de la tension de sortie (Vout) et du courant capacitif (Icout) en régime permanent sous 5A}
+    \caption{Simulation de l'ondulation de la tension de sortie (Vout) et du courant capacitif (Icout) en régime permanent sous 5A.}
 \end{figure}
 
 \textbf{Analyse~:} Cette courbe représente le comportement de notre filtre LC lorsque la carte délivre sa puissance maximale (courbe grise Iout fixée à 5~A).
@@ -906,7 +906,7 @@ Sur un vrai port USB-C, le courant n'est jamais constant : si l'utilisateur déb
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/Partie USB-C/10_Réponse de la tension (Vout) face à un changement brutal du courant demandé (Iout).png}
-    \caption{Réponse de la tension (Vout) face à un changement brutal du courant demandé (Iout)}
+    \caption{Réponse de la tension (Vout) face à un changement brutal du courant demandé (Iout).}
 \end{figure}
 
 \textbf{Analyse~:}
@@ -925,8 +925,8 @@ Afin de faciliter la lecture, le dépannage et la future intégration avec les c
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/Partie USB-C/11_Figure 11 _ Schéma électronique complet sous Proteus ISIS structuré en blocs fonctionnels.png}
-    \caption{Schéma électronique complet sous Proteus ISIS structuré en blocs fonctionnels}
+    \includegraphics[width=1\linewidth]{images/Partie USB-C/11_Schéma USB-C.pdf}
+    \caption{Schéma électronique complet sous Proteus.}
 \end{figure}
 
 Ce schéma comporte trois blocs distincts~:
@@ -941,8 +941,8 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/Partie USB-C/12_Figure 12 _ Layout de la carte USB-C .png}
-    \caption{Layout de la carte USB-C}
+    \includegraphics[width=0.8\linewidth]{images/Partie USB-C/12_PCB carte USB-C.png}
+    \caption{PCB de la carte USB-C.}
 \end{figure}
 
 \begin{enumerate}
@@ -978,7 +978,7 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{images/Partie USB-B/01_Schéma extrait de la datasheet.png}
-            \caption{Schéma extrait de la datasheet du filtre CEM autour du convertisseur USB-B}
+            \caption{Schéma extrait de la datasheet du filtre CEM autour du convertisseur USB-B.}
         \end{figure}
 
         Pour la partie entrée et isolation, le choix des composants a été fait de manière à maximiser la compacité et l'efficacité face aux parasites~:
@@ -1000,7 +1000,7 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
                 Capacité (C1) & 12101C475K4T2A & 4.7~$\mu$F, Céramique CMS (X7R), Boîtier 1210 & Découplage d'entrée~: absorbe les parasites hautes fréquences grâce à sa faible ESR. \\ \hline
                 Capacité (C2) & C1812C221KGGACTU & 220~pF, Céramique Haute Tension, Boîtier 1812 & Condensateur \og~Y~\fg{}~: gère le bruit de mode commun à travers la barrière d'isolation. \\ \hline
             \end{tabular}
-            \caption{Nomenclature de l'alimentation USB-B}
+            \caption{Nomenclature de l'alimentation USB-B.}
         \end{tableau}
 
         \subsection{Schéma détaillé et PCB}
@@ -1010,15 +1010,15 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
             \begin{subfigure}[b]{0.48\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{images/Partie USB-B/02_Schéma Proteus.pdf}
-                \caption{Schéma du convertisseur ISO}
+                \caption{Schéma du convertisseur ISO.}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.48\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{images/Partie USB-B/03_PCB.png}
-                \caption{Routage Carte USB-B}
+                \caption{Routage Carte USB-B.}
             \end{subfigure}
-            \caption{Conception Carte USB-B - Abaissement isolé $48 \to 5 \, \text{V}$ - Mise en œuvre du convertisseur TMR 104811WI et de son filtrage d'entrée.}
+            \caption{Conception Carte USB-B.}
         \end{figure}
 
 \begin{decisionbox}[Décision : USB-B]
@@ -1052,7 +1052,7 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{images/Partie Filtre ALIM/01_Schéma extrait de la datasheet.png}
-            \caption{Schéma extrait de la datasheet du filtre CEM autour du convertisseur 40~W}
+            \caption{Schéma extrait de la datasheet du filtre CEM autour du convertisseur 40~W.}
         \end{figure}
 
         Pour la partie entrée et isolation, le choix des composants a été fait pour maximiser l'immunité aux bruits de découpage~:
@@ -1076,7 +1076,7 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
                 Capacités (C2, C3) & GRM31CZ72A475KE11L & 4.7~$\mu$F, Céramique CMS (X7R) & Découplage d'entrée (Filtre LC)~: absorbe les parasites HF grâce à sa faible ESR. \\ \hline
                 Capacité (C4) & CC1812JKNPODBN102 & 1000~pF Céramique Haute Tension & Condensateur \og~Y~\fg{}~: gère le bruit de mode commun à travers la barrière d'isolation. \\ \hline
             \end{tabular}
-            \caption{Nomenclature de l'alimentation PIC}
+            \caption{Nomenclature de l'alimentation PIC.}
         \end{tableau}
 
         \subsection{Schéma détaillé et PCB}
@@ -1086,15 +1086,15 @@ Le routage final ayant été réalisé par l'encadrement technique, nous présen
             \begin{subfigure}[b]{0.48\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{images/Partie Filtre ALIM/02_Schema Proteus.pdf}
-                \caption{Schéma du filtre 40 W}
+                \caption{Schéma du filtre 40 W.}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.48\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{images/Partie Filtre ALIM/03_PCB.png}
-                \caption{Routage de la carte}
+                \caption{Routage de la carte.}
             \end{subfigure}
-            \caption{Conception Alimentation Logique - Module $48 \to 5 \, \text{V}$ / $40 \, \text{W}$ - Découplage de la commande en cas d'appel de courant massif.}
+            \caption{Conception Alimentation Logique.}
         \end{figure}
 
 \begin{decisionbox}[Décision : Alimentation Logique]

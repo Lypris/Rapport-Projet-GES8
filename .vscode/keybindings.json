@@ -1,0 +1,7 @@
+[
+    {
+        "key": "shift+alt+a",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'latex'"
+    }
+]

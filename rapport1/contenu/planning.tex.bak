@@ -1,0 +1,80 @@
+\chapter{Plannification et Organisation}
+
+\section{Planning prévisionnel}
+
+Pour mener à bien le projet ce semestre, nous avons établi un planning prévisionnel détaillé basé sur les contraintes du projet et les jalons de rendus. Ce diagramme, situé sur la page suivante, présente la répartition temporelle des tâches pour l'ensemble du groupe.
+
+\begin{sidewaysfigure}
+    \centering
+    \begin{ganttchart}[
+        vgrid,
+        hgrid,
+        x unit=0.9cm,
+        y unit title=0.7cm,
+        y unit chart=0.5cm,
+        title label font=\scriptsize\bfseries,
+        bar label font=\tiny,
+        group label font=\scriptsize\bfseries,
+        milestone label font=\tiny\itshape
+    ]{6}{23}
+    
+    % --- Titres des colonnes (Semaines) ---
+    \gantttitle{Planning Détaillé du Projet Picogrid (S6 à S23)}{18} \\
+    \gantttitlelist{6,...,23}{1} \\
+
+    % --- PHASE 1 : CADRAGE ---
+    \ganttgroup{Phase 1 : Cadrage}{6}{10} \\
+    \ganttbar{Début du projet}{6}{6} \\
+    \ganttbar{Analyse fct. \& Rédaction CdC}{7}{9} \\
+    \ganttmilestone[milestone/.append style={fill=red}]{Remise Rapport 1}{10} \\
+
+    % --- DÉV : ALIMENTATION ---
+    \ganttgroup{Dév : Alimentation}{11}{17} \\
+    \ganttbar{Dimens. redresseur, filtre \& MPPT éolienne}{11}{14} \\
+    \ganttbar{Schémas \& simus (Batterie 48V / Charge)}{14}{17} \\
+
+    % --- DÉV : DISTRIBUTION ---
+    \ganttgroup{Dév : Distribution}{11}{17} \\
+    \ganttbar{Dimens. Convertisseurs (24V, 188V, USB)}{11}{14} \\
+    \ganttbar{Schémas \& choix Relais de puissance}{14}{17} \\
+
+    % --- DÉV : MONITORING ---
+    \ganttgroup{Dév : Monitoring}{11}{17} \\
+    \ganttbar{Arch. Bus CAN \& choix PICs et Capteurs}{11}{14} \\
+    \ganttbar{Dév initial IHM \& Backend Node-RED}{14}{17} \\
+
+    % --- MISE EN COMMUN ---
+    \ganttgroup{Mise en commun}{17}{18} \\
+    \ganttbar{Routage PCB \& Intégration globale schémas}{17}{18} \\
+    \ganttbar{Validation nomenclatures \& Commandes}{18}{18} \\
+    \ganttmilestone[milestone/.append style={fill=red}]{Remise Rapport 2}{18} \\
+
+    % --- RÉAL. \& VALIDATION ---
+    \ganttgroup{Réal. \& Validation}{19}{23} \\
+    \ganttbar{Réception composants \& Soudure PCB}{19}{21} \\
+    \ganttbar{Mesures unitaires par module}{21}{22} \\
+    \ganttbar{Tests d'intégration globale Picogrid}{22}{23} \\
+    \ganttbar{Rédaction Rapport final}{21}{23} \\
+    \ganttmilestone[milestone/.append style={fill=red}]{Démonstration \& Remise finale}{23} \\
+    
+    \end{ganttchart}
+    \caption{Diagramme de Gantt prévisionnel du projet Picogrid}
+    \label{fig:gantt_projet}
+\end{sidewaysfigure}
+
+\section{Organisation de l'équipe}
+
+Afin de mener à bien le développement de la maquette Picogrid, l'équipe a été structurée selon l'organisation présentée ci-dessous. Trois groupes de travail distincts ont été constitués, chacun avec sa spécialité et un référent assurant l’interface avec la supervision du projet : 
+
+\begin{itemize}
+    \item \textbf{Groupe Alimentation} : chargé de la récupération et du stockage de l’énergie provenant de l’éolienne.
+    \item \textbf{Groupe Distribution} : chargé de réaliser l'ensemble des conversions d’énergie nécessaires à l’alimentation des équipements de l’habitation.
+    \item \textbf{Groupe Monitoring} : chargé de mettre en œuvre le pilotage, la surveillance de l’installation ainsi que l’interface homme-machine (IHM).
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/diagrammes/Organigramme Projet S8.png}
+    \caption{Organigramme du Projet S8}
+    \label{fig:organigramme}
+\end{figure}

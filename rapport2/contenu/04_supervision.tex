@@ -32,7 +32,7 @@
                     Capacité ($C_p$) & TDK C3216X7R1H106K & 10 \textmu F, X7R, 50V (Boîtier 1206) & Réservoir d'énergie (Tank Capacitor) \\ \hline
                     Capacité local & KEMET C0805C104K5RAC & 100 nF, X7R, ESL ultra-faible & Découplage local haute vitesse \\ \hline
                 \end{tabular}
-                \caption{Composants du filtre de l'alimentation du microcontrôleur}
+                \caption{Composants du filtre de l'alimentation du microcontrôleur.}
             \end{tableau}
 
             Pour la réalisation du circuit imprimé, nous prenons soin de placer le condensateur de découplage au plus proche des broches d'alimentation du microcontrôleur pour maximiser son effet.
@@ -51,7 +51,7 @@
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=1\linewidth]{Partie Microcontroleur et Bus CAN/01_Schéma_PIC_periphérique.pdf}
-                \caption{Schéma du PIC et de ses périphériques}
+                \caption{Schéma du PIC et de ses périphériques.}
                 \label{fig:pic_periph}
             \end{figure}
 
@@ -83,23 +83,13 @@
         \subsection{Structuration de la Matrice CAN}
             Le réseau doit supporter les échanges entre le superviseur et les différents nœuds PIC. Pour optimiser la bande passante du bus (fixée à 500 kbit/s), nous avons dimensionné les échanges selon les matrices suivantes.
             
-            Par ailleurs, il existe en informatique deux façons de gérer et stocker des données représentées sur plusieurs octets :
-            \begin{itemize}
-                \item \textbf{Little-Endian} : L'octet de poids faible (le moins significatif) est stocké à l'adresse mémoire la plus basse. C'est le format utilisé par l'architecture Intel x86 et, dans notre cas, par les microcontrôleurs PIC.
-                \item \textbf{Big-Endian} : L'octet de poids fort (le plus significatif) est stocké à l'adresse mémoire la plus basse. C'est le format traditionnellement utilisé par les réseaux (comme TCP/IP).
-            \end{itemize}
-
-            Nous avons opté pour le format Little-Endian pour les données du bus. Ce choix permet une correspondance directe avec la mémoire des microcontrôleurs PIC (architecture 8-bit/16-bit), évitant ainsi des opérations de retournement d'octets coûteuses en ressources lors du traitement en C.
-
-            Nous avons ainsi pu établir une matrice d'adresses et des matrices de données pour normaliser notre communication.
-
             \subsubsection{Matrice d'adresses}
                 Pour la matrice d'adresses, le choix s'est fait en fonction de la catégorie et de l'importance de la donnée échangée comme ci-dessous :
                 
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[width=1\textwidth]{Partie Microcontroleur et Bus CAN/02_adresses.png}
-                    \caption{Matrice d'adresses du bus CAN}
+                    \includegraphics[width=1\textwidth]{Partie Microcontroleur et Bus CAN/02_adresses.pdf}
+                    \caption{Matrice d'adresses du bus CAN.}
                     \label{fig:matrice_adresses}
                 \end{figure}
                 
@@ -109,12 +99,18 @@
                 
                 \begin{figure}[H]
                     \centering
-                    \includegraphics[width=0.8\textwidth]{Partie Microcontroleur et Bus CAN/03_donnees.png}
-                    \caption{Matrice de données du bus CAN}
+                    \includegraphics[width=1\textwidth]{Partie Microcontroleur et Bus CAN/03_donnees.pdf}
+                    \caption{Matrice de données du bus CAN.}
                     \label{fig:matrice_donnees}
                 \end{figure}
                 
+                Par ailleurs, il existe en informatique deux façons de gérer et stocker des données représentées sur plusieurs octets :
+            \begin{itemize}
+                \item \textbf{Little-Endian} : L'octet de poids faible (le moins significatif) est stocké à l'adresse mémoire la plus basse. C'est le format utilisé par l'architecture Intel x86 et, dans notre cas, par les microcontrôleurs PIC.
+                \item \textbf{Big-Endian} : L'octet de poids fort (le plus significatif) est stocké à l'adresse mémoire la plus basse. C'est le format traditionnellement utilisé par les réseaux (comme TCP/IP).
+            \end{itemize}
 
+            Nous avons opté pour le format Little-Endian pour les données du bus. Ce choix permet une correspondance directe avec la mémoire des microcontrôleurs PIC (architecture 8-bit/16-bit), évitant ainsi des opérations de retournement d'octets coûteuses en ressources lors du traitement en C.
 
     \section{Carte capteur}
         L'objectif de la carte capteur est de, comme son nom l'indique, regrouper les composants de mesure, notamment ceux pour le courant et la tension. Dans le cadre de ce projet, nous avons besoin de capteurs en amont de chaque équipement. Plus précisément, en amont des convertisseurs associés, pour mesurer la consommation de chaque équipement en prenant en compte les pertes liées à la conversion d'énergie.
@@ -163,7 +159,7 @@
                 \begin{figure}[H]
                     \centering
                     \includegraphics[width=0.6\linewidth]{Partie Capteur/01_Cablage Optocoupleur.png}
-                    \caption{Schéma de l'optocoupleur 4N35}
+                    \caption{Schéma de l'optocoupleur 4N35.}
                     \label{fig:schema_optocoupleur}
                 \end{figure}
 
@@ -177,7 +173,7 @@
                 \begin{figure}[H]
                     \centering
                     \includegraphics[width=0.8\textwidth]{Partie Capteur/02_Caractéristique_Optocoupleur.png}
-                    \caption{Caractéristique expérimentale de l'optocoupleur 4N35 avec les composants choisis}
+                    \caption{Caractéristique expérimentale de l'optocoupleur 4N35 avec les composants choisis.}
                     \label{fig:caracteristique_optocoupleur}
                 \end{figure}
                 
@@ -189,7 +185,7 @@
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=1\linewidth]{Partie Capteur/03_Schéma_carte_capteurs.pdf}
-                \caption{Schéma détaillé de la carte capteurs}
+                \caption{Schéma détaillé de la carte capteurs.}
                 \label{fig:schema_carte_capteurs}
             \end{figure}
 
@@ -209,10 +205,19 @@
                 \end{itemize}
                 \item Le bornier type connecteur bord de carte
             \end{itemize}
+            
+                       
 
             En ce qui concerne le PCB, nous devions respecter plusieurs contraintes. Tout d'abord, il doit pouvoir s'enficher dans les connecteurs bord de carte présents sur la carte relais (détaillée dans la partie suivante). En suivant les préconisations du connecteur, nous avons ainsi pu concevoir l'empreinte de la carte pour garantir un bon ajustement.
             
             Ensuite, la carte ne doit pas être trop large. En effet, placée verticalement, une carte trop large viendrait gêner l'intégration d'autres éléments. Nous avons donc privilégié une forme rectangulaire tout en hauteur.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\textwidth]{Partie Capteur/04_PCB_carte_capteurs.png}
+                \caption{PCB de la carte capteurs.}
+                \label{fig:pcb_carte_capteurs}
+            \end{figure}
             
             Pour le routage, nous avons choisi de placer les composants traversants sur l'envers de la cible, à l'inverse des composants CMS. Par ailleurs, nous avons positionné les broches du PICKIT en haut de la carte pour en faciliter l'accès, autorisant ainsi un programmation sans débrancher la carte.
 
@@ -238,7 +243,7 @@
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=1\linewidth]{Partie Carte Relais/01_Schéma Carte Relais.pdf}
-                \caption{Schéma de câblage de la carte relais}
+                \caption{Schéma de câblage de la carte relais.}
                 \label{fig:schema_carte_relais}
             \end{figure}
 
@@ -247,7 +252,7 @@
            \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{Partie Carte Relais/02_PCB carte relais.png}
-            \caption{PCB de la carte relais}
+            \caption{PCB de la carte relais.}
             \label{fig:pcb_carte_relais}
            \end{figure}
            
@@ -275,7 +280,7 @@
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=1\textwidth]{Partie Carte Lumière/01_Schéma Carte Commande Lumiere_V2.pdf}
-                \caption{Schéma Proteus de la carte de commande de l'éclairage}
+                \caption{Schéma Proteus de la carte de commande de l'éclairage.}
                 \label{fig:schema_carte_lumiere}
             \end{figure}
             
@@ -305,7 +310,7 @@
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=0.8\textwidth]{Partie Carte Lumière/03_PCB.png}
-                \caption{PCB de la carte de commande de l'éclairage}
+                \caption{PCB de la carte de commande de l'éclairage.}
                 \label{fig:pcb_carte_lumiere}
             \end{figure}
             
@@ -330,7 +335,7 @@
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=1\textwidth]{Partie IHM/01_Synoptique de la chaîne de traitement.png}
-                \caption{Architecture de communication matérielle et logicielle du superviseur}
+                \caption{Architecture de communication matérielle et logicielle du superviseur.}
                 \label{fig:arch_superviseur}
             \end{figure}
 
@@ -353,7 +358,7 @@
                 \begin{figure}[H]
                     \centering
                     \includegraphics[width=1\textwidth]{Partie IHM/02_Organigramme Node RED.png}
-                    \caption{Organisation de la programmation sur Node-RED}
+                    \caption{Organisation de la programmation sur Node-RED.}
                     \label{fig:orga_nodered}
                 \end{figure}
 

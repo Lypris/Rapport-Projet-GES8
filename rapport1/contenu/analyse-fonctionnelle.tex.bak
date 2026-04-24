@@ -1,0 +1,52 @@
+\chapter{Analyse Fonctionnelle et Synoptique}
+\label{chap:analyse_fonctionnelle}
+
+Pour comprendre l'objectif principal du projet nous avons réalisé une "bête à cornes" et un diagramme "pieuvre".
+
+\section{Bête à cornes}
+Le schéma "bête à cornes" permet d'expliquer simplement et facilement la mission du projet.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/diagrammes/Bête à cornes.png}
+    \caption{Bête à cornes du projet}
+    \label{fig:bete_a_cornes}
+\end{figure}
+Dans notre cas, la maquette Picogrid que nous allons réaliser est un dispositif conçu pour aider les habitants d'un logement à mieux gérer leur énergie. Son rôle est d'agir directement sur l'installation électrique de la maison afin de la rendre autonome. Ce système permet à l'habitation de produire et d'utiliser sa propre électricité, permettant son émancipation vis-à-vis du réseau électrique extérieur.
+
+\subsection{Diagramme Pieuvre}
+Le diagramme pieuvre permet de visualiser les fonctions de service du produit.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/diagrammes/Diagramme pieuvre.png}
+    \caption{Diagramme Pieuvre du projet}
+    \label{fig:pieuvre}
+\end{figure}
+
+\begin{tableau}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{l X}
+        \toprule
+        \textbf{Fonction} & \textbf{Description} \\
+        \midrule
+        \textbf{\textcolor{INSArouge}{FP1}} & \textcolor{INSArouge}{Permettre de récupérer l'énergie produite par une source d'énergie renouvelable et stocker cette énergie} \\
+        \textbf{\textcolor{INSArouge}{FP2}} & \textcolor{INSArouge}{Permettre d'alimenter les équipements électriques de l'habitation à partir de l'énergie stockée.} \\
+         & \\
+        \textbf{\textcolor{INSAbleu}{FC1}} & \textcolor{INSAbleu}{L'utilisateur doit pouvoir connaître l'état du système} \\
+        \textbf{\textcolor{INSAbleu}{FC2}} & \textcolor{INSAbleu}{Le système doit respecter les normes d'alimentation et de sécurité} \\
+        \textbf{\textcolor{INSAbleu}{FC3}} & \textcolor{INSAbleu}{Le système doit s'adapter et s'intégrer dans son environnement} \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Caractérisation des fonctions de service (FP : Fonction Principale, FC : Fonction Contrainte)}
+    \label{tab:fonctions_service}
+\end{tableau}
+
+
+\section{Synoptique du Projet}
+Afin d'appréhender l'architecture globale de notre maquette et de visualiser les interactions entre les différents modules, le synoptique général présenté ci-après schématise l’intégralité de la chaîne d’énergie et de communication. Ce diagramme met en évidence le cheminement de l’énergie depuis sa production par l’alternateur éolien jusqu’à sa distribution vers les charges finales, tout en intégrant les blocs de conversion intermédiaire, le stockage par batterie 48\,V et l'unité de monitoring centralisée.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/diagrammes/Synoptique projet S8.png}
+    \caption{Synoptique du Projet S8}
+    \label{fig:synoptique}
+\end{figure}
