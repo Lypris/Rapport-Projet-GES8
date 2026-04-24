@@ -1,8 +1,7 @@
-% --- Chapitre 5 : Supervision et Interface ---
-\chapter{Supervision et Interface Utilisateur}
+\chapter{Électronique embarquée}
 
-    \section{Microcontrôleur et Bus CAN}
-        Pour connaître l'état du système en temps réel, il est nécessaire que le système communique avec la Raspberry Pi. Cette communication est assurée par le protocole CAN.
+    \section{Socle matériel}
+        L'ensemble des cartes électroniques développées pour ce projet (capteurs, relais, commande d'éclairage) s'articule autour d'une base de composants commune. Ce « socle matériel » permet de standardiser les unités de traitement locales et garantit une communication fiable avec le superviseur central (la Raspberry Pi) via le bus CAN.
 
         \subsection{Solution technique}
             \subsubsection{Microcontrôleur}
@@ -79,38 +78,6 @@
                 \end{itemize}
                 \item Une LED de contrôle avec sa résistance de 150 $\Omega$
             \end{itemize}
-
-        \subsection{Structuration de la Matrice CAN}
-            Le réseau doit supporter les échanges entre le superviseur et les différents nœuds PIC. Pour optimiser la bande passante du bus (fixée à 500 kbit/s), nous avons dimensionné les échanges selon les matrices suivantes.
-            
-            \subsubsection{Matrice d'adresses}
-                Pour la matrice d'adresses, le choix s'est fait en fonction de la catégorie et de l'importance de la donnée échangée comme ci-dessous :
-                
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=1\textwidth]{Partie Microcontroleur et Bus CAN/02_adresses.pdf}
-                    \caption{Matrice d'adresses du bus CAN.}
-                    \label{fig:matrice_adresses}
-                \end{figure}
-                
-
-            \subsubsection{Matrices de données}
-                En ce qui concerne les matrices de données, nous avons pu identifier deux formats différents : l'un informant sur l'état des équipements, l'autre transférant les données récupérées par les capteurs de tension et de courant. Nous avons donc établi les trames de données ci-dessous :
-                
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=1\textwidth]{Partie Microcontroleur et Bus CAN/03_donnees.pdf}
-                    \caption{Matrice de données du bus CAN.}
-                    \label{fig:matrice_donnees}
-                \end{figure}
-                
-                Par ailleurs, il existe en informatique deux façons de gérer et stocker des données représentées sur plusieurs octets :
-            \begin{itemize}
-                \item \textbf{Little-Endian} : L'octet de poids faible (le moins significatif) est stocké à l'adresse mémoire la plus basse. C'est le format utilisé par l'architecture Intel x86 et, dans notre cas, par les microcontrôleurs PIC.
-                \item \textbf{Big-Endian} : L'octet de poids fort (le plus significatif) est stocké à l'adresse mémoire la plus basse. C'est le format traditionnellement utilisé par les réseaux (comme TCP/IP).
-            \end{itemize}
-
-            Nous avons opté pour le format Little-Endian pour les données du bus. Ce choix permet une correspondance directe avec la mémoire des microcontrôleurs PIC (architecture 8-bit/16-bit), évitant ainsi des opérations de retournement d'octets coûteuses en ressources lors du traitement en C.
 
     \section{Carte capteur}
         L'objectif de la carte capteur est de, comme son nom l'indique, regrouper les composants de mesure, notamment ceux pour le courant et la tension. Dans le cadre de ce projet, nous avons besoin de capteurs en amont de chaque équipement. Plus précisément, en amont des convertisseurs associés, pour mesurer la consommation de chaque équipement en prenant en compte les pertes liées à la conversion d'énergie.
@@ -305,7 +272,9 @@
             Initialement, le design intégrait un driver VNI4140K (boîtier PowerSO-24). Cependant, ce composant présente un pas ultra-fin de 0,65 mm. Les machines d'usinage de circuits imprimés disponibles à l'INSA (fraiseuses numériques LPKF) utilisent des outils de coupe d'une largeur minimale de 10th (environ 0,25 mm). Pour garantir l'absence de courts-circuits lors de l'usinage, les règles de conception (DRC - Design Rule Check) imposent une distance d'isolement (Clearance) sécuritaire d'au moins 15th.
             
             Pour rendre la carte usinable, nous avons procédé au remplacement du composant par le VN340SP-33-E qui se présente dans un boîtier PowerSO-10.
-            Le driver dispose d'un pad thermique (\textit{Exposed Pad}) situé sous le boîtier. Dans cette architecture "High-Side", ce pad est électriquement relié au potentiel \textbf{VCC (24\,V)}. Sur le PCB, une zone de cuivre étendue reliée au 24\,V a été créée pour dissiper cette chaleur.
+            Le driver dispose d'un pad thermique (\textit{Exposed Pad}) situé sous le boîtier. Dans cette architecture "High-Side", ce pad est électriquement relié au potentiel \textbf{VCC (24\,V)}. Sur le PCB, une zone de cuivre étendue reliée au 24\,V a été créée pour dissiper cette chaleur. \\
+            
+            Enfin, pour assurer la sécurité matérielle, chaque sortie vers les lampes est protégée par un fusible calibré en fonction de la section des câbles et de la charge. Des diodes de roue libre sont intégrées au driver pour protéger le circuit contre d'éventuels retours inductifs lors de la coupure de l'éclairage.
             
             \begin{figure}[H]
                 \centering
@@ -313,10 +282,7 @@
                 \caption{PCB de la carte de commande de l'éclairage.}
                 \label{fig:pcb_carte_lumiere}
             \end{figure}
-            
 
-\subsection{Synthèse des protections}
-    Enfin, pour assurer la sécurité matérielle, chaque sortie vers les lampes est protégée par un fusible calibré en fonction de la section des câbles et de la charge. Des diodes de roue libre sont intégrées au driver pour protéger le circuit contre d'éventuels retours inductifs lors de la coupure de l'éclairage.
 
 
 

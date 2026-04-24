@@ -64,39 +64,50 @@ Le hacheur dual boost entrelacé fonctionne avec un rapport cyclique nettement m
 
 Nous devons faire une étude théorique du montage car c'est un montage que nous n'avons pas encore étudié. On commence par réaliser les schémas équivalents pour déterminer les équations pour les deux périodes de fonctionnement~:
 
-\textbf{Entre $0$ et $\alpha T$~:}
+\vspace{0.3cm}
 
-\begin{figure}[H]
+\noindent
+\begingroup
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{@{}p{0.47\textwidth}!{\color{remindercolor}\vrule width 1pt}p{0.47\textwidth}@{}}
     \centering
-    \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/03_dual_boost_T_petit_signaux1.png}
-    \caption{Schéma d'étude entre 0 et $\alpha T$, hacheur dual boost en T.}
-\end{figure}
+    \includegraphics[width=0.45\textwidth]{images/Partie Rice cooker/03_dual_boost_T_petit_signaux1.png}
+    \captionsetup{hypcap=false}
+    \captionof{figure}{Schéma d'étude entre $0$ et $\alpha T$}
 
-\begin{align*}
-    V_L(t) &=  V_e \\
-    I_L(t) &= \frac{V_e}{L}t + I_{L\text{min}} \\
-    V_{T1}(t) &= 0 \\
-    i_{T1}(t) &= I_L(t) \\
-    V_D(t) &= -V_S \\
-    i_{D1}(t) &= 0
-\end{align*}
-
-\textbf{Entre $\alpha T$ et $T/2$~:} on pose $t' = t - \alpha T$
-
-\begin{figure}[H]
+    Dans ce cas présent, nous avons les équations suivantes :
+    \[
+        \begin{aligned}
+            V_L(t) &=  V_e \\
+            I_L(t) &= \frac{V_e}{L}t + I_{L\text{min}} \\
+            V_{T1}(t) &= 0 \\
+            i_{T1}(t) &= I_L(t) \\
+            V_D(t) &= -V_S \\
+            i_{D1}(t) &= 0
+        \end{aligned}
+    \]
+    &
     \centering
-    \includegraphics[width=0.8\linewidth]{images/Partie Rice cooker/04_dual_boost_T_petit_signaux_2.png}
-    \caption{Schéma d'étude entre $\alpha T$ et $T/2$, hacheur dual boost en T.}
-\end{figure}
+    \includegraphics[width=0.45\textwidth]{images/Partie Rice cooker/04_dual_boost_T_petit_signaux_2.png}
+    \captionsetup{hypcap=false}
+    \captionof{figure}{Schéma d'étude entre $\alpha T$ et $T/2$}
 
-\begin{align*}
-    V_L(t') &= V_e - V_s \\
-    I_L(t') &= \frac{V_e - V_s}{L}t' + I_{L\text{max}} \\
-    V_{T1}(t') &= V_s \\
-    i_{T1}(t') &= 0 \\
-    V_D(t') &= 0 \\
-    i_{D1}(t') &= I_L(t)
-\end{align*}
+    Dans ce cas présent, avec $t' = t - \alpha T$, nous avons les équations suivantes :
+    \[
+        \begin{aligned}
+            V_L(t') &= V_e - V_s \\
+            I_L(t') &= \frac{V_e - V_s}{L}t' + I_{L\text{max}} \\
+            V_{T1}(t') &= V_s \\
+            i_{T1}(t') &= 0 \\
+            V_D(t') &= 0 \\
+            i_{D1}(t') &= I_L(t')
+        \end{aligned}
+    \]
+    \\
+\end{tabular}
+\endgroup
+\vspace{0.3cm}
 
 On peut alors écrire (valeur moyenne de la tension aux bornes de l'inductance nulle sur une demi-période)~:
 

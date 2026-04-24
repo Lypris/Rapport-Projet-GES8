@@ -6,40 +6,87 @@
 \section*{Annexe A : Tableau complet des références composants}
 \begin{tableau}[H]
     \centering
-    \begin{tabular}{|l|l|l|}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|l|l|l|}
         \hline
-        \textbf{Catégorie} & \textbf{Référence} & \textbf{Fonction} \\
+        \textbf{Composant / Valeur} & \textbf{Référence} & \textbf{Lien Fournisseur} & \textbf{Lien Datasheet} \\
         \hline
-        Diodes & Vishay V35PW22HM3 & Redressement AC/DC (PD3) \\
+        Microcontrôleur & PIC18F27Q84 & \href{https://fr.rs-online.com/web/p/microcontroleurs/2744291}{Lien RS} & \href{https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC18F27-47-57Q84-Microcontroller-Data-Sheet-DS40002213.pdf}{Datasheet} \\
         \hline
-        Microcontrôleur & PIC18F25K80 & Supervision et commande CAN \\
+        Transceiver CAN & MCP2561-E\_P & \href{https://fr.farnell.com/microchip/mcp2561-e-p/ic-can-tranceiver-high-speed-8pdip/dp/2362836}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DMCP2561-E\_P}{Datasheet} \\
         \hline
-        Transceiver CAN & TJA1050 & Interface physique du bus CAN \\
+        Capteur Courant 20A & ACS723LLCTR-20AU-T & \href{https://fr.farnell.com/allegro-microsystems/acs723llctr-20au-t/replacement-for-acs713elctr-20a/dp/3224918}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DACS723LLCTR-20AU-T}{Datasheet} \\
+        \hline
+        Relais Puissance & OJS-SH-105HEF,00000 & \href{https://fr.farnell.com/te-connectivity-potter-brumfield/ojs-sh-105hef-00000/power-relay-spst-no-5vdc-16a-tht/dp/3776345}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DOJS-SH-105HEF}{Datasheet} \\
+        \hline
+        Driver Charge Inductive & SZNUD3124LT1G & \href{https://fr.farnell.com/on-semiconductor/sznud3124lt1g/driver-charge-inductive-aec-q101/dp/2774634}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DSZNUD3124LT1G}{Datasheet} \\
+        \hline
+        Optocoupleur & 4N35 & \href{https://fr.farnell.com/vishay/4n35/optocoupleur-phototransistor-5000vrms/dp/1328375}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3D4N35}{Datasheet} \\
+        \hline
+        LED Rouge 3mm & 703-0090 & \href{https://fr.farnell.com/multicomp-pro/703-0090/led-rouge-3mm-standard/dp/2112100}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3D703-0090}{Datasheet} \\
+        \hline
+        Inductance 10~$\mu$H (0.7A) & LQH32PN100MN0L & \href{https://fr.farnell.com/murata/lqh32pn100mn0l/inductance-10uh-blind-e-0-7a/dp/2470297}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DLQH32PN100MN0L}{Datasheet} \\
+        \hline
+        Inductance 10~$\mu$H (2.7A) & CLF7045T-100M-D & \href{https://fr.farnell.com/tdk/clf7045t-100m-d/inductance-10uh-2-7a-20-100khz/dp/2360939}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DCLF7045T-100M-D}{Datasheet} \\
+        \hline
+        Inductance 15~$\mu$H & 74438335150 & \href{https://fr.farnell.com/wurth-elektronik/74438335150/inductance-15uh-0-65a-20-pwr-14mhz/dp/2361924}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3D74438335150}{Datasheet} \\
+        \hline
+        Inductance 22~$\mu$H & LQH32PN220MN0L & \href{https://fr.farnell.com/murata/lqh32pn220mn0l/inductance-22uh-blind-e-0-45a/dp/2470301}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DLQH32PN220MN0L}{Datasheet} \\
+        \hline
+        Inductance 33~$\mu$H & IHLP7575GZER330M5A & \href{https://fr.farnell.com/vishay/ihlp7575gzer330m5a/inductor-33uh-shielded-10-2a/dp/3778737}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DIHLP7575GZER330M5A}{Datasheet} \\
+        \hline
+        Inductance 4.7~$\mu$H & B82462G4472M000 & \href{https://fr.farnell.com/epcos/b82462g4472m000/inductance-4-7uh-blindee-2a/dp/3525402}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DB82462G4472M000}{Datasheet} \\
+        \hline
+        Cond. Hybride 150~$\mu$F & A786MW157M1JLAS011 & \href{https://fr.farnell.com/kemet/a786mw157m1jlas011/cond-alu-elec-hybride-150uf-63v/dp/4723928}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DA786MW157M1JLAS011}{Datasheet} \\
+        \hline
+        Cond. Polymère 100~$\mu$F & 72SXE100M+T & \href{https://fr.farnell.com/panasonic/72sxe100m-t/cond-alu-polym-re-100uf-72v-radial/dp/4568198}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3D72SXE100M\%2BT}{Datasheet} \\
+        \hline
+        Cond. Polymère 47~$\mu$F & 875075555002 & \href{https://fr.farnell.com/wurth-elektronik/875075555002/cond-47uf-25v-alu-elec-polymer/dp/4257162}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3D875075555002}{Datasheet} \\
+        \hline
+        Cond. Électrolytique 47~$\mu$F & EDH476M050A9HAA & \href{https://fr.farnell.com/kemet/edh476m050a9haa/cap-47uf-50v-alu-elec-smd/dp/3346120}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DEDH476M050A9HAA}{Datasheet} \\
+        \hline
+        Capa Céramique 10~$\mu$F & C3216X7R1H106K160AC & \href{https://fr.farnell.com/tdk/c3216x7r1h106k160ac/condensateur-10uf-50v-mlcc-1206/dp/3416233}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DC3216X7R1H106K160AC}{Datasheet} \\
+        \hline
+        Capa MLCC 10~$\mu$F (100V) & GRM32EC72A106KE05K & \href{https://fr.farnell.com/murata/grm32ec72a106ke05k/cap-10uf-100v-mlcc-1210/dp/3581425}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DGRM32EC72A106KE05K}{Datasheet} \\
+        \hline
+        Capa Stacked 10~$\mu$F & CKG57NX7R2A106M500JH & \href{https://fr.farnell.com/en-FR/tdk/ckg57nx7r2a106m500jh/cap-10uf-100v-mlcc-stacked-2220/dp/1886985}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DCKG57NX7R2A106M500JH}{Datasheet} \\
+        \hline
+        Capa 4.7~$\mu$F (100V) & C1210C475M1R2C7186 & \href{https://fr.farnell.com/kemet/c1210c475m1r2c7186/cond-4-7-f-100v-20-x7r-1210/dp/1826342}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DC1210C475M1R2C7186}{Datasheet} \\
+        \hline
+        Capa 4.7~$\mu$F (X7R) & 12101C475K4T2A & \href{https://fr.farnell.com/avx/12101c475k4t2a/cond-4-7-f-100v-10-x7r-1210/dp/2834945}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3D12101C475K4T2A}{Datasheet} \\
+        \hline
+        Capa 4.7~$\mu$F (50V) & 12105C475KAT4A & \href{https://fr.farnell.com/kyocera-avx/12105c475kat4a/cap-mlcc-x7r-4-7uf-50v-1210/dp/3906633}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3D12105C475KAT4A}{Datasheet} \\
+        \hline
+        Capa 4.7~$\mu$F (1206) & GRM31CZ72A475KE11L & \href{https://fr.farnell.com/murata/grm31cz72a475ke11l/condensateur-4-7uf-100v-1206-x7r/dp/4128569}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DGRM31CZ72A475KE11L}{Datasheet} \\
+        \hline
+        Capa 100nF & C0805C104K5RACTU & \href{https://fr.farnell.com/kemet/c0805c104k5ractu/cond-0-1-f-50v-10-x7r-0805-bobine/dp/2392344}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DC0805C104K5RACTU}{Datasheet} \\
+        \hline
+        Capa 4.7nF (1kV) & C1812C472KDRACTU & \href{https://fr.farnell.com/kemet/c1812c472kdractu/cond-4700pf-1-kv-10-x7r-1812/dp/1702159}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DC1812C472KDRACTU}{Datasheet} \\
+        \hline
+        Capa 1000pF (2kV) & CC1812JKNPODBN102 & \href{https://fr.farnell.com/yageo/cc1812jknpodbn102/cond-mlcc-0-001uf-2kv-c0g-np0/dp/4646076}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DCC1812JKNPODBN102}{Datasheet} \\
+        \hline
+        Capa 220pF (2kV) & C1812C221KGGACTU & \href{https://fr.farnell.com/kemet/c1812c221kggactu/cond-220pf-2-kv-10-c0g-np0-1812/dp/2820928}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DC1812C221KGGACTU}{Datasheet} \\
+        \hline
+        Résistance 10.2~k$\Omega$ & RC1206FR-0710K2L & \href{https://fr.farnell.com/yageo/rc1206fr-0710k2l/res-10k2-1-0-25w-1206-couche-epaisse/dp/4148601}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DRC1206FR-0710K2L}{Datasheet} \\
+        \hline
+        Résistance 10~k$\Omega$ & CRCW080510K0FKTA & \href{https://fr.farnell.com/vishay/crcw080510k0fkta/res-couche-epaisse-10k-1-0-125w/dp/1652909}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DCRCW080510K0FKTA}{Datasheet} \\
+        \hline
+        Résistance 200~k$\Omega$ & RC1206FR-07200KL & \href{https://fr.farnell.com/yageo/rc1206fr-07200kl/res-200k-1-0-25w-1206-couche-epaisse/dp/3496174}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DRC1206FR-07200KL}{Datasheet} \\
+        \hline
+        Résistance 1~M$\Omega$ & WF12P1004FTL & \href{https://fr.farnell.com/multicomp-pro/wf12p1004ftl/resist-couche-epaisse-1m-1-200v/dp/2502774}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DWF12P1004FTL}{Datasheet} \\
+        \hline
+        Résistance Shunt 0.01~$\Omega$ & TLMQ2BDR010FTD & \href{https://fr.farnell.com/cgs-te-connectivity/tlmq2bdr010ftd/res-0r01-1w-metallique-1206/dp/4690300}{Lien Farnell} & \href{https://www.google.com/search?q=https://octopart.com/search\%3Fq\%3DTLMQ2BDR010FTD}{Datasheet} \\
         \hline
     \end{tabular}
-    \caption{Extrait de la nomenclature (BOM) détaillée.}
+    }
+    \caption{Nomenclature (BOM) détaillée des composants électroniques.}
 \end{tableau}
 
-\section*{Annexe B : Détails de calculs longs}
-Les détails du dimensionnement des composants inductifs et capacitifs pour le convertisseur SEPIC et l'étude thermique complète des dissipateurs ($R_{thHA} = \SI{13.92}{\celsius\per\watt}$) sont regroupés ici. Ces étapes n'ont pas été détaillées dans le corps du texte pour des raisons de concision.
 
-\section*{Annexe C : Trames CAN détaillées}
-Le réseau CAN fonctionne à une vitesse de \SI{500}{\kilo\bit\per\second}. Le format des trames standard (CAN 2.0A) est exploité avec les identifiants (ID) suivants:
-\begin{itemize}
-    \item \texttt{ID 0x100} : Mesure de tension principale.
-    \item \texttt{ID 0x101} : Mesure de courant.
-    \item \texttt{ID 0x200} : Commande des relais (éclairage, USB).
-\end{itemize}
-
-\section*{Annexe D : Captures de simulation complémentaires}
-Cette annexe recueille les relevés chronogrammes PSIM (tension, courant) pour la plage de charge complète (10\% à 100\%), qui n'ont pas été intégrés dans la section d'étude de la conversion afin de limiter la densité graphique du rapport.
-
-\section*{Annexe E : Contraintes fabrication PCB}
-Les circuits imprimés respectent des règles de routage strictes pour minimiser les perturbations EMI des composants de puissance envers la logique (largeur de piste, isolation, vias de dissipation thermique sous les composants CMS de puissance).
-
-\section*{Annexe F : Registre des commandes SSH}
+\section*{Annexe B : Registre des commandes SSH}
 
 \begin{tableau}[H]
+    \small
     \centering
     \renewcommand{\arraystretch}{1.3}
     \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.5cm}|>{\ttfamily\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{5cm}|}
