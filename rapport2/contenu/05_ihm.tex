@@ -59,7 +59,7 @@ sudo ip link set can0 up type can bitrate 500000
 
         Au lieu de créer un seul flux gigantesque et illisible, nous avons opté pour une structure \textbf{décentralisée} par onglets, reliés par des ponts invisibles (nœuds \textbf{Link In/Out}).
         \begin{itemize}
-            \item \textbf{Avantage (Architecture Entonnoir)} : On peut ajouter ou supprimer un appareil (un nouveau PIC sur le bus CAN) en 2 minutes sans risquer de casser le reste du système.
+            \item \textbf{Avantage (Architecture Entonnoir)} : On peut ajouter ou supprimer un appareil (un nouveau PIC sur le bus CAN) facilement sans risquer de casser le reste du système.
             \item \textbf{Centralisation IHM} : Un seul point d'entrée pour le nœud \texttt{uibuilder} (React), évitant les conflits d'URL et simplifiant le code Front-End qui reçoit des objets JSON déjà triés par \texttt{id}.
         \end{itemize}
 
