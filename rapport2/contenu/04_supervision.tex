@@ -44,7 +44,7 @@
 
             La résistance série n'est ici pas utile puisque l'on ne travaille pas avec de faibles niveaux de commande.
 
-        \subsection{Schéma détaillé}
+        \subsection{Schéma détaillé}\label{sec:supervision_schema}
             On obtient donc le schéma suivant :
             
             \begin{figure}[H]
@@ -158,7 +158,7 @@
 
             Avec :
             \begin{itemize}
-                \item Les composants relatifs au PIC (voir partie V.A.2)
+                \item Les composants relatifs au PIC (voir partie \ref{sec:supervision_schema})
                 \item Le capteur de courant :
                 \begin{itemize}
                     \item La capacité de découplage de 100 nF
@@ -202,7 +202,7 @@
 
             La carte relais accueille également des connecteurs encartables (référence : \href{https://fr.rs-online.com/web/p/connecteurs-de-bord-de-carte/7188245}{\textbf{7-5530843-5}}, connecteur de bord de carte à 12 broches) pour les cartes capteurs. Chaque broche est spécifiée pour supporter jusqu'à 3A. En mettant en parallèle 3 contacts, nous disposons d'une liaison de 9A, par laquelle la carte capteur prélèvera et injectera le courant de puissance. Les contacts restants achemineront le bus CAN et l'alimentation 5V des dites cartes.
 
-            Enfin, un dernier microcontrôleur PIC (disposant de sa circuiterie détaillée dans la partie V.A.3) anime cette carte principale afin de gérer la communication CAN vers la Raspberry Pi et l'actionnement en temps réel des relais. On y retrouve également le capteur de tension de charge globale de la batterie.
+            Enfin, un dernier microcontrôleur PIC (disposant de sa circuiterie détaillée dans la partie \ref{sec:supervision_schema}) anime cette carte principale afin de gérer la communication CAN vers la Raspberry Pi et l'actionnement en temps réel des relais. On y retrouve également le capteur de tension de charge globale de la batterie.
 
         \subsection{Schéma détaillé et PCB}
             Voici le schéma de câblage de cette carte relais :   
