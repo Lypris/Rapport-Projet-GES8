@@ -2,7 +2,7 @@
 \chapter{Supervision, communication et IHM}
 
 \section{Communication CAN}
-    Afin de faire le lien entre le socle matériel embarqué et le superviseur central, il est indispensable de définir des règles d'échange communes. Le réseau CAN doit supporter des interactions bidirectionnelles : l'envoi continu des mesures par les différents nœuds PIC et la réception d'ordres de commutation ordonnés par la Raspberry Pi. Pour optimiser la bande passante du bus (fixée à 500 kbit/s) et prévenir toute saturation, nous avons dimensionné les trames selon les matrices suivantes.
+    Afin de faire le lien entre le socle matériel embarqué et le superviseur central, il est indispensable de définir des règles communes d'échange. Le réseau CAN doit supporter des interactions bidirectionnelles : l'envoi continu des mesures par les différents nœuds PIC et la réception d'ordres de commutation ordonnés par la Raspberry Pi. Pour optimiser la bande passante du bus (fixée à 500 kbit/s) et prévenir toute saturation, nous avons dimensionné les trames selon les matrices suivantes.
     
     \subsection{Matrice d'adresses}
         Pour la matrice d'adresses, le choix s'est fait en fonction de la catégorie et de l'importance de la donnée échangée comme ci-dessous :
@@ -89,7 +89,7 @@
         Afin d'optimiser la maintenabilité du code et d'éviter la redondance, l'architecture logicielle a été structurée autour de deux principes :
         \begin{itemize}
             \item \textbf{Les Flux (Onglets)} : Ils correspondent aux grandes fonctions ou domaines du système (ex : Traitement de Calculs, Gestion de l'Éclairage, Délestage) et permettent de compartimenter l'exécution. Chaque flux représente un onglet dans l'interface, rassemblant toutes les informations et la logique concernant un seul sujet de manière claire.
-            \item \textbf{Les Sous-flux (Subflows)} : Les opérations de décodage complexes ou répétitives ont été encapsulées. Un sous-flux est un groupe de nœuds reliés entre eux pour former des fonctions complexes, ensuite compressé pour n'apparaître que sous la forme d'un seul et unique nœud dans l'interface. Cette approche modulaire permet de définir une fonction une seule fois et de l'instancier plusieurs fois (par exemple, l'envoie de l'horodatage) sans surcharger visuellement la programmation.
+            \item \textbf{Les Sous-flux (Subflows)} : Les opérations de décodage complexes ou répétitives ont été encapsulées. Un sous-flux est un groupe de nœuds reliés entre eux pour former des fonctions complexes, qui est ensuite compressé pour n'apparaître que sous la forme d'un seul et unique nœud dans l'interface. Cette approche modulaire permet de définir une fonction une seule fois et de l'instancier plusieurs fois (par exemple, l'envoie de l'horodatage) sans surcharger visuellement la programmation.
         \end{itemize}
 
         Au lieu de créer un seul flux gigantesque et illisible, nous avons opté pour cette structure \textbf{décentralisée} par onglets, reliés par des ponts invisibles (nœuds \textbf{Link In/Out}).
