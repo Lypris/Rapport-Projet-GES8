@@ -159,10 +159,24 @@
     \end{tableau}
 
     \subsection{Sécurisation de l'accès à la supervision}
-        L'environnement de développement Node-RED étant par défaut livré non contraint sur le réseau local, il était impératif de prévenir des modifications inopportunes ou malveillantes. Nous avons mis en place les mesures de sécurité suivantes :
+        Par défaut, l'éditeur Node-RED n'est pas sécurisé : les échanges circulent en clair sur le réseau local et les interfaces sont accessibles sans mécanisme d'authentification fort. Dans ce contexte, une personne connectée au même segment réseau peut potentiellement intercepter les informations, comprendre la structure des flux et tenter des modifications non autorisées. Pour réduire ce risque, nous avons structuré la sécurisation autour de trois axes complémentaires :
         \begin{itemize}
-            \item \textbf{Chiffrement HTTPS} : Assure que les échanges web transitent par un tunnel chiffré depuis les bornes extérieures vers la Raspberry Pi.
-            \item \textbf{Authentification de l'éditeur} : Ajout d'une empreinte cryptée (hash) du mot de passe identifiant à l'intérieur de la base logicielle (\texttt{settings.js}) par accès distant SSH, interdisant le déverrouillage de la carte par lecture simple du programme en mémoire.
+            \item \textbf{Axe 1 -- Chiffrement des échanges (HTTPS)}
+            \item \textbf{Axe 2 -- Protection de l'éditeur Node-RED}
+            \item \textbf{Axe 3 -- Sécurisation des interfaces utilisateurs}
+        \end{itemize}
+
+        \paragraph{Axe 1 -- Chiffrement des échanges (HTTPS).}
+        Dans sa configuration initiale, Node-RED communique en HTTP. Les données transitent alors en texte clair, ce qui facilite leur interception et leur lecture par un tiers malveillant présent sur le réseau. L'activation du protocole HTTPS permet au contraire d'établir un canal chiffré entre le navigateur client et la Raspberry Pi. Ce tunnel protège la confidentialité des données échangées (mesures, états, commandes) et réduit fortement le risque d'espionnage réseau.
+
+        \paragraph{Axe 2 -- Protection de l'éditeur Node-RED.}
+        Même avec HTTPS, l'éditeur reste un point critique : toute personne connaissant l'adresse IP de la Raspberry Pi pourrait tenter d'accéder aux onglets de développement et modifier, voire supprimer, la logique applicative. Nous avons donc activé une authentification dédiée à l'éditeur. Concrètement, la configuration a été réalisée via un accès SSH à la console, puis modification du fichier \texttt{settings.js} pour y ajouter un identifiant et un mot de passe stocké sous forme d'empreinte de hachage. Ainsi, le mot de passe n'apparaît jamais en clair dans la configuration et l'accès en écriture à l'environnement de développement est restreint aux personnes autorisées.
+
+        \paragraph{Axe 3 -- Sécurisation des interfaces utilisateurs.}
+        La protection de l'éditeur ne suffit pas à elle seule : les interfaces de sortie (IHM / Dashboard) doivent également être contrôlées. Nous avons donc prévu un mécanisme d'authentification côté interface utilisateur afin de filtrer l'accès aux fonctions de pilotage. Cette séparation permet de distinguer deux profils d'usage :
+        \begin{itemize}
+            \item \textbf{Profil administrateur} : autorisé à intervenir sur la logique, la maintenance et la configuration avancée.
+            \item \textbf{Profil utilisateur} : limité aux fonctions de consultation et de commande nécessaires à l'exploitation.
         \end{itemize}
 
 \section{Interface Utilisateur (Front-End)}
